@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="./css/Signup.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(function () {
+      var $signupbtn = $('.signup_btn');
+      $signupbtn.click(function () {
+        var href = $(this).attr('href');
+        switch (href) {
+          case './signup':
+            var $signup_idvalue = $('.signup_id').val();
+            var $signup_pwdvalue = $('.signup_pwd').val();
+            var $signup_namevalue = $('.signup_name').val();
+            var $signup_ssnvalue = $('.signup_ssn').val();
+            var $signup_phonevalue = $('.signup_phone').val();
+            var $signup_addrvalue = $('.signup_addr').val();
+            var dataObj = {
+              id: $signup_idvalue,
+              pwd: $signup_pwdvalue,
+              name: $signup_namevalue,
+              ssn: $signup_ssnvalue,
+              phone: $signup_phonevalue,
+              addr: $signup_addrvalue
+            };
+            $.ajax({
+              url: href,
+              method: 'post',
+              data: dataObj,
+              success: function (responseData) {
+                var result = responseData.trim();
+                if (result == '성공') {
+                  alert("회원가입에 성공하셨습니다.");
+                  //성공일때 할 일 작성             			  
+                  location.href = "Index.html";
+                } else {
+                  if ($signup_idvalue == 0) {
+                    alert("아이디를 입력해주세요.");
+                  } else if ($signup_idvalue.length > 20) {
+                    alert("아이디가 너무 깁니다.");
+                  } else {
+                    alert("이미 등록된 아이디입니다.");
+                  }
+                }
+              }
+            });
+            break;
+        }
+        return false;
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <div class="signup_main">
+    <h1 class="signup_title">회원가입</h1>
+    <div class="signup_sub">
+      <span class="signup_item">아이디</span>
+      <input class="signup_input signup_id" type="text" name="id" placeholder="가입하실 아이디를 입력해주세요" required>
+      <span class="signup_item">비밀번호</span>
+      <input class="signup_input signup_pwd" type="password" name="pwd" placeholder="가입하실 비밀번호를 입력해주세요" required>
+      <span class="signup_item">이름</span>
+      <input class="signup_input signup_name" type="text" name="name" placeholder="성함을 입력해주세요" required>
+      <span class="signup_item">주민번호</span>
+      <input class="signup_input signup_ssn" type="text" name="ssn" placeholder="주민등록번호를 '-' 포함하여 입력해주세요" required>
+      <span class="signup_item">전화번호</span>
+      <input class="signup_input signup_phone" type="text" name="phone" placeholder="휴대폰 번호를 '-' 포함하여 입려주세요" required>
+      <span class="signup_item">주소</span>
+      <input class="signup_input signup_addr" type="text" name="addr" placeholder="가입하실 주소를 입력해주세요" required>
+    </div>
+    <div class="checkbox_warp1">
+      <input class="signup_checkbox" type="checkbox">
+      <span class="checkbox_item">[필수] 만14세 이상이며 모두 동의합니다.</span>
+    </div>
+    <div class="checkbox_warp2">
+      <input class="signup_checkbox" type="checkbox">
+      <span class="checkbox_item">[선택] 광고성 정보 수신에 모두 동의합니다.</span>
+    </div>
+    <div class="btn_join">
+      <a class="signup_btn" href="./signup">가입하기</a>
+    </div>
+  </div>
+</body>
+
+</html>

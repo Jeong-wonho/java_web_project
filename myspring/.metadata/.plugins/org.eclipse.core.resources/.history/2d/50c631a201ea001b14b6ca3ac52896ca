@@ -1,0 +1,19 @@
+package com.day.control;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import com.day.service.OrderService;
+
+@Controller
+public class OrderController {
+	
+	private Logger log = Logger.getLogger(OrderController.class);
+	@Autowired
+	private OrderService service;
+	
+	
+	
+	
+}

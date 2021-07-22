@@ -1,0 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+       '[{"prod_no":"C0001", "prod_name":"아메리카노", "prod_price":1500}' +
+        ',{"prod_no":"C0002", "prod_name":"ICE아메리카노", "prod_price":1500}' +
+        ',{"prod_no":"C0003", "prod_name":"라떼", "prod_price":2000}]';

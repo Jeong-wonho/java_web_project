@@ -1,0 +1,8 @@
+#classes.prop
+BoardDAO=com.day.dao.BoardDAOOracle
+BookmarkDAO=com.day.dao.BookmarkDAOOracle
+CommentDAO=com.day.dao.CommentDAOOracle
+CustomerDAO=com.day.dao.CustomerDAOOracle
+OrderDAO=com.day.dao.OrderDAOOracle
+ProductDAO=com.day.dao.ProductDAOOracle
+ShopDAO=com.day.dao.ShopDAOOracle

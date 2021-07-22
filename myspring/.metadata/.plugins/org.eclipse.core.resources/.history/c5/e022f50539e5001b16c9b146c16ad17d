@@ -1,0 +1,43 @@
+package com.day.service;
+
+
+import java.util.List;
+
+import com.day.dao.ProductDAO;
+import com.day.dto.Product;
+import com.day.exception.FindException;
+
+public class ProductService {
+	private ProductDAO dao;
+	public ProductService() {}
+	public ProductService(ProductDAO dao) {
+		this.dao = dao;
+	}
+	public void setDao(ProductDAO dao) {
+		this.dao = dao;
+	}
+	
+	public ProductDAO getDao() {
+		return dao;
+	}
+
+	
+	public List<Product> findAll() throws FindException{
+		return dao.selectAll();
+		//List<Product> list = dao.selectAll();
+		//list를 암호화
+		//암호화된 리스트반환
+	}
+	public List<Product> findAll(int currentPage) throws FindException{
+		return dao.selectAll(currentPage);
+	}
+	public Product findByNo(String prod_no) throws FindException{
+		//상품번호를 복호화
+		//dao.selectByNo(복호화된 값);
+		return dao.selectByNo(prod_no);
+	}
+	public List<Product> findByName(String word) throws FindException{
+		return dao.selectByName(word);
+	}
+
+}

@@ -1,0 +1,208 @@
+.profile_infomation {
+  width: 80%;
+  height: 50px;  
+  border-bottom: 2px solid black;
+}
+
+.profile_mainname {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.profile_maininfo {
+  width: 945px;
+  height: 200px; 
+  display: flex;   
+  align-items: center;
+  padding-left: 20px;
+  border-bottom: 1px solid gray;
+}
+
+.profile_mainitem {
+  width: 120px;
+  height: 120px;  
+  border-radius: 60px;
+  border: none;
+  background-color:black;
+}
+
+.profile_subinfo {
+  padding-left: 20px;
+}
+
+.profile_id {
+  margin-bottom: 20px;
+}
+
+.profile_id_item {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.modify_button {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  background-color: white;
+}
+
+.login_info {
+  margin-top: 30px;
+  width: 300px;
+  
+}
+
+.login_infoname {
+  font-size: 24px;
+  font-weight: 550;
+}
+
+.login_id {
+  width: 300px;
+  border-bottom: 1px solid gray;
+}
+
+.login_iditem {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: block;
+  color: gray;
+}
+
+.pwd_info{
+  display: none;
+  margin-top: 30px;
+}
+
+.pwd_modifyname , .pwd_infoitem {
+ display: block;
+ margin-top: 20px;
+}
+
+.pwd_newinput {
+ margin-top: 20px;
+}
+
+.pwd_newinput {
+  width: 300px;
+  height: 35px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid gray;
+}
+
+.pwd_cancel, .pwd_save{
+  width: 100px;
+  height: 50px;
+  padding: 5px;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.pwd_modifybutton {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pwd_before {
+  width: 300px;
+  border-bottom: 1px solid gray;
+}
+
+.pwd_beforeitem {
+  color: gray;
+  margin-top: 20px;
+  display: block;
+}
+
+.pwd_wrap {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.pwd_beforeinput {
+  margin-top: 10px;
+}
+
+.pwd_modify {
+  padding: 3px;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.customer_info {
+  width: 300px;
+  margin-top: 20px;
+}
+
+.customer_name {
+  padding-bottom: 10px;
+  width: 300px;
+  border-bottom: 1px solid gray;
+}
+
+.customer_infotitle {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.customer_title, .customer_value {
+  display: block;
+  margin-top: 15px;
+}
+
+.customer_title {
+  color: gray;
+}
+
+.customer_phone {
+  margin-top: 20px;
+}
+
+.phone_wrap{
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid gray;
+}
+
+.phone_modify{
+  width: 43px;
+  padding: 5px;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.modify_phone {
+  display: none;
+  margin-top: 15px;
+}
+
+.modify_title {
+  display: block;
+  margin-top: 15px;
+}
+
+.phone_value, .modify_value {
+  margin-top: 10px;
+  width: 300px;
+}
+
+.phone_modifywrap {
+ margin-top: 10px; 
+ text-align: center;
+}
+
+.phone_cancel, .phone_save {
+  width: 100px;
+  height: 50px;
+  padding: 5px;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 5px;
+}

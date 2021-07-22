@@ -1,0 +1,85 @@
+.sellsize_info {
+  margin-top: 100px;
+  margin-left: 450px;
+  width: 700px;
+  height: 600px;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  padding: 40px;
+}
+
+.sellsize_title {
+  margin-bottom: 40px;
+}
+
+.title_item, .title_item2 {
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.title_item2 {
+  color: red;
+}
+
+.psize_warp {
+  display: flex;
+  border-bottom: 2px solid black;
+  margin-bottom: 15px;
+}
+
+.psize_img {
+  background-color: black;
+  width: 75px;
+  height: 80px;
+}
+
+.psize_msg {
+  margin-left: 10px;
+}
+
+.msg_p, .msg_span {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.msg_size {
+  display: block;
+  width: 65px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px solid lightgrey;
+  margin-bottom: 15px;
+}
+
+.info_item {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid lightgray;
+}
+
+.info_p {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.info_span {
+  color: lightgray;
+  margin-bottom: 30px;
+}
+
+.info_input {
+  float:right;
+}
+ 
+.sell_continue {
+  margin-top: 50px;
+  display: block;
+  text-decoration: none;
+  color: black;
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+}

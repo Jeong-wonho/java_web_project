@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>첫번째 HTML입니다</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <!--h1~h6 : 제목-->
+    <h1 id="top">WELCOME!</h1>
+    <h3>정원호's First HTML</h3>
+    <h6>작은 제목</h6>
+    <!--p : 단락-->
+    <p>
+      "차세대 배터리 승자는 누구일까?" 전기차 시장이 급속도로 팽창하면서 여기에
+      탑재되는 배터리가 황금알을 낳는 거위로 떠올랐다. 더 안전하고, 더 멀리가며,
+      더 빠르게 충전할 수 있는 선진 기술 개발을 위해 배터리 제조사간 각축이
+      치열해지고 있다.
+    </p>
+    <p>
+      전기차 배터리 뿐 아니라 소형 배터리, 에너지저장장치(ESS)에 대한 관심 역시
+      높아진 가운데 배터리 원료부터 리사이클링까지 함께 살펴볼 수 있는 장(場)인
+      '인터배터리 2021'가 서울 코엑스에서 열렸다.
+    </p>
+
+    <img src="./images/cat.jpg" alt="고양이" />
+    <br />
+    <img src="./images/cat.jpg" width="300" height="300" alt="고양이" />
+    <img
+      src="./images/cat.jpg"
+      width="300"
+      alt="고양이 세로비율자동조절"
+    />
+    <img
+      src="C:\Users\KOSTA\Desktop\myweb\myfront\images\cat.jpg"
+      width="300"
+      alt="고양이 절대경로"
+    />
+
+    <hr />
+
+    <img
+      src="./images/cat.jpg"
+      style="
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        border: 1px solid;
+        padding: 3px;
+      "
+      alt="인라인블럭요소"
+    />
+    <img
+      src="./images/cat.jpg"
+      style="
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        border: 1px solid;
+        padding: 3px;
+      "
+      alt="인라인블럭요소"
+    />
+    <table border="1" width="300" height="300">
+      <thead>
+        <tr>
+          <th>이름</th>
+          <!-- table head -->
+          <th>주소</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>오문정</td>
+          <!--table data -->
+          <td>송파</td>
+        </tr>
+        <tr>
+          <td>홍길동</td>
+          <td>분당</td>
+        </tr>
+        <tr>
+          <td>김근완</td>
+          <td>성남</td>
+        </tr>
+      </tbody>
+      <tfoot></tfoot>
+    </table>
+
+    <table border="1" width="300" height="300">
+      <tr>
+        <th>이름</th>
+        <!-- table head -->
+        <th>주소</th>
+      </tr>
+
+      <tr>
+        <td>오문정</td>
+        <!--table data -->
+        <td>송파</td>
+      </tr>
+      <tr>
+        <td>홍길동</td>
+        <td>분당</td>
+      </tr>
+      <tr>
+        <td>김근완</td>
+        <td>성남</td>
+      </tr>
+      <tr>
+        <td rowspan="2">코스타</td>
+        <td>가산</td>
+      </tr>
+      <tr>
+        <td>분당</td>
+      </tr>
+      <tr>
+        <td colspan="2">총 인원수 : 4</td>
+      </tr>
+    </table>
+
+    <!--목록-->
+    <ul style="list-style-type: circle">
+      <li>ONE</li>
+      <li>TWO</li>
+      <li>THREE</li>
+    </ul>
+
+    <ol style="list-style-type: upper-roman">
+      <li>ONE</li>
+      <li>TWO</li>
+      <li>THREE</li>
+    </ol>
+
+    <a href="http://www.daum.net">다음</a>
+    <a href="http://google.com">구글</a>
+    <a href="./boxmodel.html">박스모델</a>
+    <a href="D:\219\myfront\boxmodel.html">절대경로 박스모델</a>
+    <a href="#top">위로</a>
+  </body>
+</html>

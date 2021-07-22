@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+  <title>웹페이지 프로젝트</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(function(){
+      var $btnObj = $('.')
+    });
+  </script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body{
+      background-color: rgba(248, 248, 248, 0.932);
+
+    }
+    aside.product_back{
+      padding-top: 5%;
+      /* clear: both; */
+
+      background-color: rgba(248, 248, 248, 0.932);
+      float: left;
+      width: 50%;
+    }
+    aside.product_back>div>div>img{
+      width: 50%;
+      height: 100%;
+    }
+    section.rightcontent{
+      padding-top: 5%;
+      
+      width: 50%;
+      /* clear: both; */
+      background-color: rgba(248, 248, 248, 0.932);
+      width: 50%;
+      height: 100%;
+      float: right;
+    }
+    section>div.price_back{
+      margin-top: 5%;
+      margin-left: 5%;
+      margin-right: 5%;
+      padding-top: 5%;
+      padding-left: 5%;
+      padding-right: 5%;
+      background-color: white;
+    }
+    section>div>div.price_content{
+      margin-top: 5%;
+      margin-left: 5%;
+      margin-right: 5%;
+      margin-bottom: 5%;
+      height: 300px;
+    }
+
+
+    header{
+      position: fixed;
+      clear: both;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: white;
+    }
+    header>h1 {
+      display: inline-block;
+      color: black;
+      font-size: 30px;
+      font-weight: bold;
+      width: 100%;
+      height: 60px;
+      line-height: 60px;
+      padding-left: 0.5cm;
+      margin: 0px auto;
+
+    }
+
+    header>nav.a>ul>li>a,
+    header>h1>nav.b>ul>li>a {
+      color: black;
+      text-decoration: none;
+
+    }
+
+    /* 크림로고 맨 위 list */
+    header>nav.a>ul>li {
+      list-style: none;
+      float: right;
+      margin-right: 25px;
+      font-size: 13px;
+
+
+    }
+
+    /* 크림로고 옆에 list  */
+    header>h1>nav.b>ul>li {
+
+      list-style: none;
+      float: right;
+      margin-right: 25px;
+      font-size: 20px;
+    }
+
+    header>h1>nav.b {
+      float: right;
+      height: 60px;
+      line-height: 60px;
+
+    }
+
+
+    section.b {
+      background-color: white;
+      border: 1px solid;
+      border-color: lightgray;
+      width: 100%;
+      height: 250px;
+      float: left;
+      text-align: center;
+      height: 200px;
+    }
+
+    section.b>aside {
+      float: right;
+      text-align: left;
+    }
+
+    section.b>div>ul {
+      margin: auto;
+      float: left;
+    }
+
+    section.b>div>ul>li {
+      list-style-type: none;
+      float: center;
+      margin: 10px 30px;
+    }
+
+    footer {
+      background-color: white;
+      clear: both;
+      text-align: center;
+      width: 100%;
+      height: 150px;
+
+    }
+    body>aside.product_back>div.white {
+     
+      width: 90%;
+      height: 90%;
+      margin-left: 5%;
+      margin-top: 5%;
+      background-color: white;
+      padding-top: 8%;
+      padding-left: 8%;
+    }
+    body>aside.product_back>div.white>img {
+      background-color: thistle;
+      border-radius: 10px; 
+      width: 90%;
+      height: 90%;
+    }
+    section>div>div>ul.price_list{
+      list-style: none;
+      margin: 0;
+      padding:0;
+      display: flex;
+      padding-inline-start: 17%;
+      line-height: 50%;
+      text-align: center;
+      font-size:15px;
+      color: gray;
+    }
+    section>div>div>ul{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+
+      
+    }
+    section>div>div>ul>li>a>button.bidbuybutton{
+      /* padding-inline-start: 30%; */
+      float: left;
+      width: 50%;
+      height: 40px;
+      border-radius: 10px;
+      border-style: none;
+      background-color: rgb(241, 114, 114);
+    }
+    section>div>div>ul>li>button.instant{
+      /* padding-inline-start: 30%; */
+      float: right;
+      width: 50%;
+      height: 40px;
+      border-style: none;
+      border-radius: 10px;
+
+
+    }
+    section>div>div>ul.price_list>div>li>span{
+      color: black;
+    }
+    section>div>div>ul.price_list>div.price_left{
+      margin-right: 18%;
+    }
+    section>div>div>ul.price_list>div.price_right{
+      padding-inline-start: 20%;     
+    }
+    section>div>div>ul.price_list>div.updown{
+      margin-top: 10px;
+      border: 1px solid lightgray;
+      width: 0.1px;
+      height: 35px;
+    }
+    section>div>div>label>input{
+      border: none;
+      text-align: right;
+      width: 95%;
+      height: 30px;
+    }
+    section>div>div>div.free{
+      display: flex;
+      justify-content: space-between;
+      line-height: 30px;
+    }
+    section>div>div>div.totalamount{
+      display: flex;
+      justify-content: space-between;
+      line-height: 30px;
+    }
+    section>div>div>div.totalamount>input{
+      border: none;
+      text-align: right;
+    }
+    section>div>div>div.free>span.title{
+      color: gray;
+      /* line-height: ; */
+    }
+    section>div.deadline_back{
+      background-color: white;
+      margin-top: 1%;
+      margin-left: 5%;
+      margin-right: 5%;
+      padding-top: 5%;
+      padding-left: 5%;
+      padding-right: 5%;
+    }
+    section>div.continue{
+      background-color: white;
+      margin-top: 5%;
+      margin-left: 5%;
+      margin-right: 5%;
+      height: 50px;
+
+    }
+    section>div.addrback{
+      background-color: white;
+      margin-top: 1%;
+      margin-left: 5%;
+      margin-right: 5%;
+      padding-top: 5%;
+      padding-left: 5%;
+      padding-right: 5%;
+    }
+    section>div.continue{
+      margin-top: 1%;
+    }
+    section>div.continue>button{
+      width: 100%;
+      border: none;
+      background-color: rgb(241, 114, 114);
+      height: 100%;
+      border-radius: 5px;
+    }
+    Section>div.delivery{
+      background-color: white;
+      margin-top: 1%;
+      margin-left: 5%;
+      margin-right: 5%;
+      padding-top: 5%;
+      padding-left: 5%;
+      padding-right: 5%;
+    }
+    Section>div.delivery>div.delevery_info{
+      display: flex;
+    }
+    Section>div.delivery>ul>li>input{
+      width: 50px;
+      height: 50px;
+    }
+    section>div.delivery>ul{
+      list-style: none;
+      margin: 0;
+      padding:0;
+      display: flex;
+      line-height: 50%;
+      text-align: center;
+      font-size:15px;
+      color: gray;
+    }
+    section>div.payment{
+      background-color: white;
+      margin-top: 5%;
+      margin-left: 5%;
+      margin-right: 5%;
+      padding-top: 5%;
+      padding-left: 5%;
+      padding-right: 5%;
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- <hr> -->
+  <!-- <nav style="height: 22px;">
+    <ul style=" display: inline;">
+      <li><a href="./login.html">로그인</a></li>
+      <li><a href="./productlist.html">마이페이지</a></li>
+      <li><a href="./signup.html">관심상품</a></li> -->
+      
+      
+    <!-- </ul>
+  </nav> -->
+  <hr>
+  <header>
+    <nav class="a" style="height: 22px;">
+      <ul style=" display: inline;">
+        <li><a href="./login.html">로그인</a></li>
+        <li><a href="./productlist.html">마이페이지</a></li>
+        <li><a href="./signup.html">관심상품</a></li>
+      </ul>
+    </nav>
+    <hr>
+    <h1>KREAM
+      <nav class="b">
+        <ul style=" display: inline;">
+          <li><a href="./signup.html">about</a></li>
+          <li><a href="./productlist.html">shop</a></li>
+          <li><a href="./login.html">style</a></li>
+        </ul>
+      </nav>
+    </h1>
+    
+  </header>
+  <aside class="product_back">
+    <br>
+    <div class="white">
+      <img src="./image/try.jpg" alt="연습사진">
+      <br>
+      <br>
+      새상품 · <span class="prod_modelnum">DD1503-105</span></p>
+      <span class="prod_name">Nike Dunk Low Green Glow</span></p>
+      <span class="order_size">280</span>
+    </div>
+  </aside>
+  <section class="rightcontent">
+    <br>
+    <div class="price_back">
+      <div class="price_content">
+        <ul class="price_list">
+          <div class="price_left">
+          <li class="list_item">
+            
+            <p>즉시 구매가</p>
+            <span class="min_price">629,000</span>
+            <span>원</span>
+            
+          </li>
+        </div>
+        <div class="updown"></div>
+        <div class="price_right">
+          <li class="list_item1">
+            
+            <p>즉시 판매가</p>
+            <span class="max_price">620,000</span>
+            <span>원</span>
+          </li>
+        </div>
+        </ul>
+        <br>
+  
+        <ul class="bidorimmedibuy">
+          <li>
+            <a class="bidbuy"> <button class="bidbuybutton">구매 입찰</button></a>
+            <!-- <button class="register">구매 입찰</button> -->
+          </li>
+          <li>
+            <button class="instant">즉시 구매</button>
+          </li>
+        </ul>
+        <br><br><br><br>
+        구매희망가<br>
+        <label><input type="text" placeholder="희망가 입력">원
+        </label>
+        <hr>
+        <div class="free"><span class="title">검수비</span><span>무료</span></div>
+        <div class="free"><span class="title">배송비</span><span>무료</span></div>
+        <hr>
+        <div class="totalamount"><span>총 결제금액</span><input type="text" readonly class="totalprice" placeholder="-">
+        </div>
+        <br>
+      </div>
+    </div>
+    <div class="deadline_back">
+      <div class="deadinfo">
+        <p>입찰 마감기한</p><br>
+        <div class="deadline">등록일로부터 30일<span onload="time()"></span></div>
+      </div>
+      <br>
+    </div>
+    <div class="addrback">
+      <p>배송주소</p><br>
+      <div class="user_name">이름</div>
+      <div class="user_phone">폰번호</div>
+      <div class="user_addr">주소</div>
+      <br>
+    </div>
+    <div class="continue">
+      <!-- <a href="" -->
+      <button>구매 입찰 계속</button>
+    </div>
+    <br>
+    <div class="delivery">
+      <p>배송 방법</p>
+      <ul>
+        <li>
+          <input type="button" value="택배" disabled="disabled">
+        </li>
+        <li style="padding-inline-start: 10%">
+          <p>일반 택배</p>
+          <span>검수 합격 시 배송됩니다.</span>
+        </li>
+      </ul>
+      <hr>
+      <div class="delivery_info">검수센터에 도착 후, 입고 > 검수대기 > 검수 과정을 거쳐 합격한 경우에 배송을 시작합니다.
+        따라서 일반 쇼핑몰의 구매과정보다 더 많은 시일이 소요됩니다.</div>
+      <br>
+    </div>
+    <br>
+    <div class="payment">1</div>
+
+  </section>
+  <section class="b">
+    <div>
+      <ul>
+        <li>이용안내</li>
+        <li>검수기준</li>
+        <li>이용정책</li>
+        <li>페널티 정책</li>
+        <li>커뮤니티 가이드라인</li>
+      </ul>
+    </div>
+    <div>
+      <ul>
+        <li>고객지원</li>
+        <li>공지사항</li>
+        <li>서비스 소개</li>
+        <li>쇼룸 안내</li>
+        <li>판매자 방문접수</li>
+      </ul>
+    </div>
+    <br>
+    <aside>
+      고객센터 1588-7813<br>
+      운영시간평일 11:00 - 18:00 (토 ∙ 일, 공휴일 휴무)<br>
+      점심시간평일 13:00 - 14:00<br>
+      1:1 문의하기는 앱에서만 가능합니다.<br>
+      <button>자주 묻는 질문</button>
+    </aside>
+  </section>
+  <footer><br>
+    크림 주식회사 · 대표: 김창욱 사업자등록번호:570-88-01618 사업자정보확인통신판매업:제 2021-성남분당C-0093호<br>
+    사업장소재지:경기도 성남시 분당구 분당내곡로 117, 8층 개인정보관리책임자 : 김미진호스팅 서비스:네이버 클라우드 (주)<br>
+    크림(주)는 통신판매 중개자로서 통신판매의 당사자가 아니므로 개별 판매자가 등록한 상품정보에 대해서 책임을 지지 않습니다. <br>
+    단, 거래과정에서 검수하고 보증하는 내용에 대한 책임은 당사에 있습니다.
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상품목록</title> 
+    <link rel="stylesheet" href="./css/basic.css"> 
+    <style>
+      table.productlist {
+        width: 500px;
+        height: 300px;
+        border: 1px solid;
+        border-collapse: collapse;
+      }
+      table.productlist tr > td {
+        width: 20%;
+        margin: 5px;
+        border: 1px solid;
+      }
+      table.productlist tr > td > ul {        
+        list-style-type: none;    
+        padding: 0px;
+        text-align: center;
+        font-size: 10px;
+      }     
+      table.productlist tr > td > ul > li >img {
+          max-width: 100%;
+      }
+    </style>  
+  </head>
+  <body>
+    <table class="productlist">
+      <tr>
+        <td>
+          <ul>
+            <li><img src="./images/C0001.jpg"></li>
+            <li>나이트 콜드 브루</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li><img src="./images/C0002.jpg"></li>
+            <li>돌체 콜드 브루</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li><img src="./images/C0003.jpg"></li>
+            <li>바닐라 크림 콜드 브루</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li><img src="./images/C0004.jpg"></li>
+            <li>벨벳 모카 나이트로</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <ul>
+            <li><img src="./images/C0005.jpg"></li>
+            <li>콜드 브루</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li><img src="./images/C0006.jpg"></li>
+            <li>콜드 브루 몰트</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li><img src="./images/C0007.jpg"></li>
+            <li>콜드 브루 오트 라떼</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li><img src="./images/C0008.jpg"></li>
+            <li>콜드 브루 플로트</li>
+          </ul>
+        </td>
+      </tr>    
+    </table>
+  </body>
+</html>

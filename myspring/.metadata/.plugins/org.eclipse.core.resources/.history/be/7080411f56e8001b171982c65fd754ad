@@ -1,0 +1,63 @@
+package com.day.dao;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.day.dto.Product;
+
+class ProductDAOOracleTest {
+	static private ProductDAO dao;
+	@BeforeAll
+	static void setUpBeforeClass() throws Exception {
+		System.out.println("@BeforAll메서드 호출");
+		dao = new ProductDAOOracle();
+	}
+
+	@BeforeEach
+	void setUp() throws Exception {
+		System.out.println("@BeforeEach메서드 호출");
+	}
+	
+	@Test
+	void testSelectByNo() {
+//		fail("Not yet implemented");
+		System.out.println("@test SelectByNo메서드 호출");
+		String prod_no = "C0001";
+		Product p = dao.selectByNo(prod_no);
+		
+		String expectedProdName = "아메리카노";
+		int expectedProdPrice = 1000;
+		
+		assertEquals(expectedProdName, p.getProd_name());
+		
+	}
+	
+	@Test
+	void test2() {
+//		fail("Not yet implemented");
+		System.out.println("@test2메서드 호출");
+	}
+	
+	@Test
+	void test3() {
+//		fail("Not yet implemented");
+		System.out.println("@test3메서드 호출");
+	}
+	
+	@AfterEach
+	void tearDown() throws Exception {
+		System.out.println("@AfterEach메서드 호출");
+	}
+	
+	@AfterAll
+	static void tearDownAfterClass() throws Exception {
+		System.out.println("@tearDown메서드 호출");
+	}
+
+	
+}

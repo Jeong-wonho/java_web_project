@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../Pages_css/Login.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(function () {      
+      var $signupbtn = $('.login_btn');
+      var $section = $('.login_section');  
+      $signupbtn.click(function () {
+        var href = $(this).attr('href');
+        switch (href) {
+          case './Signup.html': 
+          case './Findid.html':  
+          case './Findpwd.html':                  
+            $section.load(href, function (responseTxt, statucTxt, xhr) {
+              if (statucTxt == "error")
+                alert("Error: " + xhr.status + ":" + xhr.statucTxt);
+            });
+            break;
+        }
+        return false;
+      });
+    });
+  </script>
+</head>
+<body>
+  <section class="login_section">
+  <div class="login_info">
+    <div class="login_title">
+      <H2 class="login_kream">KREAM</H2>
+      <H6 class="login_sub">KICKS RULE EVERYTHING AROUND ME</H6>
+    </div>
+    <div class="login_input">
+      <span class="login_idtitle">아이디</span>
+      <input class="login_idvalue" type="text" placeholder="아이디를 입력해주세요">
+      <span class="login_pwdtitle">비밀번호</span>
+      <input class="login_pwdvalue" type="password" placeholder="비밀번호를 입력해주세요">
+      <div class="login_wrap">
+        <a class="login_button" href="">로그인</a>
+        <a class="signup_button login_btn" href="Signup.html">회원가입</a>  
+      </div>
+    </div>
+    <div class="find_warp">
+      <a class="find_id login_btn" href="Findid.html">아이디 찾기</a>
+      <a class="find_pwd login_btn" href="Findpwd.html">비밀번호 찾기</a>
+    </div>
+  </div>
+</section>
+</body>
+
+</html>

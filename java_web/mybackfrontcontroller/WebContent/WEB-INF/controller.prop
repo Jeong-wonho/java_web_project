@@ -1,0 +1,5 @@
+/login = com.day.control.CustomerController
+/logout = com.day.control.CustomerController
+/productlist=com.day.control.ProductController
+/putcart = com.day.control.CartController
+

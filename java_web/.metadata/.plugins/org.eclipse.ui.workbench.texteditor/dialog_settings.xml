@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="selection" value="default"/>
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<list key="findhistory">
+			<item value="default"/>
+			<item value="buy_size_price"/>
+			<item value="all_modal_content"/>
+			<item value=".sell_modal"/>
+			<item value="sell_size_price"/>
+			<item value=".item_inner"/>
+			<item value="img"/>
+			<item value="bm_modal_content"/>
+			<item value="bm.modal_content"/>
+			<item value="/img"/>
+			<item value="${bm}"/>
+			<item value="bm"/>
+			<item value="$bm"/>
+			<item value="bm_modal_"/>
+			<item value=".main"/>
+		</list>
+		<list key="replacehistory">
+			<item value="price_buy_modal"/>
+			<item value="desc"/>
+			<item value="money"/>
+			<item value="num"/>
+			<item value="price_info"/>
+			<item value="bm_confirm"/>
+			<item value="suggest_list"/>
+			<item value="price_buy"/>
+			<item value="size_p"/>
+			<item value="size_p_list"/>
+			<item value="buy_size_psrice"/>
+			<item value="bm_modal_title"/>
+			<item value="name"/>
+			<item value="size_num"/>
+			<item value="bookmark"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="1148"/>
+		<item key="DIALOG_Y_ORIGIN" value="267"/>
+		<item key="DIALOG_WIDTH" value="292"/>
+		<item key="DIALOG_HEIGHT" value="400"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+	</section>
+</section>

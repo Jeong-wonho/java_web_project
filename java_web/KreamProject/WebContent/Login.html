@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="./css/Login.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(function () {
+      var $btnObj = $('.login_btn');
+      var $mainsection = $('.login_section');
+      $btnObj.click(function () {
+        var href = $(this).attr('href');
+        switch (href) {
+          case './login':
+            var $login_idvalue = $('.login_idvalue').val();
+            var $login_pwdvalue = $('.login_pwdvalue').val();
+            $.ajax({
+              url: href,
+              method: 'post',
+              data: { id: $login_idvalue, pwd: $login_pwdvalue },
+              success: function (responseObj) {//JSON객체타입으로 응답됨        			 
+                if (responseObj.status == 1) {
+                  alert("로그인에 성공하셨습니다.");
+                  sessionStorage.setItem("loginedId", responseObj.loginedId);
+                  sessionStorage.setItem("checkLogined", "login");
+                  //성공일때 할 일 작성             			  
+                  location.href = "Index.html";
+                } else {
+                  alert("아이디와 비밀번호를 확인해주세요.");
+                  /*
+                                        로그인 에러를 막기위해 sessionStorage key, value 모두 삭제.
+                  */
+                  sessionStorage.removeItem("loginedId");
+                  sessionStorage.removeItem("checkLogined");
+                 }
+              }
+            });
+            break;
+          case './Signup.html':
+          case './Findid.html':
+          case './Findpwd.html':
+            $mainsection.load(href, function (responseTxt, statucTxt, xhr) {
+              if (statucTxt == "error")
+                alert("Error: " + xhr.status + ":" + xhr.statucTxt);
+            });
+            break;
+        }
+        return false;
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <section class="login_section">
+    <div class="login_info">
+      <div class="login_title">
+        <H2 class="login_kream">KREAM</H2>
+        <H6 class="login_sub">KICKS RULE EVERYTHING AROUND ME</H6>
+      </div>
+      <div class="login_input">
+        <span class="login_idtitle">아이디</span>
+        <input class="login_idvalue" name="id" type="text" placeholder="아이디를 입력해주세요" required>
+        <span class="login_pwdtitle">비밀번호</span>
+        <input class="login_pwdvalue" name="pwd" type="password" placeholder="비밀번호를 입력해주세요" required>
+        <div class="login_wrap">
+          <a class="login_button login_btn" href="./login">로그인</a>
+          <a class="signup_button login_btn" href="./Signup.html">회원가입</a>
+        </div>
+      </div>
+      <div class="find_warp">
+        <a class="find_id login_btn" href="./Findid.html">아이디 찾기</a>
+        <a class="find_pwd login_btn" href="./Findpwd.html">비밀번호 찾기</a>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

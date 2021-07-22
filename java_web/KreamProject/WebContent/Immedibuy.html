@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="./css/Immedibuy.css"> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(function(){
+      var $section_right = $('.rightcontent');
+      var $bidcontinuebtnObj = $('.continuebtn1');
+      $bidcontinuebtnObj.click(function(){
+        var href = './Immedibuy2.html';
+        $section_right.load(href, function (responseTxt, statucTxt, xhr) {
+              if (statucTxt == "error")
+                alert("Error: " + xhr.status + ":" + xhr.statucTxt);
+            });
+      });
+
+    });
+    
+
+ 
+  </script>
+
+  <body>
+    <section class="Immedibuy">
+    <br>
+    <div class="price_back">
+      <div class="price_content">
+        <ul class="price_list">
+          <div class="price_left">
+          <li class="list_item">
+            <p>즉시 구매가</p>
+            <span class="min_price">629,000</span>
+            <span>원</span>
+          </li>
+        </div>
+        <div class="updown"></div>
+        <div class="price_right">
+          <li class="list_item">
+            
+            <p>즉시 판매가</p>
+            <span class="max_price">620,000</span>
+            <span>원</span>
+          </li>
+        </div>
+        </ul>
+        <br>
+  
+        <ul class="bidorimmedibuy">
+          <li>
+            <a href="./Bidbuy.html"> <button class="bidbuybutton1">구매 입찰</button></a>
+            <!-- <button class="register">구매 입찰</button> -->
+          </li>
+          <li>
+            <a></a>
+            <button class="instant">즉시 구매</button>
+          </li>
+        </ul>
+        <div class="totalamount"><span>즉시 구매가</span>
+          <span class="totalprice" >가격</span></div>
+        <hr>
+        <div class="free"><span class="title">검수비</span><span>무료</span></div>
+        <div class="free"><span class="title">배송비</span><span>무료</span></div>
+        <hr>
+        <div class="totalamount"><span>총 결제금액</span><span class="totalprice1" >가격</span>
+        </div>
+        <br>
+      </div>
+    </div>
+    <div class="addrback">
+      <p>배송 주소</p><br>
+      <div class="user_name">이름</div><br>
+      <div class="user_phone">폰번호</div><br>
+      <div class="user_addr">주소</div><br>
+      <br>
+    </div>
+    <div class="continue1">
+      <a class="continuebtn1">
+      <button>즉시 구매 계속</button>
+      </a>
+    </div>
+    <br>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+.signup_main {
+  margin-left: 600px;
+  width: 500px;
+  height: 800px;
+  padding-top: 40px;
+ }
+
+ .signup_title {
+   font-size: 30px;
+   font-weight: 600;
+   text-align: center;
+   margin-bottom: 50px;
+ }
+
+ .signup_sub {
+   margin-left: 60px;
+ }
+
+ .signup_item{
+   display: block;
+   margin-top: 10px;
+ }
+
+ .signup_input {
+   width: 400px;
+   margin-top: 10px;
+   padding-bottom : 5px;
+   border-bottom: 1px solid lightgray;
+   font-size: 12px;
+ }
+
+ .checkbox_warp1, .checkbox_warp2 {
+   margin-top: 10px;
+   margin-left: 60px;
+ }
+
+ .btn_join{
+   margin-top: 25px;
+   padding-left: 65px;
+   text-align: center;
+ }
+
+ .signup_btn{   
+   display: block;
+   width: 350px;
+   padding: 15px;
+   background-color: white;
+   border: 1px solid lightgray;
+   border-radius: 5px;
+   text-decoration: none;
+   color: black;
+ }
+ 
+ .signup_end{
+   display: block;
+   width: 350px;
+   padding: 15px;
+   border: 1px solid lightgray;
+   text-decoration: none;
+   color: black;
+ }

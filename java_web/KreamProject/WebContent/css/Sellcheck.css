@@ -1,0 +1,85 @@
+.buysize_info {
+  margin-top: 100px;
+  margin-left: 450px;
+  width: 700px;
+  height: 600px;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  padding: 40px;
+}
+
+.buysize_title {
+  margin-bottom: 40px;
+}
+
+.title_item, .title_item2 {
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.title_item2 {
+  color:  rgb(56, 150, 56);
+}
+
+.psize_warp {
+  display: flex;
+  border-bottom: 2px solid black;
+  margin-bottom: 15px;
+}
+ 
+.psize_img {
+  background-color: black;
+  width: 75px;
+  height: 80px;
+}
+
+.psize_msg {
+  margin-left: 10px;
+}
+
+.msg_p, .msg_span {
+  display: block;
+  margin-bottom: 10px;
+}
+ 
+.msg_size {
+  display: block;
+  width: 65px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px solid lightgrey;
+  margin-bottom: 15px;
+}
+
+.checkbox_item {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid lightgray;
+}
+.checkboxbtn {
+  float: right;
+}
+.info_p {
+   margin-left: 0;
+  line-height: 100%;
+}
+
+.info_span {
+  color: gray;
+  line-height: 100%;
+}
+
+.info_input {
+  float:right;
+}
+
+.buy_continue {
+   color: white;
+   background-color : lightgray;
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+  height: 60px;
+  font-size: 130%;
+}

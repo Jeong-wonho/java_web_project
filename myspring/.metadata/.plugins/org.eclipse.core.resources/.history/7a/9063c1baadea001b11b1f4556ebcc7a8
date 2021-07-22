@@ -1,0 +1,15 @@
+package com.day.aop;
+
+import org.apache.log4j.Logger;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+@Aspect
+public class MyAdvice {
+	private Logger log = Logger.getLogger(MyAdvice.class);
+	
+	@Before("execution(* login(..))")
+	public void beforeLog() {
+		log.error("Before");
+	}
+}

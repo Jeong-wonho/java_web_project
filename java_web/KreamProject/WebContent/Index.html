@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KREAM | 한정판 거래의 FLEX</title>
+  <link rel="stylesheet" type="text/css" href="./css/Index.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    /*
+    로그인 여부에 따라서  display변경
+    */
+    function logined() {
+      $('.login_item').hide();
+      $('.logout_item').show();
+    }
+
+    function logouted() {
+      $('.login_item').show();
+      $('.logout_item').hide();
+    }
+    /*
+    sessionStorage KEY(checkLogined)의 value값이 login으로 설정되어있는 값을 loginstatus로 변수 설정.
+    */
+    var loginstatus = sessionStorage.getItem("checkLogined", "login");
+    /*
+    sessionStorage KEY(checkLogined)의 value값이 login으로 설정되었을때, 각 조건에 따라 display변경.
+    */
+    function checkLogined() {
+      if (loginstatus == "login") {
+        logined();
+      } else {
+        logouted();
+      }
+    }
+ 
+    $(function () {
+      checkLogined();
+      /*
+      1초마다  checkLogined실행.
+      */
+      setInterval(function () {
+        checkLogined();
+      }, 1000);
+
+      var $menuObj = $('.header_link');
+      var $kreamObj = $('.nav_link');
+      var $section = $('.main_section');
+      $menuObj.click(function () {
+        var href = $(this).attr('href');
+        switch (href) {
+          case './Login.html':
+            $section.load(href, function (responseTxt, statucTxt, xhr) {
+              if (statucTxt == "error")
+                alert("Error: " + xhr.status + ":" + xhr.statucTxt);
+            });
+            break;
+          case './mypage':
+            /*
+            sessionStorage의 KEY(loginedId)에 설정되어 있는 VALUE값 얻기.  			 
+            ex) key:loginedId, value:ahh1234
+                       value:로그인된 회원의 아이디
+            */
+            var loginedId = sessionStorage.getItem("loginedId");
+            if (loginedId != null && loginedId != '') {
+              $section.load(href, { user_id: loginedId }, function (responseTxt, statucTxt, xhr) {
+                if (statucTxt == "error")
+                  alert("Error: " + xhr.status + ":" + xhr.statucTxt);
+              });
+            } else {
+              alert("로그인을 해주세요.");
+              $section.load("./Login.html", function (responseTxt, statucTxt, xhr) {
+                if (statucTxt == "error")
+                  alert("Error: " + xhr.status + ":" + xhr.statucTxt);
+              });
+              break;
+            }
+            break;
+          case './Index.html':
+            /*
+            로그아웃 버튼 클릭시, sessionStorage KEY(checkLogined)의 value 삭제.
+            loginstaus의 값이 삭제된다.
+            */
+            sessionStorage.removeItem("checkLogined");
+            sessionStorage.removeItem("loginedId"); //?
+            logouted();
+            location.href = "Index.html";
+        }
+        return false;
+      });
+      $kreamObj.click(function () {
+        //클릭된 현재 객체의 href속성값 얻기 : .attr
+        var href = $(this).attr('href');
+        switch (href) {
+          case './shop':
+          case './buy':
+            $section.load(href, function (responseTxt, statucTxt, xhr) {
+              if (statucTxt == "error")
+                alert("Error: " + xhr.status + ":" + xhr.statucTxt);
+            });
+            break;
+
+        }
+        return false;
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <header class="header">
+    <ul class="header_list">
+      <li class="header_item"><a class="header_link" href="./mypage">마이페이지</a></li>
+      <li class="header_item login_item"><a class="header_link" href="./Login.html">로그인</a></li>
+      <li class="header_item logout_item"><a class="header_link" href="./Index.html">로그아웃</a></li>
+    </ul>
+    <div class="header_main">
+      <h1 class="logo"><a class="logo_link" href="">KREAM</a></h1>
+      <ul class="nav_list">
+        <li class="nav_item"><a class="nav_link" href="">STYLE</a></li>
+        <li class="nav_item"><a class="nav_link" href="./shop">SHOP</a></li>
+        <li class="nav_item"><a class="nav_link" href="./buy">ABOUT</a></li>
+      </ul>
+    </div>
+  </header>
+  <section class="main_section">
+    <!-- 광고 -->
+    <div class="main_ad">
+      <img class="main_ad_item" src="./images/kreammain.jpg" alt="광고">
+    </div>
+    <!-- 발매 상품 -->
+    <div class="product_recent_warp">
+      <div class="product_recent_title">
+      <span class="product_recent_sub">Just Dropped</span>
+      <span class="product_recent_sub">발매 상품</span>
+    </div>
+    <div class="product_recent_list">
+      <!-- 1번 상품-->
+      <div class="recent_item_info">
+        <div class="recent_item_img">
+          <img class="recent_img" src="./images/dunk.png" alt="신발">
+        </div>
+        <div class="recent_info_warp">
+          <div class="recent_info_bb">
+            <img class="recent_bb_item" src="./images/a1.jpg" alt="">
+            <img class="recent_bb_item" src="./images/b1.jpg" alt="">
+          </div>
+          <div class="recent_info_item_warp">
+          <p class="recent_info_item1">NIKE Jordan 1 Low Pollen</p>
+          <p class="recent_info_item2">155,000원</p>
+          <p class="recent_info_item3">즉시 구매가</p>
+        </div>
+        </div>
+      </div>
+      <!-- 2번 상품-->
+      <div class="recent_item_info">
+        <div class="recent_item_img">
+          <img class="recent_img" src="./images/dunk.png" alt="신발">
+        </div>
+        <div class="recent_info_warp">
+          <div class="recent_info_bb">
+            <img class="recent_bb_item" src="./images/a1.jpg" alt="">
+            <img class="recent_bb_item" src="./images/b1.jpg" alt="">
+          </div>
+          <div class="recent_info_item_warp">
+          <p class="recent_info_item1">NIKE Jordan 1 Low Pollen</p>
+          <p class="recent_info_item2">155,000원</p>
+          <p class="recent_info_item3">즉시 구매가</p>
+        </div>
+        </div>
+      </div>
+      <!-- 3번 상품-->
+      <div class="recent_item_info">
+        <div class="recent_item_img">
+          <img class="recent_img" src="./images/dunk.png" alt="신발">
+        </div>
+        <div class="recent_info_warp">
+          <div class="recent_info_bb">
+            <img class="recent_bb_item" src="./images/a1.jpg" alt="">
+            <img class="recent_bb_item" src="./images/b1.jpg" alt="">
+          </div>
+          <div class="recent_info_item_warp">
+          <p class="recent_info_item1">NIKE Jordan 1 Low Pollen</p>
+          <p class="recent_info_item2">155,000원</p>
+          <p class="recent_info_item3">즉시 구매가</p>
+        </div>
+        </div>
+      </div>
+      <!-- 4번 상품-->
+      <div class="recent_item_info">
+        <div class="recent_item_img">
+          <img class="recent_img" src="./images/dunk.png" alt="신발">
+        </div>
+        <div class="recent_info_warp">
+          <div class="recent_info_bb">
+            <img class="recent_bb_item" src="./images/a1.jpg" alt="">
+            <img class="recent_bb_item" src="./images/b1.jpg" alt="">
+          </div>
+          <div class="recent_info_item_warp">
+          <p class="recent_info_item1">NIKE Jordan 1 Low Pollen</p>
+          <p class="recent_info_item2">155,000원</p>
+          <p class="recent_info_item3">즉시 구매가</p>
+        </div>
+        </div>
+      </div>
+      </div>
+      </div>
+      
+    <!-- 광고 -->
+     <div class="main_ad">
+      <img class="main_ad_item" src="./images/kreammain.jpg" alt="광고">
+    </div>
+
+    <!-- 스타일 게시판 -->
+    <div class="stylepick_warp">
+      <div class="stylepick_title">
+        <span class="title_tiem">Style Picks!</span>
+      </div>
+      <div class="stylepick_list">
+        <div class="stylepick_list_item">
+          <img class="stylepick_img" src="./images/style1.jpg" alt="스타일">
+        </div>
+        <div class="stylepick_list_item">
+          <img class="stylepick_img" src="./images/style1.jpg" alt="스타일">
+        </div>
+        <div class="stylepick_list_item">
+          <img class="stylepick_img" src="./images/style1.jpg" alt="스타일">
+        </div>
+        <div class="stylepick_list_item">
+          <img class="stylepick_img" src="./images/style1.jpg" alt="스타일">
+        </div>
+        <div class="stylepick_list_item">
+          <img class="stylepick_img" src="./images/style1.jpg" alt="스타일">
+        </div>
+        <div class="stylepick_list_item">
+          <img class="stylepick_img" src="./images/style1.jpg" alt="스타일">
+        </div>
+      </div>
+    </div>
+
+    <!-- 광고 -->
+    <div class="main_ad">
+      <img class="main_ad_item" src="./images/kreammain.jpg" alt="광고">
+    </div>
+
+    <!-- 인기 상품 -->
+    <div class="product_popular_warp">
+      <div class="product_popular_title">
+      <span class="product_popular_sub">Most Popular</span>
+      <span class="product_popular_sub">인기 상품</span>
+    </div>
+    <div class="product_popular_list">
+      <!-- 1번 상품-->
+      <div class="popular_item_info">
+        <div class="popular_item_img">
+          <img class="popular_img" src="./images/dunk.png" alt="신발">
+        </div>
+        <div class="popular_info_warp">
+          <div class="popular_info_bb">
+            <img class="popular_bb_item" src="./images/a1.jpg" alt="">
+            <img class="popular_bb_item" src="./images/b1.jpg" alt="">
+          </div>
+          <div class="popular_info_item_warp">
+          <p class="popular_info_item1">NIKE Jordan 1 Low Pollen</p>
+          <p class="popular_info_item2">155,000원</p>
+          <p class="popular_info_item3">즉시 구매가</p>
+        </div>
+        </div>
+      </div>
+       <!-- 2번 상품-->
+       <div class="popular_item_info">
+        <div class="popular_item_img">
+          <img class="popular_img" src="./images/dunk.png" alt="신발">
+        </div>
+        <div class="popular_info_warp">
+          <div class="popular_info_bb">
+            <img class="popular_bb_item" src="./images/a1.jpg" alt="">
+            <img class="popular_bb_item" src="./images/b1.jpg" alt="">
+          </div>
+          <div class="popular_info_item_warp">
+          <p class="popular_info_item1">NIKE Jordan 1 Low Pollen</p>
+          <p class="popular_info_item2">155,000원</p>
+          <p class="popular_info_item3">즉시 구매가</p>
+        </div>
+        </div>
+      </div>
+       <!-- 3번 상품-->
+       <div class="popular_item_info">
+        <div class="popular_item_img">
+          <img class="popular_img" src="./images/dunk.png" alt="신발">
+        </div>
+        <div class="popular_info_warp">
+          <div class="popular_info_bb">
+            <img class="popular_bb_item" src="./images/a1.jpg" alt="">
+            <img class="popular_bb_item" src="./images/b1.jpg" alt="">
+          </div>
+          <div class="popular_info_item_warp">
+          <p class="popular_info_item1">NIKE Jordan 1 Low Pollen</p>
+          <p class="popular_info_item2">155,000원</p>
+          <p class="popular_info_item3">즉시 구매가</p>
+        </div>
+        </div>
+      </div>
+       <!-- 4번 상품-->
+       <div class="popular_item_info">
+        <div class="popular_item_img">
+          <img class="popular_img" src="./images/dunk.png" alt="신발">
+        </div>
+        <div class="popular_info_warp">
+          <div class="popular_info_bb">
+            <img class="popular_bb_item" src="./images/a1.jpg" alt="">
+            <img class="popular_bb_item" src="./images/b1.jpg" alt="">
+          </div>
+          <div class="popular_info_item_warp">
+          <p class="popular_info_item1">NIKE Jordan 1 Low Pollen</p>
+          <p class="popular_info_item2">155,000원</p>
+          <p class="popular_info_item3">즉시 구매가</p>
+        </div>
+        </div>
+      </div>
+
+      </div>
+      </div>
+
+  </section>
+  <section class="footer">
+    <div class="footer_wrap">
+      <div class="footer_info_warp">
+        <div class="footer_info">
+          <ul class="footer_ul">
+            <li class="footer_item">이용안내</li>
+            <li class="footer_item">검수기준</li>
+            <li class="footer_item">이용정책</li>
+            <li class="footer_item">페널티 정책</li>
+            <li class="footer_item">커뮤니티 가이드라인</li>
+          </ul>
+        </div>
+        <div class="footer_info">
+          <ul class="footer_ul">
+            <li class="footer_item">고객지원</li>
+            <li class="footer_item">공지사항</li>
+            <li class="footer_item">서비스 소개</li>
+            <li class="footer_item">쇼룸 안내</li>
+            <li class="footer_item">판매자 방문접수</li>
+          </ul>
+        </div>
+      </div>
+      <aside class="footer_aside">
+        <span class="aside_item">고객센터 1588-7813</span>
+        <span class="aside_item">운영시간평일 11:00 - 18:00(토 * 일, 공휴일 휴무)</span>
+        <span class="aside_item">점심시간평일 13:00 - 14:00</span>
+        <span class="aside_item">1:1 문의하기는 앱에서만 가능합니다.</span>
+        <button class="aside_button">자주 묻는 질문</button>
+      </aside>
+    </div>
+    <footer class="footer_main">
+      <div class="footer_main_div1">
+        <span class="footer_span">크림 주식회사 · 대표김창욱 사업자등록번호:570-88-01618사업자정보확인통신 판매업:제 2021-성남분당C-0093호</span>
+        <span class="footer_span">사업장소재지 : 경기도 성남시 분당구 분당내곡로 117, 8층 개인정보관리책임자:김미진 호스팅 서비스:네이버 클라우드 (주)</span>
+      </div>
+      <div class="footer_main_div2">
+        <span class="footer_span">크림(주)는 통신판매 중개자로서 통신판매의 당사자가 아니므로 개별 판매자가 등록한 상품정보에 대해서 책임을 지지 않습니다.</span>
+        <span class="footer_span">단, 거래과정에서 검수하고 보증하는 내용에 대한 책임은 당사에 있습니다.</span>
+      </div>
+    </footer>
+  </section>
+</body>
+
+</html>

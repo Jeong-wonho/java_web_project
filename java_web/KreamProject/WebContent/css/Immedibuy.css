@@ -1,0 +1,133 @@
+body {
+  background-color: rgba(248, 248, 248, 0.932);
+	line-height: 1;  
+}
+.Immedibuy{
+  background-color: rgba(248, 248, 248, 0.932);
+  height: 100%;
+}
+.price_back{
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-top: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+  background-color: white;
+}
+.price_content{
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 1%;
+}
+.price_list{
+  list-style: none;
+  margin: 0;
+  padding:0;
+  display: flex;
+  /* padding-inline-start: 17%; */
+  width: 100%;
+  line-height: 130%;
+  text-align: center;
+  font-size:15px;
+  color: gray;
+}  
+.price_left{
+  left: 0;
+  width: 50%;
+  /* margin-right: 18%; */
+}
+.price_right{
+  right:0;
+  width: 50%;
+  /* padding-inline-start: 15%; */
+}
+.updown{
+       /* margin-top: 10px; */
+      border: 1px solid lightgray;
+      width: 0.1px;
+      height: 35px;
+}
+.min_price{
+  color: block;
+}
+.bidorimmedibuy{
+  list-style: none;
+  box-sizing: border-box;
+  padding-bottom: 20%;
+}
+.bidbuybutton1{
+  float: left;
+      width: 50%;
+      height: 40px;
+      border-radius: 10px;
+      border-style: none;
+}
+.instant{
+  float: right;
+  right:0;
+  width: 50%;
+  height: 40px;
+  border-style: none;
+  border-radius: 10px;
+  background-color: rgb(241, 114, 114);
+  color :white;
+}
+.continue1{
+  margin-top: 2%;
+  margin-left: 5%;
+  margin-right: 5%;
+  height: 60px;
+}
+.continue1>a>button{
+  width: 100%;
+  border: none;
+  background-color: black;
+  height: 100%;
+  border-radius: 5px;
+  color: white;
+  font-size: 130%;
+}
+.addrback{
+  background-color: white;
+  margin-top: 1%;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-top: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.hopeprice{
+  font-weight: bold;
+}
+.insertprice{
+  font-weight: bold;
+  font-size: 130%;
+}
+.totalprice{
+  text-align: right;
+  font-size: 130%;
+}
+.totalprice1{
+  text-align: right;
+  font-size: 130%;
+  color: red;
+}
+.insertprice>input{
+  border: none;
+      text-align: right;
+      width: 95%;
+      height: 30px;
+}
+.totalamount{
+  font-weight: bold;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  line-height: 30px;
+}
+.free{
+  display: flex;
+  justify-content: space-between;
+}

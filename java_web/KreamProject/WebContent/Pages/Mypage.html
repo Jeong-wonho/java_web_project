@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../Pages_css/MyPage.css"> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(function () {      
+      var $menuObj = $('.mypage_link');
+      var $section = $('.main_menu'); 
+      var $mypagebtn = $('.mypage_title_a');    
+      $menuObj.click(function () {
+        var href = $(this).attr('href');
+        switch (href) {
+          case './Profile.html':
+          case './Buying.html':   
+          case './Selling.html':   
+          case './Wish.html': 
+          case './Address.html':                   
+            $section.load(href, function (responseTxt, statucTxt, xhr) {
+              if (statucTxt == "error")
+                alert("Error: " + xhr.status + ":" + xhr.statucTxt);
+            });
+            break;
+        }
+        return false;
+      });
+      $mypagebtn.click(function () {
+        var href = $(this).attr('href');
+        switch (href) {
+          case './Profile.html':                 
+            $section.load(href, function (responseTxt, statucTxt, xhr) {
+              if (statucTxt == "error")
+                alert("Error: " + xhr.status + ":" + xhr.statucTxt);
+            });
+            break;
+        }
+        return false;
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="wrap">
+  <div class="sub_menu">
+    <h2 class="mypage_title"><a class="mypage_title_a" href="./Profile.html">MY PAGE</a></h2>
+    <ul class="mypage_menu">
+      <li class="mypage_item"><strong>쇼핑 정보</strong></li>
+      <li class="mypage_item"><a class="mypage_link" href="./Buying.html">구매 내역</a></li>
+      <li class="mypage_item"><a class="mypage_link" href="./Selling.html">판매 내역</a></li>
+      <li class="mypage_item"><a class="mypage_link" href="./Wish.html">관심 상품</a></li>
+    </ul>
+    <ul class="mypage_menu">
+      <li class="mypage_item"><strong>내 정보</strong></li>
+      <li class="mypage_item"><a class="mypage_link" href="./Profile.html">프로필 정보</a></li>
+      <li class="mypage_item"><a class="mypage_link" href="./Address.html">주소록</a></li>
+    </ul>
+  </div>  
+  <section class="main_menu">   
+    <div class="profile_main">
+      <div class="profile_img">
+        <img class="profile_item" src="" alt="">
+      </div>
+      <div class="profile_sub">
+        <div class="profile_info">
+          <strong class="profile_name">test</strong>
+          <p class="profile_id">teste-mail@email.com</p>
+        </div>
+        <div class="profile_button">
+          <a class="img_button mypage_link" href="./Profile.html">프로필 수정</a>
+      </div>
+    </div>   
+  </section>
+</div>
+</body>
+</html>

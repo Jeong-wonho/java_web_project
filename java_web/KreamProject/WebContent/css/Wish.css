@@ -1,0 +1,99 @@
+.mypagebm_title {
+  width: 80%;
+  height: 50px;  
+  border-bottom: 2px solid black;
+}
+
+.mypagebm_title_item {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.mypagebm_warp {
+  margin-top: 20px;
+  width: 80%;  
+  display: flex;
+  justify-content: space-between;
+}
+
+.mypagebm_info {
+  display: flex;
+  width: 500px;
+  height: 150px;
+}
+
+.mypagebm_info_img {
+  border: 1px solid lightgray;
+  border-radius: 15px;
+}
+
+.mypagebm_info_img_item {
+  width: 150px;
+  height: 150px;
+}
+
+.mypagebm_info_sub {
+  margin-left: 15px;
+  height: 25px;
+  line-height:25px;
+}
+
+.mypagebm_info_brand {
+  width: 35px;
+  margin-bottom: 50px;
+}
+
+.mypagebm_info_p {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.mypagebm_set_warp {
+  margin-right: 40px;
+  margin-top: 25px;
+}
+ 
+.mypagebm_set_button {
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid rgb(245, 86, 86);
+  border-radius: 15px;
+  width: 200px;
+  height: 70px;
+  line-height: 70px;
+  background-color: rgb(245, 86, 86);
+  color: white;
+}
+
+.mypagebm_set_left {
+  padding-right: 10px;
+}
+
+.mypagebm_right {
+  height: 50px;
+  line-height: 50px;
+}
+
+.mypagebm_right_sub {
+ text-align: center;
+ height: 20px;
+}
+
+.mypagebm_set_sub {
+  font-size: 12px;
+}
+
+.mypagebm_delete {
+  width: 70px;
+  height: 35px;
+  margin-top: 10px;
+  text-align: end;
+  float: right;
+}
+
+.mypagebm_deletebtn {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 3px;
+  background-color: white;
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- 모바일 사용자들을 위해서 viewport사용 -->
+    <meta name="viewport" content="width=device-width, intitial-scale =1.0" />
+    <title>Insert title here</title>
+  </head>
+
+  <body>
+    <div>
+      <h3>html5에 추가된 입력양식</h3>
+      <input name="t1" form="f1" />
+      <button type="submit" form="f1">폼밖에서 전송</button>
+      <form id="f1" , action="http://www.daum.net" autocommplete="off"></form>
+      <form method="post" action="http://www.daum.net" autocomplete="off">
+        <!-- name 속성 있는 것만 autocomplete가능 -->
+        <label
+          >검색: <input type="search" name="sc" value="x로 쉽게 내용삭제"
+        /></label>
+        <br />
+        <label> 숫자 : <input type="number" /></label>
+        <br />
+        <label> 이메일 : <input type="email" /></label>
+        <br />
+        <label> 전화번호 : <input type="tel" /></label>
+        <br />
+        <label> 날짜: <input type="date" /></label>
+        <!--<input type="datetime" />-->
+        <label>
+          placeholder : <input type="text" placeholder="이름을 입력하세요"
+        /></label>
+        <label> required: <input type="text" required /></label>
+        <label>
+          readonly : <input type="text" value="읽기전용" readonly
+        /></label>
+        <label>
+          min,max : <input type="number" min="1" max="10" value="5"
+        /></label>
+
+        <label> transfer : <input type="submit" value="전송1" /></label
+        ><!-- 데이터보내기 -->
+      </form>
+    </div>
+    <div>
+      <h3>기본 입력양식</h3>
+      <!--입력양식-->
+      <form method="post" action="http://www.daum.net">
+        <label>
+          검색 : <input type="text" name="t" value="this is text form"
+        /></label>
+        <!-- text box 다!-->
+        <label>number<input type="password" name="p" /></label>
+        <!-- 가려서 나온다.-->
+
+        ONE&nbsp;&nbsp;&nbsp;<!-- nbsp공백 3개 만들어짐.-->
+        <fieldset>
+          <legend>다중선택</legend>
+          <label><input type="checkbox" name="c" value="c1" checked /></label>
+          <label
+            ><input type="checkbox" name="c" value="c2" />
+            TWO&nbsp;&nbsp;&nbsp;</label
+          >
+          <label
+            ><input type="checkbox" name="c" value="c3" checked /> THREE</label
+          >
+        </fieldset>
+        <!-- grouping 이름으로 묶는듯 하네 해줘야한다.-->
+        <fieldset>
+          <legend>단일선택</legend>
+          <label
+            ><input type="radio" name="r" value="r1" />
+            ONE&nbsp;&nbsp;&nbsp;</label
+          >
+          <label
+            ><input type="radio" name="r" value="r2" checked />
+            TWO&nbsp;&nbsp;&nbsp;</label
+          >
+          <label><input type="radio" name="r" value="r3" /> THREE </label>
+          <input type="file" />
+        </fieldset>
+        <!-- 파일첨부-->
+        <label><input type="hidden" name="h" value="hiddenValue" /></label>
+        <!-- 화면에 안보일 의도(보이지 않고 서버로 자동으로 이동)-->
+        <select name="S">
+          <option value="s1">ONE</option>
+          <option value="s2">TWO</option>
+          <option>THREE</option>
+        </select>
+        <br />
+        <label
+          >textarea:
+          <textarea rows="3" cols="10">여러줄입력란....</textarea>
+        </label>
+        <fieldset>
+          <legend>input type용 버튼들</legend>
+          <label> 버튼 <input type="button" value="일반버튼1" /></label>
+          <!-- 데이터보내기 -->
+          <label> 전송 <input type="submit" value="전송1" /></label>
+          <label> 리셋<input type="reset" value="CLEAR1" /></label>
+        </fieldset>
+        <!-- clear-->
+        <fieldset>
+          <legend>button type용 버튼들</legend>
+          <label> 버튼2 <button type="button">일반버튼2</button></label>
+          <label> 전송2 <button type="submit">전송2</button></label>
+          <label> 리셋2 <button type="reset">CLEAR2</button></label>
+        </fieldset>
+        <button>전송3</button>
+        <!-- form버튼의 안쪽은 전송버튼과 같다.-->
+      </form>
+      <button>
+        일반버튼
+        <!-- form버튼의 바깥은 일반버튼-->
+      </button>
+    </div>
+  </body>
+</html>

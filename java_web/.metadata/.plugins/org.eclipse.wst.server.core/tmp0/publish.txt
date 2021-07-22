@@ -1,0 +1,6 @@
+#Tomcat publish data
+#Sun Jul 18 16:25:17 KST 2021
+org.eclipse.jst.jee.server\:KreamProject=C\:\\Users\\X13\\Desktop\\tomcat\\wtpwebapps\\KreamProject
+org.eclipse.jst.jee.server\:mybackfrontcontroller4.0=C\:\\Users\\X13\\Desktop\\tomcat\\wtpwebapps\\mybackfrontcontroller4.0
+org.eclipse.jst.jee.server\:mybackfrontcontroller2=C\:\\Users\\X13\\Desktop\\tomcat\\wtpwebapps\\mybackfrontcontroller2
+org.eclipse.jst.jee.server\:KreamProject2=C\:\\Users\\X13\\Desktop\\tomcat\\wtpwebapps\\KreamProject2

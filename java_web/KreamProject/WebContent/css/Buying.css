@@ -1,0 +1,205 @@
+.purchase_warp {
+  padding-bottom: 20px;
+  border-bottom: 2px solid black;
+  width: 80%;
+}
+
+.purchase_title {
+  width: 80%;
+  height: 50px;  
+}
+
+.purchase_title_item {
+  font-size: 30px;
+  font-weight: 700;
+}
+.purchase_menu {
+  display: flex;
+  justify-content:space-around;
+}
+
+.pbc_a1, .pbc_a2, .pbc_a3 {
+  width: 100px;
+  height: 50px;
+  background-color: white;
+  border: none;
+}
+
+.pbc{
+  display: block;
+  text-align: center;
+}
+
+.purchase_bid_count, .purchase_ing_count, .purchase_done_count   {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.purchase_bid_title, .purchase_ing_title, .purchase_done_title  {
+  font-weight: 0;
+  color: lightgray;
+}
+/* 援щℓ �낆같 */
+.purchase_info_warp {
+  width: 80%;
+  
+}
+
+.purchase_info_title {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgray;
+  padding: 25px;
+}
+
+.purchase_whole_item {
+  color: gray;
+}
+
+.purchase_details {
+  color: gray; 
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.purchase_info {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  align-items: center;
+
+}
+
+.purchase_info_img {
+  width: 75px;
+  height: 75px;
+}
+
+.purchase_info_img_item {
+  width: 100%;
+  height: 100%;
+}
+
+.purchase_info_details {
+  padding-right: 15px;
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 吏꾪뻾 以� */
+
+.purchasing_info_warp {
+  width: 80%;
+  display: none;
+  
+}
+
+.purchasing_info_title {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgray;
+  padding: 25px;
+}
+
+.purchasing_whole_item {
+  color: gray;
+}
+
+.purchasing_details {
+  color: gray; 
+  width: 250px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.purchasing_info {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  align-items: center;
+
+}
+
+.purchasing_info_img {
+  width: 75px;
+  height: 75px;
+}
+
+.purchasing_info_img_item {
+  width: 100%;
+  height: 100%;
+}
+
+.purchasing_info_details {
+  padding-right: 15px;
+  width: 250px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* 醫낅즺 */
+.end_info_warp {
+  width: 80%;
+  display: none;
+  
+}
+ 
+.end_info_title {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgray;
+  padding: 25px;
+}
+
+.end_whole_item {
+  color: gray;
+}
+
+.end_details {
+  color: gray; 
+  padding-right: 10px;
+  width: 220px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.end_info {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  align-items: center;
+
+}
+
+.end_info_img {
+  width: 75px;
+  height: 75px;
+}
+
+.end_info_img_item {
+  width: 100%;
+  height: 100%;
+}
+
+.end_info_details {
+  padding-right: 15px;
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pbc_a1:hover, .pbc_a2:hover, .pbc_a3:hover {
+  color: red;
+  font-weight: 700;
+}

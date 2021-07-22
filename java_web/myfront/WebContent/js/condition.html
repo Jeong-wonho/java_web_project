@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      var num = 4;
+      var isPrime = true;
+      var max = num / 2;
+      console.log(max);
+      var i = 2;
+      for (; i <= max; i++) {
+        if (num % i == 0) {
+          isPrime = false;
+          break;
+        }
+      }
+
+      if (isPrime) {
+        console.log("소수입니다.");
+      } else {
+        console.log("소수가 아닙니다.");
+      }
+      //***********************************//
+      //1- 가위, 2-바위, 3-보
+      var arr = ["가위", "바위", "보"];
+      var userNum = parseInt(Math.random() * 3 + 1);
+      var r = parseInt(Math.random() * 3 + 1); //1.0 <= r <4.0 ==> 1, 2, 3
+
+      console.log("가위, 바위 , 보 게임");
+      console.log("사용자값:" + arr[userNum - 1] + ", 컴퓨터값:" + arr[r - 1]);
+      if (userNum == r) {
+        console.log("비겼습니다.");
+      } else if (userNum - 1 == r % 3) {
+        console.log("이겼습니다.");
+      } else {
+        console.log("졋습니다.");
+      }
+      console.log(userNum);
+      console.log(r);
+      // *********************************//
+      var subject = "JAVA";
+      switch (subject) {
+        case "JAVA":
+          console.log("개발직군");
+        case "BPM":
+          console.log("컨설팅직군");
+          break;
+        default:
+          console.log("그 외의 직군");
+      }
+    </script>
+  </head>
+</html>

@@ -1,0 +1,48 @@
+package com.day.control;
+
+
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.day.dto.Customer;
+import com.day.exception.FindException;
+import com.day.service.CustomerService;
+
+@Controller
+public class CustomerController {
+	
+	@Autowired
+	private CustomerService service;
+	@GetMapping("/login.html")
+	public String login(String id, String pwd, HttpServletRequest request) {
+		String path = "";
+		HttpSession session = request.getSession();
+		session.removeAttribute("loginInfo");
+		try {
+			Customer loginInfo = service.login(id, pwd);
+			//로그인정보를 세션에 추가			
+			session.setAttribute("loginInfo", loginInfo);
+			path = "success.jsp";
+		} catch (FindException e) {
+			e.printStackTrace();
+			path = "fail.jsp";
+		}
+		return path;
+	}
+	
+	@GetMapping("/logout")
+	public String logout(HttpServletRequest request){
+		
+				HttpSession session = request.getSession();
+				session.invalidate(); //세션제거
+				
+				String path = "success.jsp";
+				return path;				
+	}
+}

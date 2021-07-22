@@ -1,0 +1,115 @@
+.trade_section{
+ width: 550px;
+ height: 750px;
+ margin-top: 50px;
+ margin-left: 550px;
+ border: 1px solid lightgray;
+ border-radius: 5px;
+}
+
+.trade_img{  
+  width: 550px;
+  height: 300px;  
+  border-bottom: 1px solid lightgray;
+}
+
+.img_item {
+  width: 550px;
+  height: 300px;
+}
+
+.trade_warp {  
+  width: 550px;
+  height: 250px;
+  text-align: center; 
+  border-bottom: 1px solid lightgray;
+}
+
+.trade_info {
+  margin-top: 30px;
+}
+
+.info_title{
+  display: block;
+  font-size: 25px;
+  font-weight: 600;
+  margin-top: 40px;  
+  margin-bottom: 30px;
+}
+.info_span{
+ display: block; 
+}
+
+.btn_item {
+  margin-top: 40px;
+  margin-left: 120px;
+  display: block;
+  width: 300px;
+  height: 50px;
+  line-height: 50px;
+  color: black;
+  text-decoration: none;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.price_warp {
+  width: 550px;
+  height: 200px;  
+}
+
+.price_main {
+  padding-top: 20px;
+  padding-left: 30px;
+  width: 520px;
+  height: 70px;  
+  background-color: gainsboro;
+}
+
+.main_title, .main_price, .main_price1 {
+  font-weight: 600;
+}
+
+.main_title {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.main_price_warp {
+  text-align: end;
+  padding-right: 20px;
+}
+
+.main_price{  
+  font-size: 20px;
+  color: red;
+}
+
+.main_price1{  
+  font-size: 20px;
+  color: red;
+}
+
+.price_sub {
+  padding: 10px;
+  width: 530px;
+  height: 130px;
+}
+
+.sub_div1 {
+  display: flex;
+  justify-content:space-between;
+  margin-bottom: 5px;
+
+}
+
+.sub_div2 {
+  font-size: 14px;
+  display: flex;
+  justify-content:space-between;
+  margin-bottom: 5px;
+}
+ 
+.sub_price3 {
+  font-weight: 600;
+}

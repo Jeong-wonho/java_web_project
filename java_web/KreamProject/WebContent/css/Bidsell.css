@@ -1,0 +1,417 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe, 
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var, 
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video, input {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+input:focus-visible {
+  outline: none;
+  border-bottom: 1px solid black;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+  background-color: rgba(248, 248, 248, 0.932);
+	line-height: 1;  
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.header {
+  /* position: fixed; */
+  position: sticky;
+  top: 0;
+  background-color: white;
+}
+
+.header_list { 
+  display: flex;  
+  justify-content: flex-end;  /* 가로로 정렬 */
+  height: 25px;
+  list-style-type: none;
+  padding-top: 10px;
+  padding-right: 40px;
+  border-bottom: 1px solid gray;
+}
+
+.nav_list {
+
+  display: flex;  
+  justify-content: flex-end;  /* 가로로 정렬 */
+  list-style-type: none;
+  padding-right: 40px; 
+}
+
+.header_item{
+  margin-left: 24px;
+}
+
+.nav_item {
+  margin-left : 60px;
+}
+
+.header_item:first-child, .nav_item:first-child {
+  margin-left: 0px;
+}
+
+.logo_link {
+  color:black;
+  text-decoration : none;
+}
+
+.header_link, .nav_link {
+ color:gray;
+ text-decoration : none;
+}
+
+.header_main {
+  height: 50px;
+  display: flex;
+  justify-content:space-between;
+  border-bottom: 1px solid gray; 
+  align-items: center;
+}
+
+.logo {
+  font-size: 200%;
+  font-weight: 700;
+  font-style: oblique;
+  display: inline-block;
+  padding-left: 10px;
+}
+
+.main_section { /*메인 섹션 절대 크기지정*/
+  margin-top: 50px;
+  /* height: 2000px; */
+}
+
+.footer {
+  clear: both;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  background-color: white;
+  border-top: 1px solid lightgray;
+}
+.footer_wrap {
+  display: flex;
+  justify-content:space-between;
+}
+
+.footer_info_warp {
+  display: flex;
+}
+
+.footer_info{
+  margin-left: 40px;
+}
+
+.footer_item:first-child {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.footer_item {
+  margin-bottom: 10px;
+}
+
+.footer_aside {
+  margin-right: 40px;
+}
+
+.aside_item:first-child{
+  font-size: 20px;
+  font-weight: 600; 
+}
+
+.aside_item{
+  display: block; 
+  margin-bottom: 5px; 
+}
+
+.aside_button {
+  margin-top: 10px;
+  color: white;
+  background-color: black;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.footer_main{
+  margin-top: 30px;
+  padding-left: 40px;
+  border-top: 1px solid lightgray;
+}
+
+.footer_main_div1, .footer_main_div2{
+  margin-top: 20px;
+}
+
+.footer_main_div1 {
+  font-size: 14px;
+}
+
+.footer_main_div2 {
+  font-size: 12px;
+}
+
+.footer_span{
+  display: block;
+  margin-bottom: 5px;
+  color:gray;
+}
+
+.product_back{
+  padding-left: 5%;
+  padding-top: 0.5%;
+  background-color: rgba(248, 248, 248, 0.932);
+  float: left;
+  width: 40%;
+}
+.white{
+  width: 90%;
+      height: 90%;
+      margin-left: 5%;
+      margin-top: 5%;
+      background-color: white;
+      padding-top: 8%;
+      padding-left: 8%;
+}
+.productpic{
+  background-color: thistle;
+      border-radius: 10px; 
+      width: 90%;
+      height: 90%;
+}
+.product_info{
+  line-height: 150%;
+}
+.rightcontent{
+  background-color: rgba(248, 248, 248, 0.932);
+  width: 50%;
+  height: 100%;
+  float: right;
+}
+.rightcontent2{
+  background-color: rgba(248, 248, 248, 0.932);
+  height: 100%;
+
+}
+.price_back{
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-top: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+  background-color: white;
+}
+.price_content{
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 1%;
+}
+.price_list{
+  list-style: none;
+  margin: 0;
+  padding:0;
+  display: flex;
+  /* padding-inline-start: 17%; */
+  width: 100%;
+  line-height: 130%;
+  text-align: center;
+  font-size:15px;
+  color: gray;
+}
+.price_left{
+  left: 0;
+  width: 50%;
+  /* margin-right: 18%; */
+}
+.price_right{
+  right:0;
+  width: 50%;
+  /* padding-inline-start: 15%; */
+}
+.updown{
+       /* margin-top: 10px; */
+      border: 1px solid lightgray;
+      width: 0.1px;
+      height: 35px;
+}
+.min_price{
+  color: block;
+}
+.bidorimmedibuy{
+  list-style: none;
+  box-sizing: border-box;
+  padding-bottom: 20%;
+}
+.bidbuybutton{
+  float: left;
+      width: 50%;
+      height: 40px;
+      border-radius: 10px;
+      border-style: none;
+      color: white;
+      background-color: rgb(56, 150, 56);
+    }
+.instantbtn{
+  right:0;
+  width: 50%;
+  height: 40px;
+  border-style: none;
+  border-radius: 10px;
+}
+.list_item>span{
+  color: black;
+}
+.insertprice>input{
+  border: none;
+      text-align: right;
+      width: 95%;
+      height: 30px;
+}
+.free{
+  display: flex;
+  justify-content: space-between;
+  line-height: 200%;
+}
+.totalamount{
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  line-height: 30px;
+}
+.totalprice{
+  text-align: right;
+  font-size: 130%;
+}
+.totalprice1{
+  text-align: right;
+  color: rgb(56, 150, 56);
+  font-size: 130%;
+}
+
+.title{
+  color: gray;
+}
+.deadline_back{
+  background-color: white;
+  margin-top: 1%;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-top: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.deadinfo{
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+.addrback{
+  background-color: white;
+  margin-top: 1%;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-top: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.addrback>p{
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-bottom: 3%;
+}
+.addrback>div{
+  margin-left: 5%;
+  margin-right: 5%;
+  line-height: 5px;
+}
+.continue{
+  margin-top: 2%;
+  margin-left: 5%;
+  margin-right: 5%;
+  height: 60px;
+}
+.continue>a>button{
+  width: 100%;
+  border: none;
+  background-color: black;
+  height: 100%;
+  border-radius: 5px;
+  color: white;
+  font-size: 130%;
+}
+.hopeprice{
+  font-weight: bold;
+}
+.insertprice{
+  font-weight: bold;
+  font-size: 130%;
+}
+.deadline_line1, .accountinfo_line1{
+  font-weight: bold;
+}
+.addrback>p, .user_name, .order_size{
+  font-weight: bold;
+}
+.blank{
+  height: 200px;
+}
+.account{
+  background-color: white;
+  margin-top: 1%;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-top: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.accountinfo{
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+.accountinfo_line2>span{
+  color: lightgray;
+}

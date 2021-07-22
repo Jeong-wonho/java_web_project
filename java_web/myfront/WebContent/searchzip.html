@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>우편번호검색</title>
+    <link rel="stylesheet" href="./css/basic.css" />
+    <style>
+      /* * {
+        box-sizing: border-box;
+      } 
+      body {
+        background-color: yellow;
+      }*/
+      div.divSearchzip {
+        width: 500px;
+      }
+      div.divSearchzip > ul {
+        list-style-type: none;
+        padding: 10px 0px;
+      }
+      div.divSearchzip > ul > li {
+        margin-bottom: 10px;
+      }
+      div.divSearchzip > ul > li:hover {
+        background-color: beige;
+      }
+    </style>
+    <script>
+      window.addEventListener("load", function () {
+        var liObjArr = document.querySelectorAll("div.divSearchzip>ul>li");
+        liObjArr.forEach(function (e, i) {
+          e.addEventListener("click", function () {
+            //클릭된 현재요소의 하위요소중 class속성값이 zipcode인 span값: 우편번호값 얻기
+            //                          [ 첫번째 자식요소 ]
+            //<li><span>30019</span>
+            console.log(this); //li요소
+            //console.log(this.childNodes[0]); //span요소
+            // var zipcode = this.childNodes[0].firstChild.nodeValue;
+
+            //                          class속성값이 baseaddr인 span값:기본주소값 얻기
+            //                          [ 두번째 자식요소]
+            var baseaddr = this.childNodes[1].innerHTML;
+            console.log(baseaddr);
+            //값들을 메인창의 div영역에 넣기
+            var mainWindow = self.opener;
+            //console.log(mainWindow);
+            mainWindow.document.querySelector("div>span.zipcode").innerHTML =
+              zipcode;
+            mainWindow.document.querySelector("div>span.baseaddr").innerHTML =
+              baseaddr;
+
+            //현재창닫기
+            self.close();
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <form>
+      <input type="search" placeholder="도로명주소를 입력하세요. 세종캠퍼스" />
+      <button>조회</button>
+    </form>
+    <div class="divSearchzip">
+      <ul>
+        <li>
+          <span class="zipcode">30019</span
+          ><span class="baseaddr">세종특별시 조치원읍 세종로 2511</span>
+        </li>
+        <li>
+          <span class="zipcode">30016</span
+          ><span class="baseaddr">세종특별시 조치원읍 세종로 2639</span>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

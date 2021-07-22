@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      var a = "GLOBAL VARIABLE";
+      console.log(window.a); //윈도우라는 내장 객체에 저장되어있다.
+      if (true) {
+        var ifa = "if 블럭변수";
+        console.log("if안:" + ifa);
+      }
+      console.log("if밖:" + ifa);
+      for (var fora = 0; fora < 1; fora++) {
+        console.log("fora안 : fora = " + fora);
+      }
+      console.log("fora밖:fora = " + fora);
+
+      var f = function () {
+        var fa = true;
+        console.log("function안 : fa =" + fa);
+      };
+      //---------------------------------------//
+      f();
+      //   console.log("function밖 :fa=" + fa); //???
+
+      var f1 = function () {
+        var f1a = "f1함수 스코프 변수";
+        var f11 = function () {
+          console.log("반환함수입니다." + f1a);
+          //   var f11b = 10;
+          return f1a;
+        };
+        // console.log(f11b); //f11b is not defined 밖에서 선언한 변수는 안에서 사용가능, 안에서 사용한 변수는 밖에서 사용 불가!
+        return f11;
+      }; //함수 안에서 밖에 있는 변수를 사용하는건 문제가 아니다.
+      //   var returnF = f1();
+      //   console.log(returnF); //returnF();
+      var returnF11 = f1();
+      var returnF11Value = returnF11();
+      console.log(returnF11Value);
+      //----------------------------------//
+      var f2 = function () {
+        var f2a = "f2a";
+        var f22 = function () {
+          var f22b = "f22b";
+        };
+      };
+
+      var f3 = function (f) {
+        var f3a = "f3a";
+        f();
+      };
+
+      f3(f2);
+
+      var name = "오문정";
+      var f4 = function (param) {
+        var name = "김근완";
+        param();
+      };
+      var name = "aaaa";
+      let a = "aaa";
+      let a = "aaa"; //스콘범위로 변수 선언을 하기 위함.!
+
+      f4(function () {
+        // console.log(name);
+        alert(name);
+      });
+
+      var a = 10;
+      var b = "10";
+
+      console.log(a == b); //number == string => number ==number => true
+      console.log(a === b); // => false
+
+      //new A(); property : 객체에 속한 데이터 //method 와 function의 차이점
+      // method 는 객체안에서 사용하는 기능, 함수 // function 독립적으로 기능을 할수 있는 함수
+
+      var obj = {
+        prod_no: "id1",
+        prod_price: 1500,
+        display: function () {
+          console.log(this.prod_no); //객체의 property를 사용하려면 this를 반드시 서야한다.
+        },
+      };
+
+      obj.display();
+      //JSON
+    </script>
+  </head>
+</html>

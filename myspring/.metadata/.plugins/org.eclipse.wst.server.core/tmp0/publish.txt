@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Thu Jul 22 16:35:47 KST 2021
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\X13\\.m2\\repository\\org\\springframework\\spring-web\\5.2.12.RELEASE\\spring-web-5.2.12.RELEASE.jar=C\:\\Users\\X13\\Desktop\\tomcat\\wtpwebapps\\mybackspring\\WEB-INF\\lib\\spring-web-5.2.12.RELEASE.jar
+org.eclipse.jst.jee.server\:mybackspring=C\:\\Users\\X13\\Desktop\\tomcat\\wtpwebapps\\mybackspring

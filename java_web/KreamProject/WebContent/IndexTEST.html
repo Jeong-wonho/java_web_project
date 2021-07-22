@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KREAM | 한정판 거래의 FLEX</title>
+  <link rel="stylesheet" type="text/css" href="./css/Index.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(function () {
+      //DOM트리에서a 객체 찾기
+      var $menuObj = $('.header_link');
+      var $kreamObj = $('.nav_link');
+      //DOM트리에서 section객체 찾기
+      var $section = $('.main_section');
+      $menuObj.click(function () {
+        //클릭된 현재 객체의 href속성값 얻기 : .attr
+        var href = $(this).attr('href');
+        switch (href) {
+          case './Login.html':
+          case './Mypage.html':
+          case './Tradecomplete.html':
+            $section.load(href, function (responseTxt, statucTxt, xhr) {
+              if (statucTxt == "error")
+                alert("Error: " + xhr.status + ":" + xhr.statucTxt);
+            });
+            break;
+ 
+        }
+        return false;
+      });
+      $kreamObj.click(function () {
+        //클릭된 현재 객체의 href속성값 얻기 : .attr
+        var href = $(this).attr('href');
+        switch (href) {
+          case './buy':
+          case './sell':
+            $section.load(href, function (responseTxt, statucTxt, xhr) {
+              if (statucTxt == "error")
+                alert("Error: " + xhr.status + ":" + xhr.statucTxt);
+            });
+            break;
+
+        }
+        return false;
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <header class="header">
+    <ul class="header_list">
+      <li class="header_item"><a class="header_link" href="./Tradecomplete.html">관심상품</a></li>
+      <li class="header_item"><a class="header_link" href="./Mypage.html">마이페이지</a></li>
+      <li class="header_item"><a class="header_link" href="./Login.html">로그인</a></li>
+    </ul>
+    <div class="header_main">
+      <h1 class="logo"><a class="logo_link" href="">KREAM</a></h1>
+      <ul class="nav_list">
+        <li class="nav_item"><a class="nav_link" href="">STYLE</a></li>
+        <li class="nav_item"><a class="nav_link" href="./sell">SHOP</a></li>
+        <li class="nav_item"><a class="nav_link" href="./buy">ABOUT</a></li>
+      </ul>
+    </div>
+  </header>
+  <section class="main_section"></section>
+  <section class="footer">
+    <div class="footer_wrap">
+      <div class="footer_info_warp">
+        <div class="footer_info">
+          <ul class="footer_ul">
+            <li class="footer_item">이용안내</li>
+            <li class="footer_item">검수기준</li>
+            <li class="footer_item">이용정책</li>
+            <li class="footer_item">페널티 정책</li>
+            <li class="footer_item">커뮤니티 가이드라인</li>
+          </ul>
+        </div>
+        <div class="footer_info">
+          <ul class="footer_ul">
+            <li class="footer_item">고객지원</li>
+            <li class="footer_item">공지사항</li>
+            <li class="footer_item">서비스 소개</li>
+            <li class="footer_item">쇼룸 안내</li>
+            <li class="footer_item">판매자 방문접수</li>
+          </ul>
+        </div>
+      </div>
+      <aside class="footer_aside">
+        <span class="aside_item">고객센터 1588-7813</span>
+        <span class="aside_item">운영시간평일 11:00 - 18:00(토 * 일, 공휴일 휴무)</span>
+        <span class="aside_item">점심시간평일 13:00 - 14:00</span>
+        <span class="aside_item">1:1 문의하기는 앱에서만 가능합니다.</span>
+        <button class="aside_button">자주 묻는 질문</button>
+      </aside>
+    </div>
+    <footer class="footer_main">
+      <div class="footer_main_div1">
+        <span class="footer_span">크림 주식회사 · 대표김창욱 사업자등록번호:570-88-01618사업자정보확인통신 판매업:제 2021-성남분당C-0093호</span>
+        <span class="footer_span">사업장소재지 : 경기도 성남시 분당구 분당내곡로 117, 8층 개인정보관리책임자:김미진 호스팅 서비스:네이버 클라우드 (주)</span>
+      </div>
+      <div class="footer_main_div2">
+        <span class="footer_span">크림(주)는 통신판매 중개자로서 통신판매의 당사자가 아니므로 개별 판매자가 등록한 상품정보에 대해서 책임을 지지 않습니다.</span>
+        <span class="footer_span">단, 거래과정에서 검수하고 보증하는 내용에 대한 책임은 당사에 있습니다.</span>
+      </div>
+    </footer>
+  </section>
+</body>
+
+</html>

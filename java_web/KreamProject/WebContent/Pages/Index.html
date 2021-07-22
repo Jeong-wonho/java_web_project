@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KREAM | 한정판 거래의 FLEX</title>
+  <link rel="stylesheet" type="text/css" href="../Pages_css/Index.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(function () {
+      //DOM트리에서a 객체 찾기
+      var $menuObj = $('.header_link');
+      //DOM트리에서 section객체 찾기
+      var $section = $('.main_section');
+      $menuObj.click(function () {
+        //클릭된 현재 객체의 href속성값 얻기 : .attr
+        var href = $(this).attr('href');
+        switch (href) {
+          case './Login.html':
+          case './Mypage.html':         
+            $section.load(href, function (responseTxt, statucTxt, xhr) {
+              if (statucTxt == "error")
+                alert("Error: " + xhr.status + ":" + xhr.statucTxt);
+            });
+            break;        
+        	 
+        }
+        return false;
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <header class="header">
+    <ul class="header_list">
+      <li class="header_item"><a class="header_link" href="">관심상품</a></li>
+      <li class="header_item"><a class="header_link" href="./Mypage.html">마이페이지</a></li>
+      <li class="header_item"><a class="header_link" href="./Login.html">로그인</a></li>
+    </ul>  
+  <div class="header_main">
+    <h1 class="logo"><a class="logo_link" href="">KREAM</a></h1>
+    <ul class="nav_list">
+      <li class="nav_item"><a class="nav_link" href="">STYLE</a></li>
+      <li class="nav_item"><a class="nav_link" href="">SHOP</a></li>
+      <li class="nav_item"><a class="nav_link" href="">ABOUT</a></li>
+    </ul>
+  </div>
+</header>
+<section class="main_section">
+
+</section>
+</body>
+
+</html>

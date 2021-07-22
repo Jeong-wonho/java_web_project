@@ -1,0 +1,74 @@
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.List;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+import com.day.dto.Customer;
+import com.day.dto.Product;
+
+public class Test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String resource = "mybatis-config.xml";
+		InputStream inputStream;
+		try {
+			inputStream = Resources.getResourceAsStream(resource);
+			SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+			SqlSession session = sqlSessionFactory.openSession(); //Connection과 Session 의 기능이 같다.
+			// ---------------한값받아오기-------------------
+			Product p = session.selectOne("com.day.dto.ProductMapper.selectByNo", "C0001"); //한가지만 호출될 경우
+			System.out.println(p);
+			
+			//--------------여러값 받아오기-----------------------
+			List<Product> list = session.selectList("com.day.dto.ProductMapper.selectAll"); //여러행이 표출될경우!
+			System.out.println(list);
+			
+			//----------------여러파라미터값 받아오기---------------
+			HashMap<String, Integer> map = new HashMap<>();
+			map.put("currentPage", 2); //보여줄페이지는 2페이지
+			map.put("cnt_per_page", 4); //페이지별 보여줄 목록수 4건
+			List<Product> listCurrentPage = session.selectList("com.day.dto.ProductMapper.selectAllPage", map);	
+			//System.out.println(listCurrentPage);
+			for(Product p1: listCurrentPage) {
+				System.out.println(p1);
+			}
+			//-------------상품이름으로 부르기----------------------
+//			List<Product> listName = session.selectList("com.day.dto.ProductMapper.selectByName", "아");
+			HashMap<String, String> map1 = new HashMap<>();
+			map1.put("word",  "리");
+			map1.put("ordermethod",  "prod_name DESC");
+			List<Product> listName = session.selectList("com.day.dto.ProductMapper.selectByName", map1);
+			System.out.println(listName);
+			
+			//-------------insert문 실험--------------------
+			System.out.println("고객 추가");
+			HashMap<String, Object> mapCustomer = new HashMap<>();
+//			mapCustomer.put("id", "id11");
+//			mapCustomer.put("pwd", "pwd11");
+//			mapCustomer.put("name", "이름11");
+//			mapCustomer.put("buildingno", "1");
+//			session.insert("com.day.dto.CustomerMapper.insert", mapCustomer);
+			
+			Customer c = new Customer();
+			c.setId("id11");
+			c.setPwd("p111");
+			c.setName("이름11");
+			c.setBuildingno("1");
+			session.insert("com.day.dto.CustomerMapper.insert", c);
+			session.commit(); // mybatis 는  auto commit이 안된다.
+			
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+}

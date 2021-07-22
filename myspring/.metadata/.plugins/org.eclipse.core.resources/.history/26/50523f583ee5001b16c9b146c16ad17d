@@ -1,0 +1,5 @@
+package com.day.config;
+
+public class Factory {
+
+}

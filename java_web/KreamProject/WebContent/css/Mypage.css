@@ -1,0 +1,246 @@
+.wrap {
+  display: flex;
+}
+
+.sub_menu {
+  padding-left: 100px;
+  width: 300px;
+  
+}
+
+.mypage_title {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 50px;
+}
+
+.mypage_title_a{
+  color: black;
+  text-decoration: none;
+}
+
+.mypage_btn {
+  list-style-type: none;
+  color: black;
+}
+
+.mypage_menu {
+  margin-bottom: 40px;
+}
+
+.mypage_menu:first-child {
+  margin-top: 0;
+}
+
+.mypage_item {
+  list-style-type: none;
+  margin-bottom: 10px;
+  font-size: 20px;
+  justify-content:end; 
+}
+
+.mypage_item:first-child {
+  font-size : 24px;
+}
+
+.mypage_link {
+ color:gray;
+ text-decoration : none;
+}
+
+.img_button {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
+
+.main_menu {
+  width: 1200px;
+}
+
+
+/* �꾨줈�� 諛뺤뒪 */
+
+.profile_main {
+  display: flex;
+  width: 1000px;
+  height: 200px;
+  border: 1px solid gray;
+  border-radius: 15px;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.profile_item {
+  width: 120px;
+  height: 120px;  
+  border: none;
+  border-radius: 60px;
+}
+
+.profile_sub {
+  padding-left: 10px;
+}
+
+.profile_info {
+  margin-bottom: 30px;
+}
+
+.profile_name {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.profile_id {
+  margin-top: 10px;
+  font-size : 20px;
+}
+
+/* 援щℓ �댁뿭 */
+
+.buying_info {
+  margin-top: 60px;
+  width: 1000px;
+}
+
+.buying_title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buying_title_span {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.buying_title_plus {
+  color: gray;
+  text-decoration: none;
+}
+.buying_progress_warp {
+  margin-top: 20px;
+}
+
+.buying_progress_box {
+  display: flex;
+  justify-content:space-around;
+  width: 1000px;
+  height: 100px;
+  line-height: 100px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.buying_complete_list {
+  width: 1000px;
+  height: 100px;
+  line-height: 100px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* �먮ℓ �댁뿭 */
+
+.selling_info {
+  margin-top: 60px;
+  width: 1000px;
+}
+
+.selling_title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.selling_title_span {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.selling_title_plus {
+  color: gray;
+  text-decoration: none;
+}
+
+.selling_progress_warp {
+  margin-top: 20px;
+}
+
+.selling_progress_box {
+  display: flex;
+  justify-content:space-around;
+  width: 1000px;
+  height: 100px;
+  line-height: 100px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.selling_complete_list {
+  width: 1000px;
+  height: 100px;
+  line-height: 100px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* 愿��� �곹뭹 */
+
+.mypage_bookmark_main {
+  margin-top: 60px;
+  width: 1000px;
+}
+
+.mypage_bookmark_title {
+ margin-bottom: 20px;
+}
+.mypage_bookmark_item {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.mypage_bookmark_item_img {
+  margin-top: 10px;
+  width: 200px;
+  height: 200px;
+  border: 1px solid lightgray;
+  border-radius: 15px;
+}
+
+.mypage_bookmark_img {
+  width: 100%;
+  height: 100%;
+}
+
+.mypage_bookmark_list {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.mypage_bookmark_info_bb {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+ 
+.mypage_bookmark_bb_item {
+  width: 30px;
+  height: 35px;
+}
+
+.mypage_bookmark_info_item1 {
+  margin-bottom: 15px;
+}
+
+.mypage_bookmark_info_item2 {
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.mypage_bookmark_info_item3 {
+  font-size: 11px;
+  color: gray;
+}

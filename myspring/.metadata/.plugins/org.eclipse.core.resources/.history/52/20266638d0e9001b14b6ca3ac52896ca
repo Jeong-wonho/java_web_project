@@ -1,0 +1,21 @@
+package com.day.control;
+
+
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+@Controller
+public class CustomerController {
+	
+	private Logger log = Logger.getLogger(CustomerController.class);
+	@GetMapping("/login")
+	public void loginGet() {
+		log.info("GET");
+	}
+	@PostMapping("/login")
+	public void login() {
+		log.info("post");
+	}
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="./css/Findid.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(function () {
+      var $findidbtn = $('.findid_phone');
+      $findidbtn.click(function () {
+        var href = $(this).attr('href');
+        switch (href) {
+          case './findid':
+            var $findid_phonevalue = $('.phone_input').val();
+            $.ajax({
+              url: href,
+              method: 'post',
+              data: { phone: $findid_phonevalue },
+              success: function (responseData) {
+                $('div.findid_result').empty();
+                $('div.findid_result').html(responseData);
+              }
+            });
+            break;
+        }
+        return false;
+ 
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <div class="findid_info">
+    <div class="findid_title">
+      <span class="findid_item">아이디 찾기</span>
+    </div>
+    <div class="findid_result">
+      <div class="findid_p">
+        <p class="p_item">가입 시 등록한 휴대폰 번호를 입력하면</p>
+        <p class="p_item">아이디를 알려드립니다.</p>
+      </div>
+      <span class="phone_title">휴대폰 번호</span>
+      <input class="phone_input" name="phone" type="text" placeholder="가입하신 휴대폰 번호">
+      <div class="findid_btn">
+        <a class="findid_phone" href="./findid">아이디 찾기</a>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

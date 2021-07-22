@@ -1,0 +1,89 @@
+.addr_main {
+  width: 80%;
+  height: 50px;  
+  border-bottom: 2px solid black;
+}
+
+.addr_title {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.addr_before {
+  margin-top: 35px;
+  width: 500px;
+  border-bottom: 1px solid gray;
+}
+
+.addr_beforeitem {
+  color: gray;
+  margin-top: 20px;
+  display: block;
+}
+
+.addr_wrap {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.addr_beforeinput {	
+  margin-top: 10px;
+  width: 450px;
+}
+
+.addr_modify {
+  padding: 3px;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.addr_after{
+  display: none;
+  margin-top: 30px;
+  width: 500px;
+}
+
+.addr_modifyname {
+  font-size:24px;
+  font-weight: 700;		
+}
+
+.addr_modifyname , .addr_infoitem {
+ display: block;
+ margin-top: 38px;
+}
+
+.addr_newinput {
+ margin-top: 20px;
+}
+
+.addr_newinput {
+  width: 500px;
+  height: 35px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid gray;
+}
+
+.addr_cancel, .addr_save{
+  display: block;
+  width: 50px;
+  height: 30px;
+  line-height: 30px;
+  padding: 5px;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 5px;
+  text-decoration: none;
+  color: black;
+}
+
+.addr_modifybutton {
+  margin-top: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+ 

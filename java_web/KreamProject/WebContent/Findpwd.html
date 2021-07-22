@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="./css/Findpwd.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(function () {
+      var $findpwdbtn = $('.findpwd_phone');
+      $findpwdbtn.click(function () {
+          var href = $(this).attr('href');
+          switch (href) {
+            case './findpwd':
+          	  var $findpwd_phonevalue = $('.user_phone').val();
+          	  var $findpwd_idvalue = $('.user_id').val();
+        	  $.ajax({
+        		  url: href,
+        		  method : 'get',
+        		  data : {phone:$findpwd_phonevalue, id:$findpwd_idvalue},
+        		  success:function(responseData){
+        			  $('div.findid_result').empty();
+                      $('div.findid_result').html(responseData);
+        		  }
+        	  });
+        	  break;
+          }
+          return false;
+       
+      });
+    });
+  </script>
+</head>
+<body>
+	<div class="findpwd_info">
+		<div class="findpwd_title">
+			<span class="findpwd_item">비밀번호 찾기</span>
+		</div>
+		<div class="findid_result">
+			<div class="findpwd_p">
+				<p class="p_item">가입 시 등록한 휴대폰 번호와 아이디를 입력하시면</p>
+				<p class="p_item">비밀번호를 알려드립니다.</p>
+			</div>
+			<span class="phone_title">휴대폰 번호</span> <input
+				class="phone_input user_phone" name="phone" type="text"
+				placeholder="가입하신 휴대폰 번호"> <span class="phone_title">아이디</span>
+			<input class="phone_input user_id" name="id" type="text"
+				placeholder="가입하신 아이디">
+			<div class="findpwd_btn">
+				<a class="findpwd_phone" href="./findpwd">비밀번호 찾기</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

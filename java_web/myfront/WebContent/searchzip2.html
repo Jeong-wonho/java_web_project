@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>우편번호검색</title>
+    <link rel="stylesheet" href="./css/basic.css" />
+    <style>
+      /* * {
+        box-sizing: border-box;
+      } 
+      body {
+        background-color: yellow;
+      }*/
+      div.divSearchzip {
+        width: 500px;
+      }
+      div.divSearchzip > ul {
+        list-style-type: none;
+        padding: 10px 0px;
+      }
+      div.divSearchzip > ul > li {
+        margin-bottom: 10px;
+      }
+      div.divSearchzip > ul > li:hover {
+        background-color: beige;
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(function () {
+        var $liObjArr = $("div.divSearchzip>ul>li");
+        $liObjArr.click(function () {
+          var $zipcode = $(this).find("span.zipcode").text(); //find, children 후손, 자식요소로!
+          console.log($zipcode);
+          var $baseaddr = $(this).find("span.baseaddr").text();
+          console.log($baseaddr);
+
+          // var mainWindow = self.opener;
+          // $("form.signup input.zipcode", mainWindow.document).val($zipcode);
+          // $("form.signup input.baseaddr", mainWindow.document).val($baseaddr);
+
+          var parent = $(opener.document);
+          alert(parent);
+          var $zipObj = parent.find("input.zipcode");
+          var $baseaddrObj = parent.find("input.baseaddr");
+
+          $zipObj.val($zipcode);
+          $baseaddrObj.val($baseaddr);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <form>
+      <input type="search" placeholder="도로명주소를 입력하세요. 세종캠퍼스" />
+      <button>조회</button>
+    </form>
+    <div class="divSearchzip">
+      <ul>
+        <li>
+          <span class="zipcode">30019</span
+          ><span class="baseaddr">세종특별시 조치원읍 세종로 2511</span>
+        </li>
+        <li>
+          <span class="zipcode">30016</span
+          ><span class="baseaddr">세종특별시 조치원읍 세종로 2639</span>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

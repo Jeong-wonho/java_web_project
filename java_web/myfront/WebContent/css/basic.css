@@ -1,0 +1,7 @@
+* {
+  /**모든요소의 박스전체사이즈 설정*/
+  box-sizing: border-box;
+}
+/* body {
+  background-color: green !important;
+} */

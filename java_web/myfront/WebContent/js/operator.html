@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      var a, b;
+      a = 3;
+      b = 4;
+      console.log(a + b);
+      console.log(a - b);
+      console.log(a * b);
+      console.log(a / b); //? 주의깊게 보기
+      console.log(a % b);
+
+      a = true;
+      console.log(a + b); //boolean + number boolean 자동 형 변환.!
+      console.log(a - b); //boolean - number = > 1-4
+
+      a = "1";
+      console.log(a + b); // String + number => '1'+'4' : '14'
+      console.log(a - b); // String - number = > 1 - 4 string에는 -라는 연산자가 없으니 계산도 형변환해서 알아서 계산함.!
+
+      // ***********************************************************//
+      // 비교연산자
+      a = 3;
+      b = 4;
+      console.log(a > b); //false
+
+      a = true;
+      console.log(a > b); //논리형이 자동으로 1로 바꾸어준다.
+
+      a = "1";
+      console.log(a > b); // false
+
+      // *********************************************************//
+      //논리연산자
+      a = true;
+      b = false;
+      console.log(a && b);
+      console.log(!a);
+      // *************************//
+      // 대입연산자
+      a = 3;
+      b = 4;
+      a += b;
+      console.log(a);
+      //**************************//
+      // 증감연산자
+      a = 3;
+      //++a; 연산자를 더 우선하겠다. a++ 변수를 더 우선하겠다.
+      b = a++; //b = a; a++;이 안전한 코드
+      console.log("b=" + b + ",a=" + a);
+    </script>
+  </head>
+</html>
