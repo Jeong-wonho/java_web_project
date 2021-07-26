@@ -1,0 +1,2 @@
+var backContextPath = '/mybackjsonspring';
+
