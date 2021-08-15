@@ -1,6 +1,6 @@
 # Kream Project
 
-##개요##
+## 개요 ##
 
 1. 보유 기술 스택
 2. 프로젝트
@@ -38,7 +38,7 @@ OracleSQL
 Msazure
 --
 
-##2. 프로젝트 ##
+## 2. 프로젝트 ##
 ### 실습과제명
 > Kream Project Clone 기존 크림사이트 클론 
 > 아래 사진이 클론하기로 한 사이트입니다.
@@ -65,21 +65,21 @@ Msazure
 
 ### 사용기술
 
-####JAVA
+#### JAVA
 1.	Servlet
 2.	Jsp
 3.	Jstl
 
-####Java Script
+#### Java Script
 1. Vanila Java Script
 2. JQuery
 
-####Html5, CSS
+#### Html5, CSS
 
-####OracleSQL
+#### OracleSQL
 
 
-##3.상세내용##
+## 3.상세내용 ##
 
 ### 시행착오 ###
 > 북마크를 구현하기 위해서 자바스크립트를 사용해서 처음에 구현하였으나, 클릭이 되지 않는 문제점이 발견되었습니다.
