@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+  <typeAliases>
+  	<typeAlias type="com.slur.dto.Notice" alias="notice"/>
+  	<typeAlias type="com.slur.dto.Program" alias="program"/>
+  	<typeAlias type="com.slur.dto.QA_Reply" alias="qa_rep"/>
+  	<typeAlias type="com.slur.dto.QA" alias="qa"/>
+  	<typeAlias type="com.slur.dto.Review" alias="review"/>
+  	<typeAlias type="com.slur.dto.Student" alias="student"/>
+  	<typeAlias type="com.slur.dto.Teacher" alias="teacher"/>
+  	<typeAlias type="com.slur.dto.User" alias="user"/>
+  </typeAliases>
+
+  <mappers>
+    <!-- <mapper resource="org/mybatis/example/BlogMapper.xml"/> -->
+  <mapper resource="mybatisConfig/UserMapper.xml"/>
+  <mapper resource="mybatisConfig/ApplicationMapper.xml"/>
+  
+  
+  </mappers>
+</configuration>

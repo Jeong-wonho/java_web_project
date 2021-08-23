@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.slur.dto.ApplicationMapper">
+ 
+ <insert id="insertTeacher" parameterType="Teacher">
+ INSERT INTO VALUES (#{teacher_user_id.user_id}, #{teacher_program.program_times}, #{teacher_edu},
+ #{teacher_inst}, #{teacher_inst}, #{teacher_introduce}, #{teacher_curr}, 0)
+ </insert>
+ <insert id="insertStudent" parameterType="Student">
+ INSERT INTO VALUES (#{student_user_id.user_id}, #{student_program.program_times}, #{student_edu},
+ #{student_inst}, #{student_inst}, #{student_introduce}, 0)
+ </insert>
+ <update id="updateTeacher">
+UPDATE teacher_tb 
+<set>
+<if test="teacher_introduce != null and teacher_introduce != ''" >teacher_introduce=#{teacher_introduce},</if> 
+<if test="teacher_curr != null and teacher_curr != ''">teacher_curr=#{teacher_curr},</if> 
+<if test="teacher_inst != null and teacher_inst != ''">teacher_inst=#{teadcher_inst},</if>
+</set>
+WHERE teacher_user_id=#{teacher_user_id.user_id} AND teacher_program=#{teacher_program.program_times} 
+ </update>
+ 
+<update id="updateTeacher">
+UPDATE teacher_tb 
+<set>
+<if test="teacher_introduce != null and teacher_introduce != ''" >teacher_introduce=#{teacher_introduce},</if> 
+<if test="teacher_curr != null and teacher_curr != ''">teacher_curr=#{teacher_curr},</if> 
+<if test="teacher_inst != null and teacher_inst != ''">teacher_inst=#{teadcher_inst},</if>
+</set>
+WHERE teacher_user_id=#{teacher_user_id.user_id} AND teacher_program=#{teacher_program.program_times} AND teacher_selection=0;
+</update>
+
+<update id="updateStudent">
+UPDATE teacher_tb 
+<set>
+<if test="student_introduce != null and student_introduce != ''" >teacher_introduce=#{teacher_introduce},</if>  
+<if test="student_inst != null and student_inst != ''">teacher_inst=#{teadcher_inst},</if>
+</set>
+WHERE student_user_id=#{student_user_id.user_id} AND student_program=#{student_program.program_times} AND student_selection=0; 
+</update>
+ 
+ <!--  SELECT문 신청 페이지 불러오기 -->
+ <select id="selectByTeacherApplication" parameterType="java.lang.String" resultType="Teacher">
+ select * from teacher_tb where teacher_user_id = #{teacher_user_id.user_id} AND teacher_program=#{teacher_program.program_times}
+ </select>
+ 
+ <select id="selectByStudentApplication" parameterType="java.lang.String" resultType="Student">
+ select * from student_tb where student_user_id = #{student_user_id.user_id} AND student_program=#{student_program.program_times}
+ </select>
+
+ </mapper>

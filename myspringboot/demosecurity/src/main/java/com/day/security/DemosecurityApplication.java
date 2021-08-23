@@ -1,13 +1,13 @@
-package com;
+package com.day.security;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BoardrestspringbootApplication {
+public class DemosecurityApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BoardrestspringbootApplication.class, args);
+		SpringApplication.run(DemosecurityApplication.class, args);
 	}
 
 }

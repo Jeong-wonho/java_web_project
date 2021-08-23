@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   <!-- namespace는 절대로 중복되서는 안된다.  -->
+<mapper namespace="com.slur.dto.UserMapper">
+<!--  내일 아침에 선생님한테 usermapper에 만들어야 하는지 여쭤보기! student , teacher 에 관한 정보를 넣는!-->
+
+<resultMap id="teacherResultMap" type="user" autoMapping="true">
+	<id column="user_id" property="user_id"/>
+	<collection property="teachers" ofType="teacher" autoMapping="true">
+	<result column="teacher_selection" property="teacher_selection"/>
+		<association javaType="program" property="teacher_program" autoMapping="true">
+			<result column="program_times" property="program_times"/>
+			<result column="program_description" property="program_descriptioni"/>
+		</association>
+	</collection>
+</resultMap>
+
+<resultMap id="studentResultMap" type="user" autoMapping="true">
+	<id column="user_id" property="user_id"/>
+	<collection property="students" ofType="student" autoMapping="true">
+	<result column="student_selection" property="student_selection"/>
+		<association javaType="program" property="student_program" autoMapping="true">
+			<result column="program_times" property="program_times"/>
+			<result column="program_description" property="program_descriptioni"/>
+		</association>
+	</collection>
+</resultMap>
+
+<insert id="insert" parameterType="user" ><!-- RESULTTYPE이 필요없다. insert, update, delete  -->
+INSERT INTO user_tb
+VALUES (#{user_id}, #{user_pwd}, #{user_addr}, #{user_email}, #{user_cp}, #{user_gender}, #{user_rrn},
+0, #{user_name});
+</insert>
+
+<update id="update" parameterType="user">
+UPDATE user_tb
+<set>
+<if test="user_addr != null and user_addr != ''">user_addr=#{user_addr},</if>
+<if test="user_email != null and user_email != ''">user_email=#{user_email},</if>
+<if test="user_cp != null and user_cp != ''">user_cp=#{user_cp}</if>
+<if test="user_name != null and user_name != ''">user_name=#{user_name}</if>
+</set>
+WHERE user_id=#{user_id}
+
+</update>
+
+<select id="selectById" parameterType="java.lang.String" resultType="user">
+	select * from user_tb where user_id = #{user_id}
+</select>
+
+<select id="selectByTeacher" parameterType="string" resultMap="teacherResultMap">
+SELECT * FROM program_tb p
+INNER JOIN teacher_tb t ON p.program_times = t.teacher_program_times WHERE teacher_user_id=#{user_id}
+</select>
+
+<select id="selectByStudent" parameterType="string" resultMap="studentResultMap">
+SELECT * FROM program_tb p
+INNER JOIN student_tb s ON p.program_times = s.student_program_times where student_user_id=#{user_id}
+</select>
+
+
+</mapper> 
+ 

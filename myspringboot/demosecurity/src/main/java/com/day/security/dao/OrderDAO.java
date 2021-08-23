@@ -1,10 +1,10 @@
-package com.day.dao;
+package com.day.security.dao;
 
 import java.util.List;
 
-import com.day.dto.OrderInfo;
-import com.day.exception.AddException;
-import com.day.exception.FindException;
+import com.day.security.dto.OrderInfo;
+import com.day.security.exception.AddException;
+import com.day.security.exception.FindException;
 
 public interface OrderDAO {
 	/**
@@ -21,5 +21,4 @@ public interface OrderDAO {
 	 * @throws FindException
 	 */
 	List<OrderInfo> selectById(String id) throws FindException;
-	
 }
