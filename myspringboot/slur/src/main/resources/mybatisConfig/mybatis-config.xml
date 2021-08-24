@@ -20,7 +20,8 @@
   <mappers>
     <!-- <mapper resource="org/mybatis/example/BlogMapper.xml"/> -->
   <mapper resource="mybatisConfig/UserMapper.xml"/>
-  <mapper resource="mybatisConfig/ApplicationMapper.xml"/>
+  <mapper resource="mybatisConfig/ApplicantsMapper.xml"/>
+  <mapper resource="mybatisConfig/ProgramMapper.xml"/>
   
   
   </mappers>

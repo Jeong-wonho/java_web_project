@@ -7,7 +7,7 @@ import com.slur.exception.AddException;
 import com.slur.exception.FindException;
 import com.slur.exception.ModifyException;
 
-public interface ApplicationDAO {
+public interface ApplicantsDAO {
 	/**
 	 * 선생님 신청
 	 * @param t
@@ -42,7 +42,7 @@ public interface ApplicationDAO {
 	 * @return
 	 * @throws FindException
 	 */
-	Teacher selectByTeacherApplication(User u) throws FindException;
+	Teacher selectByTeacherApplicants(Teacher t) throws FindException;
 	
 	/**
 	 * 학생 신청 내용 확인하기
@@ -50,5 +50,5 @@ public interface ApplicationDAO {
 	 * @return
 	 * @throws FindException
 	 */
-	Student selectByStudentApplication(User u) throws FindException;
+	Student selectByStudentApplicants(Student s) throws FindException;
 }

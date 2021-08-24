@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.slur.dto.ProgramMapper">
+ 	<!--  2가지 , 왼쪽에 나오는 것과, 프로그램 회차 클릭할 때 리뷰목록 뜨게 만들기! -->
+ <resultMap id="programResultMap" type="program" autoMapping="true">
+ 	<id column="program_times" property="program_times"/>
+ 	<collection property="reviews" ofType="review" autoMapping="true">
+ 		<result column="review_title" property="review_title"/>
+ 		<result column="review_date" property="review_date"/>
+ 	</collection>
+ </resultMap>
+ 
+ <resultMap id="reviewResultMap" type="review" autoMapping="true">
+ 	<result column="review_user_id" property="user.user_id"/>
+ </resultMap>
+ 	<select id="selectByTimes" resultType="program">
+ 	select program_times from program order by program_times desc;
+ 	</select>
+ 	
+ 	<select id="selectByReviews" parameterType="string" resultMap="programResultMap">
+ 	select program_times, review_title, review_date from program_tb p INNER JOIN
+ 	 review_tb r on p.program_times = r.review_program_times where p.program_times=#{program_times}
+ 	</select>
+
+ 	
+ 	<insert id="insertReview" parameterType="review">
+ 	INSERT INTO REVIEW_TB VALUES(#{review_num}, #{review_title}, #{reivew_date},
+ 	 #{review_content}, #{user.user_id}, #{review_program_times})
+ 	</insert>
+ 	
+ 	<select id = "selectAll" resultType="review">
+ 		SELECT review_title, review_date FROM review_tb ORDER BY REVIEW_PROGRAM_TIMES desc
+ 	</select>
+ 	
+ 	<select id="selectByWord" resultType="review">
+ 	select review_title, review_date from review_tb where review_title like '%${word}%'
+ 	</select>
+ 	
+ 	<select id="selectByInfo" parameterType= "int" resultMap="reviewResultMap">
+ 	SELECT * FROM review_tb WHERE review_num=#{review_num}
+ 	</select>
+ 	
+ 	<update id ="updateReview" parameterType="review">
+ 	UPDATE review_tb SET review_title=#{review_title}, review_content=#{review_content} WHERE review_num= #{review_num} AND review_user_id = #{user.user_id}
+ 	</update>
+ 	
+ 	<delete id="deleteReview" parameterType="review">
+ 	DELETE FROM review_tb WHERE review_num=#{review_num} AND review_user_id = #{user.user_id}
+ 	</delete>
+ </mapper>

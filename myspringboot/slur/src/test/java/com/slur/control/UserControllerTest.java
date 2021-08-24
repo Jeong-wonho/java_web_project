@@ -17,11 +17,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @AutoConfigureMockMvc
 class UserControllerTest {
-	@Autowired
-	MockMvc mockMvc;
-	@Test
-	@DisplayName("아이디 컨트롤러 테스트")
-	void test() {
-		
-	}
+	
+	
 }

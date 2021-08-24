@@ -57,51 +57,51 @@ public class Review {
 		this.review_program_times = review_program_times;
 	}
 
-	protected int getReview_num() {
+	public int getReview_num() {
 		return review_num;
 	}
 
-	protected void setReview_num(int review_num) {
+	public void setReview_num(int review_num) {
 		this.review_num = review_num;
 	}
 
-	protected String getReview_title() {
+	public String getReview_title() {
 		return review_title;
 	}
 
-	protected void setReview_title(String review_title) {
+	public void setReview_title(String review_title) {
 		this.review_title = review_title;
 	}
 
-	protected Date getReview_date() {
+	public Date getReview_date() {
 		return review_date;
 	}
 
-	protected void setReview_date(Date review_date) {
+	public void setReview_date(Date review_date) {
 		this.review_date = review_date;
 	}
 
-	protected String getReview_content() {
+	public String getReview_content() {
 		return review_content;
 	}
 
-	protected void setReview_content(String review_content) {
+	public void setReview_content(String review_content) {
 		this.review_content = review_content;
 	}
 
-	protected User getUser() {
+	public User getUser() {
 		return user;
 	}
 
-	protected void setUser(User user) {
+	public void setUser(User user) {
 		this.user = user;
 	}
 
-	protected String getReview_program_times() {
+	public String getReview_program_times() {
 		return review_program_times;
 	}
 
-	protected void setReview_program_times(String review_program_times) {
+	public void setReview_program_times(String review_program_times) {
 		this.review_program_times = review_program_times;
 	}
 

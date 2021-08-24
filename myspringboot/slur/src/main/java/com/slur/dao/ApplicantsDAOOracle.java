@@ -12,11 +12,12 @@ import com.slur.exception.AddException;
 import com.slur.exception.FindException;
 import com.slur.exception.ModifyException;
 
-@Repository("applicationDAO")
-public class ApplicationDAOOracle implements ApplicationDAO {
+@Repository("applicantsDAO")
+public class ApplicantsDAOOracle implements ApplicantsDAO {
 	
 	@Autowired
 	private SqlSessionFactory sessionFactory;
+	
 	@Override
 	public void insertTeacher(Teacher t) throws AddException {
 		// TODO Auto-generated method stub
@@ -24,7 +25,7 @@ public class ApplicationDAOOracle implements ApplicationDAO {
 		SqlSession session = null;
 		try {
 			session = sessionFactory.openSession();
-			session.insert("con.slur.dto.ApplicationMapper.insertTeacher", t);
+			session.insert("con.slur.dto.ApplicantsMapper.insertTeacher", t);
 			session.commit();
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -44,7 +45,7 @@ public class ApplicationDAOOracle implements ApplicationDAO {
 				SqlSession session = null;
 				try {
 					session = sessionFactory.openSession();
-					session.insert("con.slur.dto.ApplicationMapper.insertStudent", s);
+					session.insert("con.slur.dto.ApplicantsMapper.insertStudent", s);
 					session.commit();
 				}catch(Exception e) {
 					e.printStackTrace();
@@ -62,7 +63,7 @@ public class ApplicationDAOOracle implements ApplicationDAO {
 		SqlSession session = null;
 		try {
 			session = sessionFactory.openSession();
-			session.update("con.slur.dto.ApplicationMapper.updateTeacher", t);
+			session.update("com.slur.dto.ApplicantsMapper.updateTeacher", t);
 		}catch(Exception e) {
 			throw new ModifyException(e.getMessage());
 		}finally {
@@ -78,7 +79,7 @@ public class ApplicationDAOOracle implements ApplicationDAO {
 		SqlSession session = null;
 		try {
 			session = sessionFactory.openSession();
-			session.update("con.slur.dto.ApplicationMapper.updateStudent", s);
+			session.update("com.slur.dto.ApplicantsMapper.updateStudent", s);
 		}catch(Exception e) {
 			throw new ModifyException(e.getMessage());
 		}finally {
@@ -89,14 +90,14 @@ public class ApplicationDAOOracle implements ApplicationDAO {
 	}
 
 	@Override
-	public Teacher selectByTeacherApplication(User u) throws FindException {
+	public Teacher selectByTeacherApplicants(Teacher t) throws FindException {
 		// TODO Auto-generated method stub
 		SqlSession session = null;
 		try {
 			session = sessionFactory.openSession();
-			Teacher t = session.selectOne("con.slur.dto.ApplicationMapper.selectByTeacherApplication", u.getUser_id());
+			Teacher teacher_app = session.selectOne("com.slur.dto.ApplicantsMapper.selectByTeacherApplicants", t);
 			
-			return t;
+			return teacher_app;
 		}catch(Exception e) {
 			throw new FindException(e.getMessage());
 		}finally {
@@ -107,14 +108,14 @@ public class ApplicationDAOOracle implements ApplicationDAO {
 	}
 
 	@Override
-	public Student selectByStudentApplication(User u) throws FindException {
+	public Student selectByStudentApplicants(Student s) throws FindException {
 		// TODO Auto-generated method stub
 		SqlSession session = null;
 		try {
 			session = sessionFactory.openSession();
-			Student s = session.selectOne("con.slur.dto.ApplicationMapper.selectByStudentApplication", u.getUser_id());
+			Student student_app = session.selectOne("com.slur.dto.ApplicantsMapper.selectByStudentApplicants", s);
 			
-			return s;
+			return student_app;
 		}catch(Exception e) {
 			throw new FindException(e.getMessage());
 		}finally {

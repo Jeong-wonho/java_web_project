@@ -35,6 +35,8 @@ public class UserController {
 		mapper = new ObjectMapper();
 		String jsonStr = "";
 		
+		log.error(u.toString());
+		
 		session.removeAttribute("loginInfo");
 		Map<String, Object> map = new HashMap<>();
 		
@@ -49,7 +51,7 @@ public class UserController {
 			map.put("msg",  e.getMessage());
 		}
 		jsonStr = mapper.writeValueAsString(map);
-		System.out.println(jsonStr);
+		log.warn(jsonStr);
 		return map;
 	}
 	

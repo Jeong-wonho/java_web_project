@@ -17,6 +17,7 @@ class SlurApplicationTests {
 	@Test
 	void contextLoads() {
 		assertNotNull(context.getBean("userController"));
+		
 	}
 
 }
