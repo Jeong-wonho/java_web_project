@@ -15,6 +15,7 @@
   	<typeAlias type="com.slur.dto.Student" alias="student"/>
   	<typeAlias type="com.slur.dto.Teacher" alias="teacher"/>
   	<typeAlias type="com.slur.dto.User" alias="user"/>
+  	<typeAlias type="com.slur.dto.Role" alias="role"/>
   </typeAliases>
 
   <mappers>

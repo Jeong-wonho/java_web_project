@@ -1,9 +1,12 @@
 package com.slur.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.slur.dao.UserDAO;
+import com.slur.dto.Role;
 import com.slur.dto.User;
 import com.slur.exception.AddException;
 import com.slur.exception.FindException;
@@ -66,6 +69,11 @@ public class UserService {
 	 */
 	public User findById(String user_id) throws FindException {
 		return dao.selectById(user_id);
+	}
+	
+	public List<Role> findByRole(String user_id) throws FindException{
+		
+		return dao.selectByRole(user_id);
 	}
 	
 	

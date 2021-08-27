@@ -1,5 +1,8 @@
 package com.slur.dao;
 
+import java.util.List;
+
+import com.slur.dto.Role;
 import com.slur.dto.User;
 import com.slur.exception.AddException;
 import com.slur.exception.FindException;
@@ -28,4 +31,12 @@ public interface UserDAO {
 	 * @throws ModifyException
 	 */
 	void update(User u) throws ModifyException;
+	
+	/**
+	 * 현재까지 프로그램 참여한 정보 목록
+	 * @param user_id
+	 * @return
+	 * @throws FindException
+	 */
+	List<Role> selectByRole(String user_id) throws FindException;
 }

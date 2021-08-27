@@ -20,7 +20,7 @@
  	</select>
  	
  	<select id="selectByReviews" parameterType="string" resultMap="programResultMap">
- 	select program_times, review_title, review_date from program_tb p INNER JOIN
+ 	select program_times,program_description, review_title, review_date from program_tb p INNER JOIN
  	 review_tb r on p.program_times = r.review_program_times where p.program_times=#{program_times}
  	</select>
 
@@ -49,4 +49,5 @@
  	<delete id="deleteReview" parameterType="review">
  	DELETE FROM review_tb WHERE review_num=#{review_num} AND review_user_id = #{user.user_id}
  	</delete>
+ 	
  </mapper>

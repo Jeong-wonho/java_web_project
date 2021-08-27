@@ -1,8 +1,11 @@
 package com.slur.control;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,18 +13,23 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.slur.dto.Program;
+import com.slur.dto.Role;
 import com.slur.dto.User;
 import com.slur.exception.FindException;
 import com.slur.service.UserService;
 
 @RestController
+@RequestMapping("/myinfo/*")
 public class UserController {
 	private Logger log = LoggerFactory.getLogger(this.getClass());
 	@Autowired
@@ -90,4 +98,35 @@ public class UserController {
 			return "0";
 		}
 	}
+	
+	@PostMapping("/program_role")
+	@ResponseBody
+	public Map<String, Object> programList( String user_id){
+		Map<String, Object> result = new HashMap<>();
+		List<Role> list = new ArrayList<Role>();
+		try {
+			list = service.findByRole(user_id);
+			result.put("status", 1);
+			result.put("list", list);
+		}catch(FindException e) {
+			e.printStackTrace();
+			result.put("status", 0);
+			result.put("msg", e.getMessage());
+		}
+		return result;
+	}
+	@PutMapping("/modify")
+	@ResponseBody
+	public String userModify(User u) {
+		log.info(u.toString());
+		try {
+			service.modify(u);
+			return "1";
+		}catch(Exception e) {
+			e.printStackTrace();
+			return "0";
+		}
+	}
+	
+	
 }

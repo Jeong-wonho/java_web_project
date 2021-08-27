@@ -1,10 +1,13 @@
 package com.slur.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.slur.dto.Role;
 import com.slur.dto.User;
 import com.slur.exception.AddException;
 import com.slur.exception.FindException;
@@ -71,5 +74,24 @@ public class UserDAOOracle implements UserDAO {
 			}
 		}
 	}
+
+	@Override
+	public List<Role> selectByRole(String user_id) throws FindException {
+		// TODO Auto-generated method stub
+		SqlSession session = null;
+		try {
+			session=sessionFactory.openSession();
+			List<Role> roleList = session.selectList("com.slur.dto.UserMapper.selectByRole", user_id);
+			return roleList;
+		}catch(Exception e) {
+			throw new FindException(e.getMessage());
+		}finally {
+			if(session != null) {
+				session.close();
+			}
+		}
+	}
+	
+	
 
 }

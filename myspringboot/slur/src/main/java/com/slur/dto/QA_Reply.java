@@ -15,20 +15,20 @@ public class QA_Reply {
 		this.qa_reply_content = qa_reply_content;
 	}
 	
-	
-	protected QA getQa_num() {
+
+	public QA getQa_num() {
 		return qa_num;
 	}
 
-	protected void setQa_num(QA qa_num) {
+	public void setQa_num(QA qa_num) {
 		this.qa_num = qa_num;
 	}
 
-	protected String getQa_reply_content() {
+	public String getQa_reply_content() {
 		return qa_reply_content;
 	}
 
-	protected void setQa_reply_content(String qa_reply_content) {
+	public void setQa_reply_content(String qa_reply_content) {
 		this.qa_reply_content = qa_reply_content;
 	}
 
