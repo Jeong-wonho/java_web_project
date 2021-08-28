@@ -25,67 +25,171 @@
         -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
         box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
       }
+      input.membership-id {
+        width: 200px;
+      }
+      input.membership-addr {
+        width: 100px;
+      }
     </style>
+    <!-- <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      
+        function membership_daumapi() {
+          new daum.Postcode({
+            oncomplete: function (data) {
+              //각 주소의 노출 규칙에 따라 주소를 조합한다.
+              //내려오는 변수가 값이 없는 경우엔 공백값을 가지므로, 이를 참고하여 본기한다.
+              var addr = "";
+              var extraAddr = "";
+
+              //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져옴
+              if (data.userSelectedType === "R") {
+                addr = data.roadAddress;
+              } else {
+                addr = data.JibunAddress;
+              }
+
+              $("input.membership-addrnum").value = data.zonecode;
+              $("input.membership-addr-info").value = addr;
+              //커서를 상세주소 필드로 옮긴다.
+              $("input.membership-addr-content").focus();
+            },
+          });
+        };
+
+        let memberform = $("form.form-membership");
+        memberform.submit(function () {
+          alert("하이팅");
+          let user_id = $("input.membership-id").val();
+          let user_pwd = $("input.membership-pwd").val();
+          let user_pwd_confirm = $("input.membership-pwd-confirm").val();
+          let user_rrn = $("input.membership-rrn").val();
+          let user_addr = $("input.membership-addr").val();
+          let user_cp = $("input.membership-cp").val();
+          let user_gender = $("input[name='gender']:checked").val();
+          let user_agree = $("input:checkbox[name='agreement']").is(":checked");
+          //개인정보 동의가 체크되어있지 않으면 alert를 뛰움.!!<아니면 빨간줄로 바꾸던가.!?>
+          alert(
+            user_id +
+              "," +
+              user_pwd +
+              "," +
+              user_rrn +
+              "," +
+              user_addr +
+              "," +
+              user_cp +
+              "," +
+              user_gender
+          );
+
+          if (user_agree == true) {
+            //ajax전송을 해준다.
+            alert("되라");
+          }
+        });
+      }); -->
+    </script>
   </head>
   <body>
     <section>
       <div class="container">
         <div class="input-form-backgroud row">
-          <div class="input-form col-md-4 mx-auto">
-            <h4 class="mb-3">회원가입</h4>
-            <form class="validation-form" novalidate>
+          <div class="input-form col-md-8 mx-auto">
+            <h4 class="member-ship mb-3">회원가입</h4>
+            <form class="validation-form form-membership" novalidate>
               <div class="form_id md-3">
                 <label for="id" class="slur_label mt-2">아이디</label>
-                <input
-                  type="text"
-                  class="form-control md-3"
-                  id="slur_id"
-                  placeholder="id입력"
-                  value=""
-                  required
-                />
+                <div class="membership-id-box" style="display: flex">
+                  <input
+                    type="text"
+                    class="form-control membership-id md-3"
+                    id="slur_id"
+                    placeholder="id입력"
+                    value=""
+                    required
+                  />
+                  <button
+                    class="btn btn-primary btn-lg"
+                    style="margin-left: 10px"
+                    type="button"
+                  >
+                    중복확인
+                  </button>
+                </div>
                 <label for="pwd" class="slur_label mt-2">비밀번호</label>
                 <input
                   type="password"
-                  class="form-control md-3"
+                  class="form-control membership-pwd md-3"
                   id="slur_pwd"
                   placeholder="비밀번호입력"
                   value=""
                   required
+                  autocomplete="off"
                 />
                 <label for="pwd_confirm" class="slur_label mt-2"
                   >비멀번호 확인</label
                 >
                 <input
                   type="password"
-                  class="form-control md-3"
+                  class="form-control membership-pwd-confirm md-3"
                   id="slur_pconfirm"
                   placeholder="비밀번호확인"
                   value=""
                   required
+                  autocomplete="off"
                 />
                 <label for="rrn" class="slur_label mt-2">주민등록번호</label>
                 <input
                   type="text"
-                  class="form-control md-3"
+                  class="form-control membership-rrn md-3"
                   id="slur_rrn"
                   placeholder="주민등록번호"
                   value=""
                   required
                 />
-                <label for="address" class="slur_label mt-2">주소</label>
-                <input
-                  type="address"
-                  class="form-control md-3"
-                  id="slur_addr"
-                  placeholder="주소를 입력하세요"
-                  value=""
-                  required
-                />
+                <div class="membership-addr-list">
+                  <label for="address" class="slur_label mt-2">주소</label>
+                  <div class="membership-addrnum" style="display: flex">
+                    <input
+                      type="text"
+                      class="form-control membership-addr-num md-3"
+                      id="slur_addr"
+                      placeholder="우편번호"
+                      value=""
+                      name="membership-addr"
+                      required
+                    />
+                    <input
+                      type="button"
+                      class="md-3"
+                      onclick="membership_daumapi()"
+                      value="우편번호찾기"
+                      name="membership-addr-button"
+                    />
+                  </div>
+                  <input
+                    type="text"
+                    class="form-control membership-addr-info mt-2"
+                    id="slur-addr-info"
+                    name="membership-addr-info"
+                    placeholder="주소"
+                  />
+                  <input
+                    type="text"
+                    class="form-control membership-addr-content mt-2"
+                    id="slur-addr-content"
+                    name="membership-addr-content"
+                    placeholder="상세주소"
+                  />
+                  <br />
+                </div>
                 <label for="phone" class="slur_label mt-2">핸드폰번호</label>
                 <input
                   type="text"
-                  class="form-control md-3"
+                  class="form-control membership-cp md-3"
                   id="slur_cp"
                   placeholder="핸드폰번호를 입력하세요"
                   value=""
@@ -94,9 +198,9 @@
                 <label for="gender" class="slur_label mt-2">성별</label>
                 <div class="form-check">
                   <input
-                    class="form-check-input"
+                    class="form-check-input membership-gender"
                     type="radio"
-                    name="inlineRadioOptions"
+                    name="gender"
                     id="inlineRadio1"
                     value="male"
                   />
@@ -106,9 +210,9 @@
                 </div>
                 <div class="form-check">
                   <input
-                    class="form-check-input"
+                    class="form-check-input membership-gender"
                     type="radio"
-                    name="inlineRadioOptions"
+                    name="gender"
                     id="inlineRadio2"
                     value="female"
                   />
@@ -120,8 +224,10 @@
                 <div class="custom-control custom-checkbox">
                   <input
                     type="checkbox"
-                    class="custom-control-input"
+                    class="custom-control-input membership-agreement"
                     id="aggrement"
+                    name="agreement"
+                    value="이걸 못잡나?"
                     required
                   />
                   <label class="custom-control-label" for="aggrement"
@@ -129,7 +235,10 @@
                   >
                 </div>
                 <div class="mb-4"></div>
-                <button class="btn btn-primary btn-lg btn-block" type="submit">
+                <button
+                  class="btn btn-primary btn-lg btn-block member-ship-btn"
+                  type="submit"
+                >
                   가입 완료
                 </button>
               </div>
@@ -138,27 +247,66 @@
         </div>
       </div>
     </section>
+
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-      window.addEventListener(
-        "load",
-        () => {
-          const forms = document.getElementsByClassName("validation-form");
-          Array.prototype.filter.call(forms, (form) => {
-            form.addEventListener(
-              "submit",
-              function (event) {
-                if (form.checkValidity() === false) {
-                  event.preventDefault();
-                  event.stopPropagation();
-                }
-                form.classList.add("was-validated");
-              },
-              false
-            );
-          });
-        },
-        false
-      );
-    </script>
+      
+        function membership_daumapi() {
+          new daum.Postcode({
+            oncomplete: function(data) {
+              //각 주소의 노출 규칙에 따라 주소를 조합한다.
+              //내려오는 변수가 값이 없는 경우엔 공백값을 가지므로, 이를 참고하여 본기한다.
+              var addr = "";
+              var extraAddr = "";
+
+              //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져옴
+              if (data.userSelectedType === "R") {
+                addr = data.roadAddress;
+              } else {
+                addr = data.JibunAddress;
+              }
+              console.log(data.zonecode);
+              $("input.membership-addr-num").attr('value', data.zonecode);
+              $("input.membership-addr-info").attr('value', addr);
+
+              //커서를 상세주소 필드로 옮긴다.
+              $("input.membership-addr-content").focus();
+            }
+          }).open();
+        };
+
+        let memberform = $("form.form-membership");
+        memberform.submit(function () {
+          alert("하이팅");
+          let user_id = $("input.membership-id").val();
+          let user_pwd = $("input.membership-pwd").val();
+          let user_pwd_confirm = $("input.membership-pwd-confirm").val();
+          let user_rrn = $("input.membership-rrn").val();
+          let user_addr = $("input.membership-addr").val();
+          let user_cp = $("input.membership-cp").val();
+          let user_gender = $("input[name='gender']:checked").val();
+          let user_agree = $("input:checkbox[name='agreement']").is(":checked");
+          //개인정보 동의가 체크되어있지 않으면 alert를 뛰움.!!<아니면 빨간줄로 바꾸던가.!?>
+          alert(
+            user_id +
+              "," +
+              user_pwd +
+              "," +
+              user_rrn +
+              "," +
+              user_addr +
+              "," +
+              user_cp +
+              "," +
+              user_gender
+          );
+
+          if (user_agree == true) {
+            //ajax전송을 해준다.
+            alert("되라");
+          }
+        });
+        </script>
   </body>
 </html>

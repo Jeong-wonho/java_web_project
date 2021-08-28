@@ -29,20 +29,21 @@ import com.slur.exception.FindException;
 import com.slur.service.UserService;
 
 @RestController
-@RequestMapping("/myinfo/*")
 public class UserController {
 	private Logger log = LoggerFactory.getLogger(this.getClass());
 	@Autowired
 	private UserService service;
 	
-	@RequestMapping(value="/login")
+	@PostMapping(value="/login")
 	@ResponseBody
-	public Object login(@RequestBody User u, HttpSession session) throws IOException{
+	public Map<String, Object> login(@RequestBody User u, 
+			HttpSession session) throws IOException{
 		
-		ObjectMapper mapper;
-		mapper = new ObjectMapper();
+		//ObjectMapper mapper;
+		//mapper = new ObjectMapper();
 		String jsonStr = "";
-		
+//		User u = new User();
+//		u.setUser_id("id1"); u.setUser_pwd("pwd1");
 		log.error(u.toString());
 		
 		session.removeAttribute("loginInfo");
@@ -52,14 +53,15 @@ public class UserController {
 			User loginInfo = service.login(u.getUser_id(), u.getUser_pwd());
 			session.setAttribute("loginInfo", loginInfo);
 			map.put("status", 1);
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 			map.put("satus", -1);
 			map.put("msg",  e.getMessage());
 		}
-		jsonStr = mapper.writeValueAsString(map);
-		log.warn(jsonStr);
+//		jsonStr = mapper.writeValueAsString(map);
+//		log.warn(jsonStr);
 		return map;
 	}
 	

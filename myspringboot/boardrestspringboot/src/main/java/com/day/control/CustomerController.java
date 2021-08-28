@@ -36,14 +36,14 @@ public class CustomerController {
 	private CustomerService service;
 		
 	
-	@RequestMapping(value = "/login")
+	@RequestMapping(value="/login")
 	@ResponseBody
 	public Object login(@RequestBody Customer c, HttpSession session) throws IOException {
-
+		
 		ObjectMapper mapper;
 		mapper = new ObjectMapper();
 		String jsonStr ="";
-
+//
 		session.removeAttribute("loginInfo");
 		Map<String, Object>map = new HashMap<>();
 		try {
