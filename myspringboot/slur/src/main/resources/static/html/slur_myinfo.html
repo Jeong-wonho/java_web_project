@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입 화면 샘플 - Bootstrap</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <style>
+      div.myInfo {
+        display: flex;
+        border: 1px solid;
+      }
+      div.myInfo_nav_bar {
+        width: 170px;
+        height: 500px;
+        border: 1px solid;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+      }
+      a:hover {
+        text-decoration: none;
+        font-weight: 600;
+        color: white;
+      }
+
+      div.myInfo_content {
+        border: 1px solid;
+      }
+
+      button.myInfo-button {
+        width: 100px;
+        float: right;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container myInfo">
+      <div class="myInfo_nav_bar bg-primary">
+        <nav class="nav flex-column">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            href="./slur_myinfo.html"
+            >MyInfo</a
+          >
+          <a class="nav-link myInfoRevise" href="#">프로필 수정</a>
+          <a class="nav-link myProgramParticipate" href="#"
+            >참여한 프로그램 정보</a
+          >
+        </nav>
+      </div>
+      <div class="input-form col-md-4 myInfo_content">
+        <h2 class="myInfotitle">마이페이지</h2>
+        <form class="validation-form form-myInfo" novalidate>
+          <label for="id" class="slur_myinfo_label mt-2">아이디</label>
+          <input
+            type="text"
+            class="form-control myInfo-id md-3"
+            id="slur_id"
+            placeholder="id입력"
+            value=""
+            required
+            autocomplete="off"
+            readonly
+          />
+          <label for="name" class="slur_myinfo_label mt-2">이름</label>
+          <input
+            type="text"
+            class="form-control myInfo-name md-3"
+            id="slur_name"
+            placeholder="이름"
+            value=""
+            required
+            autocomplete="off"
+          />
+          <label for="cp" class="slur_myinfo_label mt-2">연락처</label>
+          <input
+            type="text"
+            class="form-control myInfo-cp md-3"
+            id="slur_cp"
+            placeholder="연락처"
+            value=""
+            required
+            autocomplete="off"
+          />
+          <label for="address" class="slur_myinfo_label mt-2">주소</label>
+          <input
+            type="text"
+            class="form-control myInfo-address md-3"
+            id="slur_address"
+            placeholder="주소"
+            value=""
+            required
+            autocomplete="off"
+          />
+          <label for="email" class="slur_myinfo_label mt-2">이메일</label>
+          <input
+            type="text"
+            class="form-control myInfo-email md-3"
+            id="slur_email"
+            placeholder="이메일"
+            value=""
+            required
+            autocomplete="off"
+          />
+          <button
+            type="submit"
+            class="btn btn-primary btn-lg btn-block myInfo-button mt-3"
+            id="slutr_button"
+          >
+            수정
+          </button>
+        </form>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      // 내가 참여한 프로그램 정보 클릭시 마아인포 사라지게 만들기
+      $("a.myProgramParticipate").click(function () {
+        alert("잘눌린다.");
+        $("div.myInfo_content").hide();
+      });
+
+      $("a.myInfoRevise").click(function () {
+        alert("마이인포 설명");
+        $("div.myInfo_content").show();
+      });
+
+      $(document).ready(function () {
+        alert("하이핼로");
+      });
+    </script>
+  </body>
+</html>

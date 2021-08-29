@@ -9,6 +9,8 @@ public class User {
 	private String user_addr;
 	private String user_email;
 	private String user_cp;
+	private String user_gender;
+	private String user_rrn;
 	private List<Teacher> teachers;
 	private List<Student> students;
 	
@@ -41,6 +43,31 @@ public class User {
 	}
 
 	public User(String user_id, String user_pwd, String user_name, String user_addr, String user_email, String user_cp,
+			String user_gender) {
+		super();
+		this.user_id = user_id;
+		this.user_pwd = user_pwd;
+		this.user_name = user_name;
+		this.user_addr = user_addr;
+		this.user_email = user_email;
+		this.user_cp = user_cp;
+		this.user_gender = user_gender;
+	}
+
+	public User(String user_id, String user_pwd, String user_name, String user_addr, String user_email, String user_cp,
+			String user_gender, String user_rrn) {
+		super();
+		this.user_id = user_id;
+		this.user_pwd = user_pwd;
+		this.user_name = user_name;
+		this.user_addr = user_addr;
+		this.user_email = user_email;
+		this.user_cp = user_cp;
+		this.user_gender = user_gender;
+		this.user_rrn = user_rrn;
+	}
+	
+	public User(String user_id, String user_pwd, String user_name, String user_addr, String user_email, String user_cp,
 			List<Teacher> teachers, List<Student> students) {
 		super();
 		this.user_id = user_id;
@@ -51,6 +78,42 @@ public class User {
 		this.user_cp = user_cp;
 		this.teachers = teachers;
 		this.students = students;
+	}
+
+
+	public User(String user_id, String user_pwd, String user_name, String user_addr, String user_email, String user_cp,
+			String user_gender, String user_rrn, List<Teacher> teachers, List<Student> students) {
+		super();
+		this.user_id = user_id;
+		this.user_pwd = user_pwd;
+		this.user_name = user_name;
+		this.user_addr = user_addr;
+		this.user_email = user_email;
+		this.user_cp = user_cp;
+		this.user_gender = user_gender;
+		this.user_rrn = user_rrn;
+		this.teachers = teachers;
+		this.students = students;
+	}
+
+
+	public String getUser_rrn() {
+		return user_rrn;
+	}
+
+
+	public void setUser_rrn(String user_rrn) {
+		this.user_rrn = user_rrn;
+	}
+
+
+	public String getUser_gender() {
+		return user_gender;
+	}
+
+
+	public void setUser_gender(String user_gender) {
+		this.user_gender = user_gender;
 	}
 
 
@@ -137,15 +200,11 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [user_id=" + user_id + ", user_pwd=" + user_pwd + ", user_name=" + user_name + ", user_addr="
-				+ user_addr + ", user_email=" + user_email + ", user_cp=" + user_cp + ", teacher=" + teachers
-				+ ", student=" + students + "]";
+				+ user_addr + ", user_email=" + user_email + ", user_cp=" + user_cp + ", user_gender=" + user_gender
+				+ ", user_rrn=" + user_rrn + ", teachers=" + teachers + ", students=" + students + "]";
 	}
 
 
 
 
-	
-	
-	
-	
 }

@@ -29,9 +29,9 @@
 </resultMap>
 
 <insert id="insert" parameterType="user" ><!-- RESULTTYPE이 필요없다. insert, update, delete  -->
-INSERT INTO user_tb
+INSERT INTO user_tb (user_id, user_pwd, user_addr, user_email, user_cp, user_gender, user_rrn, user_authority, user_name)
 VALUES (#{user_id}, #{user_pwd}, #{user_addr}, #{user_email}, #{user_cp}, #{user_gender}, #{user_rrn},
-0, #{user_name});
+0, #{user_name})
 </insert>
 
 <update id="update" parameterType="user">
