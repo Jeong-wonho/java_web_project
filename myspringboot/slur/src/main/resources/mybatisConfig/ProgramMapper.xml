@@ -4,12 +4,12 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.slur.dto.ProgramMapper">
  	<!--  2가지 , 왼쪽에 나오는 것과, 프로그램 회차 클릭할 때 리뷰목록 뜨게 만들기! -->
- <resultMap id="programResultMap" type="program" autoMapping="true">
- 	<id column="program_time" property="program_time"/>
- 	<collection property="reviews" ofType="review" autoMapping="true">
- 		<result column="review_title" property="review_title"/>
- 		<result column="review_date" property="review_date"/>
- 	</collection>
+ <resultMap id="reivewResultMap2" type="review" autoMapping="true">
+ 	<id column="review_program_time" property="review_program_time"/>
+	<result column="review_num" property="review_num"/> 	
+	<result column="review_title" property="review_title"/>
+	<result column="review_date" property="review_date"/>
+ 	
  </resultMap>
  
  <resultMap id="reviewResultMap" type="review" autoMapping="true">
@@ -19,11 +19,22 @@
  	select program_time from program order by program_times desc
  	</select>
  	
- 	<select id="selectByReviews" parameterType="string" resultMap="programResultMap">
- 	select program_time,program_description, review_title, review_date from program_tb p INNER JOIN
- 	 review_tb r on p.program_time = r.review_program_times where p.program_time=#{program_time}
+ 	<select id="selectByReviews" parameterType="string" resultMap="reivewResultMap2">
+ 	select r.review_num, r.review_date, r.review_program_times, r.review_title, review_user_id "review_user_id.user_id"
+ 	from program_tb p INNER JOIN review_tb r on p.program_time = r.review_program_times where p.program_time=#{program_time}
  	</select>
-
+	
+	<select id="getListWithTimes" parameterType="string" resultMap="reivewResultMap2">
+	 <![CDATA[select *  from
+		(
+		select r.*, review_user_id "review_user_id.user_id" from program_tb p INNER JOIN
+ 	 	review_tb r on p.program_time = r.review_program_times 
+		where review_num > 0 and rownum >0 and rownum <= (#{pageNum} * #{amount}) p.program_time=#{program_time} 
+		order by review_program_times desc
+		)
+	where rn > (#{pageNum}-1) * #{amount}
+	]]>
+ 	</select>
  	
  	<insert id="insertReview" parameterType="review">
  	INSERT INTO REVIEW_TB(review_num, review_title, review_date, review_user_id, review_program_times, review_content)
@@ -36,7 +47,7 @@
  	</select>
  	
  	<select id="selectByWord" resultType="review">
- 	select review_title, review_date from review_tb where review_title like '%${word}%'
+ 	select review_tb.*, review_user_id "review_user_id.user_id" from review_tb where review_title like '%${word}%' ORDER BY REVIEW_PROGRAM_TIMES desc
  	</select>
  	
  	<select id="selectByInfo" parameterType= "int" resultMap="reviewResultMap">
@@ -49,6 +60,18 @@
 		select rownum rn, review_num, review_title, review_user_id "review_user_id.user_id", review_date, review_program_times
 		from review_tb
 		where review_num > 0 and rownum >0 and rownum <= (#{pageNum} * #{amount}) order by review_program_times desc
+		)
+	where rn > (#{pageNum}-1) * #{amount}
+	]]>
+ 	</select>
+ 	
+ 	<select id="getListWordPaging" resultType="review">
+ 	<![CDATA[select *  from
+		(
+		select rownum rn, review_num, review_title, review_user_id "review_user_id.user_id", review_date, review_program_times
+		from review_tb
+		where review_num > 0 and rownum >0 and rownum <= (#{pageNum} * #{amount}) and where review_title like '%${word}%' 
+		order by review_program_times desc
 		)
 	where rn > (#{pageNum}-1) * #{amount}
 	]]>

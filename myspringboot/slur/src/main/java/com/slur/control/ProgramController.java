@@ -59,19 +59,34 @@ public class ProgramController {
 		
 	}
 	
-	@GetMapping(value= {"/review", "/review/{word}"})
-	public Map<String, Object> reviewList(@PathVariable(name="word") Optional<String> optWord, Criteria cri){
+	@GetMapping(value= {"/find","/find/{word}"})
+	public Map<String, Object> reviewFindList(@PathVariable(name="word") Optional<String> optWord){
+		Map<String, Object> result = new HashMap<>();
+		List<Review> list = new ArrayList<Review>();
+		
+		try {
+			list = service.reviewWord(optWord.get());
+			result.put("status", 1);
+			result.put("list", list);
+		}catch(FindException e) {
+			e.printStackTrace();
+			result.put("status", 0);
+			result.put("msg", e.getMessage());
+		}
+		return result;
+	}
+	
+	@GetMapping(value= {"/review","/review/{pageno}"})
+	public Map<String, Object> reviewList(@PathVariable(name="pageno") Optional<Integer> optInt, Criteria cri){
 		Map<String, Object> result = new HashMap<>();
 		List<Review> list = new ArrayList<Review>();
 		int totalListCount = 0;
+		if(!optInt.isEmpty()) {
+		cri.setPageNum(optInt.get());
+		}
 		try {
-			if(optWord.isPresent()) {
-				list = service.reviewWord(optWord.get());
-			}else {
-				list = service.getReviewPaging(cri);
-				totalListCount = service.reviewAll().size();
-				
-			}
+			list = service.getReviewPaging(cri);
+			totalListCount = service.reviewAll().size();
 			result.put("status", 1);
 			result.put("crilist", list);
 			result.put("pageMaker", new Page(cri, totalListCount));
@@ -105,8 +120,6 @@ public class ProgramController {
 		try {
 			if(optWord.isPresent()) {
 				list = service.programReview(optWord.get());
-			}else {
-				list = service.programTimes();
 			}
 			result.put("status", 1);
 			result.put("list", list);
@@ -117,7 +130,7 @@ public class ProgramController {
 		}
 		return result;
 	}
-	
+
 	@PutMapping("/{review_num}")
 	public Map<String, Object> reviewModify(@PathVariable(name="review_num") int review_num, @RequestBody Review review){
 		Map<String, Object> result = new HashMap<>();

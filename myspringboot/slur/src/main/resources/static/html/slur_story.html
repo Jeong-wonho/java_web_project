@@ -56,7 +56,10 @@
         font-size: 20px;
         font-weight: 700;
       }
-
+      div.search_div {
+        float: right;
+        margin-bottom: 10px;
+      }
       div.write_button {
         float: right;
       }
@@ -105,6 +108,23 @@
         </nav>
       </div>
       <div class="col-md-10 story_content_list">
+        <div class="search_div">
+          <form class="form-inline search_form">
+            <input
+              class="form-control mr-sm-2"
+              type="text"
+              placeholder="검색"
+              aria-label="Search"
+              name="search_input"
+            />
+            <button
+              class="btn btn-primary my-2 my-sm-0 search_button"
+              type="button"
+            >
+              검색
+            </button>
+          </form>
+        </div>
         <table class="table table-hover story-table col-md-12">
           <thead class="bg-primary text-white">
             <tr>
@@ -118,16 +138,9 @@
           <tbody></tbody>
         </table>
         <nav aria-label="Page navigation example" class="story_paging">
-          <ul class="pagination">
-            <li class="page-item">
-              <a class="page-link" href="#">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-          </ul>
+          <ul class="pagination pagingNum"></ul>
         </nav>
+
         <div class="write_button">
           <button class="btn btn-lg btn-primary btn-block story_write_button">
             글쓰기
@@ -174,7 +187,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script>
-      function story_reload() {
+      var startpage;
+      var currentpage;
+      var endpage;
+      var pageNum = 1;
+
+      function story_reload(i) {
         var trHtml = "";
         var pagingHtml = "";
         $.ajax({
@@ -182,7 +200,7 @@
           transformRequest: [null],
           transformResponse: [null],
           jsonpCallbackParam: "callback",
-          url: "http://localhost:9999/slur/program/review",
+          url: "http://localhost:9999/slur/program/review/" + i,
           headers: {
             Accept: "application/json, text/plain, */*",
           },
@@ -217,12 +235,109 @@
             });
 
             console.log(response.pageMaker);
+            startpage = response.pageMaker.startPage;
+            currentpage = startpage;
+            endpage = response.pageMaker.endPage;
+
+            startpage = startpage;
+            currentpage = currentpage;
+            endpage = endpage;
+
+            if (response.pageMaker.prev) {
+              pagingHtml +=
+                '<li class="page-item"><a class="page-link" href="#">Previous</a></li>';
+            }
+            for (let index = startpage; index <= endpage; index++) {
+              pagingHtml +=
+                '<li class="page-item"><a class="page-link pageNumber" href="#" name=' +
+                index +
+                ">" +
+                index +
+                "</a></li>";
+            }
+            if (response.pageMaker.next) {
+              pagingHtml +=
+                '<li class="page-item"><a class="page-link" href="#">Next</a></li>';
+            }
+            console.log(pagingHtml);
+            $("ul.pagingNum").html(pagingHtml);
           },
         });
       }
-    </script>
 
-    <script>
+      function story_find(i) {
+        var trHtml = "";
+        var pagingHtml = "";
+        $("nav.story_paging").hide();
+        $.ajax({
+          method: "GET",
+          transformRequest: [null],
+          transformResponse: [null],
+          jsonpCallbackParam: "callback",
+          url: "http://localhost:9999/slur/program/times/" + i,
+          headers: {
+            Accept: "application/json, text/plain, */*",
+          },
+          success: function (response) {
+            console.log(response);
+            $(response.list).each(function (i, e) {
+              var review_num = e.review_num;
+              var review_program_times = e.review_program_times;
+              var review_title = e.review_title;
+              var review_user = e.review_user_id.user_id;
+              var review_date = e.review_date;
+
+              trHtml += "<tr>";
+              trHtml += '<th scope="row">';
+              trHtml += review_num;
+              trHtml += "</th>";
+              trHtml += "<td>";
+              trHtml += review_program_times;
+              trHtml += "</td>";
+              trHtml += "<td>";
+              trHtml += review_title;
+              trHtml += "</td>";
+              trHtml += "<td>";
+              trHtml += review_user;
+              trHtml += "</td>";
+              trHtml += "<td>";
+              trHtml += review_date;
+              trHtml += "</td>";
+              trHtml += "</tr>";
+
+              console.log(trHtml);
+              $tableBody.html(trHtml);
+            });
+          },
+        });
+      }
+
+      $(document).on("click", ".page-link", function (e) {
+        pagenum = $(this).text();
+        alert(pagenum);
+        if (pagenum == "Next") {
+          pagenum = $("ul.pagingNum").children().eq(-2).text() + 1;
+          console.log(pagenum);
+        } else if (pagenum == "Prevous") {
+          pagenum = $("ul.pagingNum").children("li:eq(1)").text() - 1;
+          console.log(pagenum);
+        }
+        story_reload(pagenum);
+      });
+
+      // 프로그램 회차 클릭시 나타나느 메서드 입니다.
+      $(".story_round").click(function (e) {
+        e.preventDefault;
+        $story_content_write.hide();
+        $content_info.hide();
+        $story_round_list.show(); //if문처리
+        $tableBody.empty();
+        $("div.story_content_list").show();
+        var search = $(this).text();
+        console.log(search);
+        story_find(search);
+      });
+
       var $story_round_list = $("div.story_round_list");
       var $story_list = $("a.story_list");
       var $table_story = $("table.story-table");
@@ -236,20 +351,21 @@
       $story_round_list.hide();
       $story_content_write.hide();
       $content_info.hide();
-
+      //기본시작 페이지 입니다.
       $(document).ready(function () {
-        story_reload();
+        story_reload(1);
       });
 
+      //스토리 목록 클릭할 때 행하는 이벤트 입니다.
       $story_list.click(function () {
         $story_content_write.hide();
         $content_info.hide();
         $story_round_list.show(); //if문처리
         $tableBody.empty();
         $("div.story_content_list").show();
-        story_reload();
+        story_reload(1);
       });
-      //테이븗 버튼 클릭시
+      //테이븗 버튼 클릭시 화면전환입니다.
       $tableBody.on("click", "tr", function () {
         var trHtml = "";
         var tr = $(this);
@@ -362,6 +478,63 @@
               alert("Error:" + xhr.status + ":" + xhr.statusTxt);
           }
         );
+
+        var actionForm = $("#actionForm");
+
+        $("documnet").on("click", ".page-link", function (e) {
+          e.preventDefault;
+          var pagenum = $(this).text();
+          console.log(pagenum);
+        });
+      });
+
+      $("button.search_button").click(function () {
+        event.preventDefault;
+        var word = $("input[name='search_input'").val();
+        var trHtml = "";
+        var pagingHtml = "";
+        $("nav.story_paging").hide();
+        $.ajax({
+          method: "GET",
+          transformRequest: [null],
+          transformResponse: [null],
+          jsonpCallbackParam: "callback",
+          url: "http://localhost:9999/slur/program/find/" + word,
+          headers: {
+            Accept: "application/json, text/plain, */*",
+          },
+          success: function (response) {
+            console.log(response);
+            $(response.list).each(function (i, e) {
+              var review_num = e.review_num;
+              var review_program_times = e.review_program_times;
+              var review_title = e.review_title;
+              var review_user = e.review_user_id.user_id;
+              var review_date = e.review_date;
+
+              trHtml += "<tr>";
+              trHtml += '<th scope="row">';
+              trHtml += review_num;
+              trHtml += "</th>";
+              trHtml += "<td>";
+              trHtml += review_program_times;
+              trHtml += "</td>";
+              trHtml += "<td>";
+              trHtml += review_title;
+              trHtml += "</td>";
+              trHtml += "<td>";
+              trHtml += review_user;
+              trHtml += "</td>";
+              trHtml += "<td>";
+              trHtml += review_date;
+              trHtml += "</td>";
+              trHtml += "</tr>";
+
+              console.log(trHtml);
+              $tableBody.html(trHtml);
+            });
+          },
+        });
       });
     </script>
   </body>
