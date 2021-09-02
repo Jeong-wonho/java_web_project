@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입 화면 샘플 - Bootstrap</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+
+    <style>
+      div.story {
+        display: flex;
+        margin-top: 50px;
+      }
+      div.apply_nav_bar {
+        width: 170px;
+        height: 500px;
+      }
+      div.apply_info {
+        width: 500px;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+      }
+      a:hover {
+        text-decoration: none;
+        font-weight: 600;
+        color: white;
+      }
+
+      a.slur_story {
+        font-size: 20px;
+        font-weight: 700;
+      }
+
+      div.write_button {
+        float: right;
+      }
+      /* button.story_write_button {
+        width: 100px;
+      } */
+      input[name="story_title"] {
+        margin: 10px 0px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-radius: inherit;
+        font-size: 1.5em;
+      }
+
+      button.story_button {
+        float: right;
+        margin-right: 15px;
+      }
+
+      div.story_modify {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      nav.story_paging {
+        display: flex;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container story">
+      <div class="apply_nav_bar bg-primary col-md-2">
+        <nav class="nav flex-column">
+          <a class="nav-link active slur_story" aria-current="page" href="#"
+            >스토리</a
+          >
+          <a class="nav-link story_list" href="#">스토리목록</a>
+          <div class="story_round_list">
+            <a class="nav-link story_round" href="#">2104</a>
+            <a class="nav-link story_round" href="#">2103</a>
+            <a class="nav-link story_round" href="#">2102</a>
+            <a class="nav-link story_round" href="#">2101</a>
+          </div>
+        </nav>
+      </div>
+      <div class="col-md-10 story_content_list">
+        <table class="table table-hover story-table col-md-12">
+          <thead class="bg-primary text-white">
+            <tr>
+              <th scope="col">글번호</th>
+              <th scope="col">프로그램회차</th>
+              <th scope="col">제목</th>
+              <th scope="col">글쓴이</th>
+              <th scope="col">작성날짜</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <nav aria-label="Page navigation example" class="story_paging">
+          <ul class="pagination">
+            <li class="page-item">
+              <a class="page-link" href="#">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          </ul>
+        </nav>
+        <div class="write_button">
+          <button class="btn btn-lg btn-primary btn-block story_write_button">
+            글쓰기
+          </button>
+        </div>
+      </div>
+      <div class="col-md-10 story_content_write"></div>
+      <div class="story_content_confirm col-md-10">
+        <table id="content_table" class="table col-md-12">
+          <thead class="bg-primary text-white">
+            <tr>
+              <th scope="col">프로그램회차</th>
+              <th scope="col">제목</th>
+              <th scope="col">글쓴이</th>
+              <th scope="col">작성날짜</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div class="review_content col-md-12"></div>
+        <div class="story_modify">
+          <button
+            class="
+              btn btn-primary
+              mt-3
+              col-md-2
+              story_modify_button
+              btn-block
+              mr-2
+            "
+            disabled="disabled"
+          >
+            수정
+          </button>
+          <button
+            class="btn btn-primary mt-3 col-md-2 story_delete_button btn_block"
+            disabled="disabled"
+          >
+            삭제
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+      function story_reload() {
+        var trHtml = "";
+        var pagingHtml = "";
+        $.ajax({
+          method: "GET",
+          transformRequest: [null],
+          transformResponse: [null],
+          jsonpCallbackParam: "callback",
+          url: "http://localhost:9999/slur/program/review",
+          headers: {
+            Accept: "application/json, text/plain, */*",
+          },
+          success: function (response) {
+            console.log(response.crilist);
+            $(response.crilist).each(function (i, e) {
+              var review_num = e.review_num;
+              var review_program_times = e.review_program_times;
+              var review_title = e.review_title;
+              var review_user = e.review_user_id.user_id;
+              var review_date = e.review_date;
+
+              trHtml += "<tr>";
+              trHtml += '<th scope="row">';
+              trHtml += review_num;
+              trHtml += "</th>";
+              trHtml += "<td>";
+              trHtml += review_program_times;
+              trHtml += "</td>";
+              trHtml += "<td>";
+              trHtml += review_title;
+              trHtml += "</td>";
+              trHtml += "<td>";
+              trHtml += review_user;
+              trHtml += "</td>";
+              trHtml += "<td>";
+              trHtml += review_date;
+              trHtml += "</td>";
+              trHtml += "</tr>";
+
+              $tableBody.html(trHtml);
+            });
+
+            console.log(response.pageMaker);
+          },
+        });
+      }
+    </script>
+
+    <script>
+      var $story_round_list = $("div.story_round_list");
+      var $story_list = $("a.story_list");
+      var $table_story = $("table.story-table");
+      var $tableBody = $("table.story-table>tbody");
+      var $story_content_write = $("div.story_content_write");
+      var $story_content_list = $("div.story_content_list");
+      var $table_content_body = $("table#content_table>tbody");
+      var $content_info = $("div.story_content_confirm");
+      var review_num;
+      var review;
+      $story_round_list.hide();
+      $story_content_write.hide();
+      $content_info.hide();
+
+      $(document).ready(function () {
+        story_reload();
+      });
+
+      $story_list.click(function () {
+        $story_content_write.hide();
+        $content_info.hide();
+        $story_round_list.show(); //if문처리
+        $tableBody.empty();
+        $("div.story_content_list").show();
+        story_reload();
+      });
+      //테이븗 버튼 클릭시
+      $tableBody.on("click", "tr", function () {
+        var trHtml = "";
+        var tr = $(this);
+        var td = tr.children();
+        var tdArr = new Array();
+
+        td.each(function (i) {
+          tdArr.push(td.eq(i).text());
+        });
+        $.ajax({
+          method: "GET",
+          transformRequest: [null],
+          transformResponse: [null],
+          jsonpCallbackParam: "callback",
+          url: "http://localhost:9999/slur/program/" + tdArr[0],
+          headers: {
+            Accept: "application/json, text/plain, */*",
+          },
+          success: function (response) {
+            review = response.review;
+            trHtml +=
+              "<tr><td>" +
+              review.review_program_times +
+              "</td><td>" +
+              review.review_title +
+              "</td><td>" +
+              review.review_user_id.user_id +
+              "</td><td>" +
+              review.review_date +
+              "</td></tr>";
+
+            $story_content_list.hide();
+
+            $content_info.show();
+            $table_content_body.html(trHtml);
+            $("div.review_content").html(review.review_content);
+            console.log(sessionStorage.getItem("user_id"));
+            console.log(review.review_user_id.user_id);
+            review_num = review.review_num;
+            if (
+              sessionStorage.getItem("user_id") == review.review_user_id.user_id
+            ) {
+              $("button.story_modify_button").attr("disabled", false);
+              $("button.story_delete_button").attr("disabled", false);
+            }
+          },
+        });
+      });
+
+      //글쓰기 버튼 클릭
+      $("button.story_write_button").click(function () {
+        alert(sessionStorage.getItem("user_id"));
+        if (sessionStorage.getItem("user_id") == null) {
+          alert("로그인 후 이용 가능합니다.");
+          $section.load(
+            "./slur_login.html",
+            function (responseTxt, statusTxt, xhr) {
+              if (statusTxt == "error")
+                alert("Error:" + xhr.status + ":" + xhr.statusTxt);
+            }
+          );
+        } else {
+          //   alert("호잇");
+          $("div.story_content_list").hide();
+          $story_content_write.show();
+          $story_content_write.load(
+            "./slur_textarea.html",
+            function (responseTxt, statusTxt, xhr) {
+              if (statusTxt == "error")
+                alert("Error:" + xhr.status + ":" + xhr.statusTxt);
+            }
+          );
+        }
+      });
+
+      $("button.story_delete_button").click(function () {
+        alert("삭제버튼입니다.");
+        console.log(review_num);
+        $.ajax({
+          method: "DELETE",
+          transformRequest: [null],
+          transformResponse: [null],
+          jsonpCallbackParam: "callback",
+          url: "http://localhost:9999/slur/program/" + review_num,
+          headers: {
+            Accept: "application/json, text/plain, */*",
+          },
+          data: "",
+          timeout: {},
+          success: function (response) {
+            if (response.status == 1) {
+              alert("삭제성공입니다.");
+              $story_list.trigger("click");
+            } else {
+              alert("삭제 실패 입니다.");
+            }
+          },
+        });
+      });
+
+      $("button.story_modify_button").click(function () {
+        alert("수정버튼입니다.");
+        $("div.story_content_list").hide();
+        $content_info.hide();
+        $story_content_write.show();
+        $story_content_write.load(
+          "./slur_textarea_modify.html",
+          function (responseTxt, statusTxt, xhr) {
+            if (statusTxt == "error")
+              alert("Error:" + xhr.status + ":" + xhr.statusTxt);
+          }
+        );
+      });
+    </script>
+  </body>
+</html>

@@ -2,6 +2,7 @@ package com.slur.dao;
 
 import java.util.List;
 
+import com.slur.dto.Criteria;
 import com.slur.dto.Program;
 import com.slur.dto.Review;
 import com.slur.exception.AddException;
@@ -69,5 +70,10 @@ public interface ProgramDAO {
 	 * @throws FindException
 	 */
 	List<Review> selectByWord(String word) throws FindException;
-
+	
+	/**
+	 * 페이징 처리하는 값 리턴하는 메서드
+	 * @return
+	 */
+	List<Review> getListWithPaging(Criteria cri) throws FindException;
 }

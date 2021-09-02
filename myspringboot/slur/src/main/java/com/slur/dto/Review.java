@@ -2,12 +2,15 @@ package com.slur.dto;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Review {
 	private int review_num;
 	private String review_title;
+	@JsonFormat(pattern = "yy/MM/dd", timezone = "Asia/Seoul")
 	private Date review_date;
 	private String review_content;
-	private User user; // program이 student와 teacher에 student ,  teacher가 user에 그러면 program 따로 안불러와도 되는지.!
+	private User review_user_id; // program이 student와 teacher에 student ,  teacher가 user에 그러면 program 따로 안불러와도 되는지.!
 	private String review_program_times;
 	
 	public Review() {
@@ -27,13 +30,13 @@ public class Review {
 	}
 
 	
-	public Review(int review_num, String review_title, Date review_date, String review_content, User user) {
+	public Review(int review_num, String review_title, Date review_date, String review_content, User review_user_id) {
 		super();
 		this.review_num = review_num;
 		this.review_title = review_title;
 		this.review_date = review_date;
 		this.review_content = review_content;
-		this.user = user;
+		this.review_user_id = review_user_id;
 	}
 	
 	public Review(int review_num, String review_title, Date review_date, String review_content,
@@ -46,14 +49,14 @@ public class Review {
 		this.review_program_times = review_program_times;
 	}
 
-	public Review(int review_num, String review_title, Date review_date, String review_content, User user,
+	public Review(int review_num, String review_title, Date review_date, String review_content, User review_user_id,
 			String review_program_times) {
 		super();
 		this.review_num = review_num;
 		this.review_title = review_title;
 		this.review_date = review_date;
 		this.review_content = review_content;
-		this.user = user;
+		this.review_user_id = review_user_id;
 		this.review_program_times = review_program_times;
 	}
 
@@ -89,12 +92,12 @@ public class Review {
 		this.review_content = review_content;
 	}
 
-	public User getUser() {
-		return user;
+	public User getReview_user_id() {
+		return review_user_id;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setReview_user_id(User review_user_id) {
+		this.review_user_id = review_user_id;
 	}
 
 	public String getReview_program_times() {
@@ -108,7 +111,7 @@ public class Review {
 	@Override
 	public String toString() {
 		return "Review [review_num=" + review_num + ", review_title=" + review_title + ", review_date=" + review_date
-				+ ", review_content=" + review_content + ", user=" + user + ", review_program_times="
+				+ ", review_content=" + review_content + ", review_user_id=" + review_user_id + ", review_program_times="
 				+ review_program_times + "]";
 	}
 	

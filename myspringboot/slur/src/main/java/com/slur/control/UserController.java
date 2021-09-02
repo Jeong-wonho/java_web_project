@@ -41,7 +41,6 @@ public class UserController {
 		
 		//ObjectMapper mapper;
 		//mapper = new ObjectMapper();
-		String jsonStr = "";
 //		User u = new User();
 //		u.setUser_id("id1"); u.setUser_pwd("pwd1");
 		log.error(u.toString());
@@ -52,7 +51,9 @@ public class UserController {
 		try {
 			User loginInfo = service.login(u.getUser_id(), u.getUser_pwd());
 			session.setAttribute("loginInfo", loginInfo);
+			User user = (User)session.getAttribute("loginInfo");
 			map.put("status", 1);
+			map.put("User", user);
 			
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -63,6 +64,30 @@ public class UserController {
 //		jsonStr = mapper.writeValueAsString(map);
 //		log.warn(jsonStr);
 		return map;
+	}
+	
+	@GetMapping("/checklogined")
+	@ResponseBody
+	public Object loginchk(HttpSession session) {
+		Map<String, Object> map = new HashMap<>();
+		User loginInfo = (User)session.getAttribute("loginInfo");
+		//로그인 정보를 세션에 추가
+		if(loginInfo != null) {
+		session.setAttribute("loginInfo", loginInfo);
+		map.put("status",1);
+		//3. 성공
+		}else {
+			map.put("status",0);
+		}
+		return map;
+	}
+	
+	@GetMapping("/myinfo")
+	@ResponseBody
+	public Object myInfochk(HttpSession session) {
+		User loginInfo = (User)session.getAttribute("loginInfo");
+		//로그인 정보를 세션에 추가
+		return loginInfo;
 	}
 	
 	@GetMapping("/logout")
@@ -103,11 +128,12 @@ public class UserController {
 	
 	@PostMapping("/program_role")
 	@ResponseBody
-	public Map<String, Object> programList( String user_id){
+	public Map<String, Object> programList(HttpSession session){
+		User u = (User)session.getAttribute("loginInfo");
 		Map<String, Object> result = new HashMap<>();
 		List<Role> list = new ArrayList<Role>();
 		try {
-			list = service.findByRole(user_id);
+			list = service.findByRole(u.getUser_id());
 			result.put("status", 1);
 			result.put("list", list);
 		}catch(FindException e) {

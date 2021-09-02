@@ -52,12 +52,12 @@ WHERE user_id=#{user_id}
 
 <!--  mapper 수정하기! -->
 <select id="selectByRole" parameterType="string" resultType="role">
-SELECT program_times,program_description, t.teacher_selection, 't' as "position" FROM program_tb p
-INNER JOIN teacher_tb t ON p.program_times = t.teacher_program_times WHERE teacher_user_id=#{user_id}
+SELECT program_time, program_title, 't' as role_name, t.teacher_selection as role_selection FROM program_tb p
+INNER JOIN teacher_tb t ON p.program_time = t.teacher_program_times WHERE teacher_user_id=#{user_id}
 UNION
-SELECT program_times,program_description, s.student_selection, 's' as "position"  FROM program_tb p
-INNER JOIN student_tb s ON p.program_times = s.student_program_times where student_user_id=#{user_id}
-ORDER BY program_times desc
+SELECT program_time, program_title, 's' as role_name, s.student_selection as role_selection FROM program_tb p
+INNER JOIN student_tb s ON p.program_time = s.student_program_times where student_user_id=#{user_id}
+ORDER BY program_time desc
 </select>
 
 

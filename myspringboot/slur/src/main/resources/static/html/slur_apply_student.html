@@ -1,0 +1,134 @@
+<head>
+  <link href="../css/slur_apply_teacher.css" rel="stylesheet" />
+</head>
+<h2>학생신청</h2>
+<div class="s_apply_info_apply">
+  <div class="student_profile mb-3">
+    <input type="file" name="student_profile_fileup" style="display: none" />
+    <div class="profile_rect">
+      <input
+        type="text"
+        name="student_profile_fileup2"
+        id="student_profile_fileup2"
+        style="display: none"
+      />
+      <img
+        class="profile_img"
+        src="http://placehold.it/150X150"
+        name="profile_img"
+        id="profile_img"
+        onclick="document.all.student_profile_fileup.click(); document.all.student_profile_fileup2.value=document.all.student_profile_fileup.value"
+      />
+    </div>
+    <form class="col-md-6 was-validated">
+      <div class="custom-file mb-3 student_apply_need_docs">
+        <input
+          type="file"
+          class="custom-file-input"
+          id="validatedCustomFile"
+          required
+        />
+        <label
+          class="custom-file-label teacher_docs_upload"
+          for="validatedCustomFile"
+          >서류 업로드</label
+        >
+        <div class="student_inst">
+          <label for="student_inst_label">배우고싶은 악기입력</label>
+          <input
+            type="text"
+            class="form-control is-invalid"
+            name="student_major"
+            id="student_inst_input"
+            placeholder="원하는 악기 입력"
+            required
+          />
+        </div>
+        <div class="col-md-12 mb-3 teacher_selection">
+          <select
+            class="custom-select d-block w-100 mt-3 is-invalid student_degree"
+            id="student_degree"
+            required=""
+          >
+            <option value="">학력선택</option>
+            <option value="중1">중1</option>
+            <option value="중2">중2</option>
+            <option value="중3">중3</option>
+            <option value="고1">고1</option>
+            <option value="고2">고2</option>
+            <option value="고3">고3</option>
+          </select>
+
+          <select
+            class="custom-select d-block w-100 mt-3 is-invalid student_program"
+            id="stduent_program"
+            required=""
+          >
+            <option value="">프로그램 선택</option>
+            <option value="2104">크레센도</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+  <form class="was-validated">
+    <div class="mb-3 student_introduce">
+      <label for="validationTextarea">자기소개</label>
+      <textarea
+        class="form-control is-invalid student_introduceForm"
+        id="introduceTextarea"
+        placeholder="자기소개 입력해주세요"
+        required
+      ></textarea>
+      <div class="invalid-feedback"></div>
+    </div>
+    <button
+      class="btn btn-lg btn-primary btn-block student_apply_button"
+      type="submit"
+      style="float: right"
+    >
+      등록
+    </button>
+  </form>
+</div>
+<script>
+  //데이터 불러오기 get
+  $("button.student_apply_button").click(function () {
+    var student_inst = $("input[name=student_major]");
+    var student_intro = $("textarea.student_introduceForm");
+    var student_edu = $("select.student_degree option:selected");
+    var program_time = $("select.student_program option:selected");
+    console.log(student_intro);
+
+    var data = {};
+    data.student_inst = student_inst.val();
+    data.student_introduce = student_intro.val();
+    data.student_edu = student_edu.val();
+    data.student_program = program_time.val();
+
+    var dataJsonStr = JSON.stringify(data);
+    alert(dataJsonStr);
+
+    $.ajax({
+      method: "post",
+      transformRequest: [null],
+      transformResponse: [null],
+      jsonpCallbackParam: "callback",
+      url: "/slur/applicants/student_app",
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      data: dataJsonStr,
+      success: function (responseData) {
+        if (responseData.status == 1) {
+          //로그인 성공됨!
+          alert("추가 되었습니다.");
+          location.href = "./slur_main.html";
+        } else {
+          alert("다시 시도해주세요");
+        }
+      },
+    });
+  });
+</script>

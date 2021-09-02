@@ -2,10 +2,13 @@ package com.slur.dto;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class QA {
 	private int qa_num;
 	private String qa_title;
 	private String qa_content;
+	@JsonFormat(pattern = "yy/MM/dd", timezone = "Asia/Seoul")
 	private Date qa_date;
 	private User user;
 	

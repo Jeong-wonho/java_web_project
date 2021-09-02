@@ -5,7 +5,7 @@
  <mapper namespace="com.slur.dto.ProgramMapper">
  	<!--  2가지 , 왼쪽에 나오는 것과, 프로그램 회차 클릭할 때 리뷰목록 뜨게 만들기! -->
  <resultMap id="programResultMap" type="program" autoMapping="true">
- 	<id column="program_times" property="program_times"/>
+ 	<id column="program_time" property="program_time"/>
  	<collection property="reviews" ofType="review" autoMapping="true">
  		<result column="review_title" property="review_title"/>
  		<result column="review_date" property="review_date"/>
@@ -13,25 +13,26 @@
  </resultMap>
  
  <resultMap id="reviewResultMap" type="review" autoMapping="true">
- 	<result column="review_user_id" property="user.user_id"/>
+ 	<result column="review_user_id" property="review_user_id.user_id"/>
  </resultMap>
  	<select id="selectByTimes" resultType="program">
- 	select program_times from program order by program_times desc;
+ 	select program_time from program order by program_times desc
  	</select>
  	
  	<select id="selectByReviews" parameterType="string" resultMap="programResultMap">
- 	select program_times,program_description, review_title, review_date from program_tb p INNER JOIN
- 	 review_tb r on p.program_times = r.review_program_times where p.program_times=#{program_times}
+ 	select program_time,program_description, review_title, review_date from program_tb p INNER JOIN
+ 	 review_tb r on p.program_time = r.review_program_times where p.program_time=#{program_time}
  	</select>
 
  	
  	<insert id="insertReview" parameterType="review">
- 	INSERT INTO REVIEW_TB VALUES(#{review_num}, #{review_title}, #{reivew_date},
- 	 #{review_content}, #{user.user_id}, #{review_program_times})
+ 	INSERT INTO REVIEW_TB(review_num, review_title, review_date, review_user_id, review_program_times, review_content)
+ 	VALUES((SELECT NVL(MAX(review_num),0)+1 FROM review_tb), #{review_title}, SYSDATE	,
+ 	 #{review_user_id.user_id}, #{review_program_times}, #{review_content})
  	</insert>
  	
  	<select id = "selectAll" resultType="review">
- 		SELECT review_title, review_date FROM review_tb ORDER BY REVIEW_PROGRAM_TIMES desc
+ 		SELECT review_tb.*, review_user_id "review_user_id.user_id" FROM review_tb ORDER BY REVIEW_PROGRAM_TIMES desc
  	</select>
  	
  	<select id="selectByWord" resultType="review">
@@ -42,12 +43,23 @@
  	SELECT * FROM review_tb WHERE review_num=#{review_num}
  	</select>
  	
+ 	<select id="getListWithPaging" resultType="review">
+	 <![CDATA[select *  from
+		(
+		select rownum rn, review_num, review_title, review_user_id "review_user_id.user_id", review_date, review_program_times
+		from review_tb
+		where review_num > 0 and rownum >0 and rownum <= (#{pageNum} * #{amount}) order by review_program_times desc
+		)
+	where rn > (#{pageNum}-1) * #{amount}
+	]]>
+ 	</select>
+ 	
  	<update id ="updateReview" parameterType="review">
- 	UPDATE review_tb SET review_title=#{review_title}, review_content=#{review_content} WHERE review_num= #{review_num} AND review_user_id = #{user.user_id}
+ 	UPDATE review_tb SET review_title=#{review_title}, review_program_times=#{review_program_times}, review_content=#{review_content} WHERE review_num= #{review_num}
  	</update>
  	
  	<delete id="deleteReview" parameterType="review">
- 	DELETE FROM review_tb WHERE review_num=#{review_num} AND review_user_id = #{user.user_id}
+ 	DELETE FROM review_tb WHERE review_num=#{review_num} AND review_user_id = #{review_user_id.user_id}
  	</delete>
  	
  </mapper>

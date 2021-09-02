@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.slur.dto.Criteria;
+import com.slur.dto.Page;
 import com.slur.dto.Program;
 import com.slur.dto.Review;
 import com.slur.dto.User;
@@ -35,15 +39,13 @@ public class ProgramController {
 	private ProgramService service;
 	
 	@PostMapping("/write")
-	public Map<String,Object> write(@RequestBody Review review){
+	public Map<String,Object> write(@RequestBody Review review, HttpSession session){
 		Map<String, Object> result = new HashMap<>();
 		try {
 			log.error(review.toString());
-			User u = new User(); // user_id 값 session에서 받아오기!
-			u.setUser_id("id1");
-			System.out.println(review.getReview_content());
-			
-			review.setUser(u);
+			User u = (User)session.getAttribute("loginInfo");
+			log.error(u.getUser_id());
+			review.setReview_user_id(u);
 			
 			service.reviewWrite(review);
 			
@@ -58,17 +60,21 @@ public class ProgramController {
 	}
 	
 	@GetMapping(value= {"/review", "/review/{word}"})
-	public Map<String, Object> reviewList(@PathVariable(name="word") Optional<String> optWord){
+	public Map<String, Object> reviewList(@PathVariable(name="word") Optional<String> optWord, Criteria cri){
 		Map<String, Object> result = new HashMap<>();
 		List<Review> list = new ArrayList<Review>();
+		int totalListCount = 0;
 		try {
 			if(optWord.isPresent()) {
 				list = service.reviewWord(optWord.get());
 			}else {
-				list = service.reviewAll();
+				list = service.getReviewPaging(cri);
+				totalListCount = service.reviewAll().size();
+				
 			}
 			result.put("status", 1);
-			result.put("list", list);
+			result.put("crilist", list);
+			result.put("pageMaker", new Page(cri, totalListCount));
 		}catch(FindException e) {
 			e.printStackTrace();
 			result.put("status", 0);
@@ -119,7 +125,7 @@ public class ProgramController {
 		User u = new User(); // user_id 값 session에서 받아오기!
 		u.setUser_id("id1");
 		//
-		review.setUser(u);
+		review.setReview_user_id(u);
 		review.setReview_num(review_num);
 		try {
 			service.reviewModify(review);
@@ -132,14 +138,14 @@ public class ProgramController {
 		return result;
 	}
 	@DeleteMapping("/{review_num}")
-	public Map<String, Object> reviewRemove(@PathVariable int review_num){
+	public Map<String, Object> reviewRemove(@PathVariable int review_num, HttpSession session){
 		log.error(review_num+"");
 		Map<String, Object> result = new HashMap<>();
 		// -->session의 loginInfo속성으로 차후 변경
-		User u = new User();
-		u.setUser_id("id1");
+		User u = (User)session.getAttribute("loginInfo");
+		log.error(u.getUser_id());
 		Review review = new Review();
-		review.setUser(u);
+		review.setReview_user_id(u);
 		review.setReview_num(review_num);
 		try {
 			service.reviewDelete(review);

@@ -15,12 +15,12 @@
     <style>
       div.myInfo {
         display: flex;
-        border: 1px solid;
+
+        margin-top: 50px;
       }
       div.myInfo_nav_bar {
         width: 170px;
         height: 500px;
-        border: 1px solid;
       }
       a {
         text-decoration: none;
@@ -32,14 +32,21 @@
         color: white;
       }
 
-      div.myInfo_content {
-        border: 1px solid;
-      }
-
       button.myInfo-button {
         width: 100px;
         float: right;
         margin-bottom: 10px;
+      }
+
+      table.myinfo-table {
+        width: 800px;
+      }
+
+      button.modifybtn {
+        width: 100px;
+        height: 30px;
+        font-size: 1rem;
+        padding-top: 2px;
       }
     </style>
   </head>
@@ -122,22 +129,160 @@
           </button>
         </form>
       </div>
+      <div class="input-form col-md-4 myProgramParticipate">
+        <table class="table table-hover myinfo-table">
+          <thead class="bg-primary text-white">
+            <tr>
+              <th scope="col">프로그램회차</th>
+              <th scope="col">프로그램타이틀</th>
+              <th scope="col">역할</th>
+              <th scope="col">선정여부</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="input-form col-md-8 teacher_apply_content"></div>
+      <div class="input-form col-md-8 student_apply_content"></div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
+      //데이터 불러와서 반영하기 필요 파라미터 Id
+      //1.
+      var $id;
+      var $table = $("table.myinfo-table");
+      var $student_div = $("div.student_apply_content");
+      var $teacher_div = $("div.teacher_apply_content");
+      var $tableBody = $("table.myinfo-table > tbody");
+      $(document).ready(function () {
+        $table.hide();
+        $student_div.hide();
+        $teacher_div.hide();
+        $.ajax({
+          url: "/slur/myinfo",
+          method: "get",
+          success: function (responseObj) {
+            console.log(responseObj);
+            $("input.myInfo-id").attr("placeholder", responseObj.user_id);
+            $("input.myInfo-name").attr("placeholder", responseObj.user_name);
+            $("input.myInfo-cp").attr("placeholder", responseObj.user_cp);
+            $("input.myInfo-address").attr(
+              "placeholder",
+              responseObj.user_addr
+            );
+            $("input.myInfo-email").attr("placeholder", responseObj.user_email);
+          },
+        });
+      });
+      // 프로필 수정할 때 변경 내용 저장하기
+      $("button.myInfo-button").click(function () {
+        alert("수정클릭");
+        $.ajax({
+          url: "/slur/modify",
+          method: "put",
+          data: {
+            user_id: $("input.myInfo-id").val(),
+            user_name: $("input.myInfo-name").val(),
+            user_cp: $("input.myInfo-cp").val(),
+            user_addr: $("input.myInfo-address").val(),
+            user_email: $("input.myInfo-email").val(),
+          },
+          success: function (responseObj) {
+            alert(responseObj);
+          },
+        });
+      });
       // 내가 참여한 프로그램 정보 클릭시 마아인포 사라지게 만들기
       $("a.myProgramParticipate").click(function () {
         alert("잘눌린다.");
+        var trHtml = "";
         $("div.myInfo_content").hide();
+        $teacher_div.hide();
+        $student_div.hide();
+        $("div.myProgramParticipate").show();
+        $table.show();
+        $.ajax({
+          url: "/slur/program_role",
+          method: "post",
+          success: function (responseData) {
+            console.log(responseData);
+            $(responseData.list).each(function (i, e) {
+              console.log(i + "," + e);
+              trHtml += "<tr>";
+              var program_time = e.program_time;
+              var program_title = e.program_title;
+              var role_name = e.role_name;
+              var role_selection = e.role_selection;
+
+              trHtml += '<th scope="row">';
+              trHtml += program_time;
+              trHtml += "</th>";
+              trHtml += "<td>";
+              trHtml += program_title;
+              trHtml += "</td>";
+              trHtml += "<td>";
+              trHtml += role_name;
+              trHtml += "</td>";
+              trHtml += "<td>";
+              trHtml += role_selection;
+              trHtml += "</td>";
+              trHtml += "</tr>";
+              console.log(trHtml);
+              $tableBody.html(trHtml);
+            });
+          },
+        });
       });
 
+      // 본인 정보 수정란.
       $("a.myInfoRevise").click(function () {
         alert("마이인포 설명");
+        $table.hide();
+        $teacher_div.hide();
+        $student_div.hide();
         $("div.myInfo_content").show();
       });
 
-      $(document).ready(function () {
-        alert("하이핼로");
+      //테이블 클릭
+      $tableBody.on("click", "tr", function () {
+        alert("된다");
+        var tr = $(this);
+        var td = tr.children();
+        var tdArr = new Array();
+        console.log(tr);
+
+        td.each(function (i) {
+          tdArr.push(td.eq(i).text());
+        });
+        var program_time = tdArr[0];
+        //session에 프로그램 정보 저장
+        sessionStorage.setItem("program", tdArr[0]);
+        sessionStorage.setItem("program_selection", tdArr[3]);
+
+        var role = tdArr[2];
+        console.log(program_time + " " + sessionStorage.getItem("user_id"));
+
+        if (role == "t") {
+          $("div.myProgramParticipate").hide();
+          $teacher_div.show();
+          $teacher_div.load(
+            "./slur_apply_teacher_mod.html",
+            function (res, status, xhr) {
+              if (status == "error")
+                alert("Error:" + xhr.status + ":" + xhr.statusTxt);
+            }
+          );
+        } else {
+          $("div.myProgramParticipate").hide();
+          $student_div.show();
+          $student_div.load(
+            "./slur_apply_student_mod.html",
+            function (res, status, xhr) {
+              if (status == "error")
+                alert("Error:" + xhr.status + ":" + xhr.statusTxt);
+            }
+          );
+        }
       });
     </script>
   </body>

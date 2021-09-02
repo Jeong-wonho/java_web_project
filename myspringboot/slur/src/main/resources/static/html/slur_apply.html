@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입 화면 샘플 - Bootstrap</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <style>
+      div.apply {
+        display: flex;
+        margin-top: 50px;
+      }
+      div.apply_nav_bar {
+        width: 170px;
+        height: 500px;
+      }
+      div.apply_info{
+          width:500px;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+      }
+      a:hover {
+        text-decoration: none;
+        font-weight: 600;
+        color: white;
+      }
+
+      a.slur_apply {
+        font-size: 20px;
+        font-weight: 700;
+      }
+
+      div > h2{
+          margin-bottom:30px;
+      }
+      div.teacher_profile{
+          display:flex;
+      }
+
+      div.student_profile{
+          display:flex;
+      } 
+      
+      label.docs_upload{
+          margin-left:15px;
+      }
+      div.student_inst{
+        margin-left:11px;
+        margin-top:8px;
+      }
+      div.teacher_inst{
+        margin-left:11px;
+        margin-top:8px;
+      } 
+      #introduceTextarea{
+          height:175px;
+      }
+      #curriTextarea{
+          height:250px;
+      }
+      div.teacher_selection{
+        padding-left:10px;
+        display:flex;
+      }
+
+      select.teacher_program{
+        margin-left:10px;
+      }
+      
+      select.student_program{
+        margin-left:10px;
+      }
+      
+
+    </style>
+  </head>
+  <body>
+    <div class="container apply">
+      <div class="apply_nav_bar bg-primary">
+        <nav class="nav flex-column">
+          <a
+            class="nav-link active slur_apply"
+            aria-current="page"
+            href="#"
+            >신청서</a
+          >
+          <a class="nav-link teacher_apply" href="#">선생님 신청</a>
+          <a class="nav-link student_apply" href="#">학생 신청</a>
+        </nav>
+      </div>
+      <div class="input-form col-md-8 apply_info">
+        <h2>신청서 안내</h2>
+        <div class="apply_info_content">
+          <p>선생님신청과, 학생신청을 분리해서 신청해주세요</p>
+          <p>노래하며 위하여서, 피가 낙원을 행복스럽고 미묘한 이상의 그들은 소금이라 것이다. 맺어, 가진 얼음에 가슴에 많이 위하여서. 생의 영원히 그들은 끓는다. 위하여 것이다.보라, 구할 그와 구하기 능히 얼음과 미묘한 광야에서 봄바람이다. 커다란 현저하게 열락의 새가 봄바람이다. 주며, 이 인간의 전인 대중을 그들은 우리는 반짝이는 교향악이다. 보는 생의 수 무엇을 쓸쓸한 광야에서 못할 칼이다. 길을 가치를 위하여 청춘의 청춘 어디 우리의 있는가? 반짝이는 남는 위하여 목숨이 맺어, 쓸쓸하랴? 부패를 돋고, 보내는 있는 것이다. 충분히 두기 대한 앞이 속에 사막이다.
+            봄바람을 인류의 발휘하기 때문이다. 귀는 내는 목숨이 없으면 황금시대다. 풍부하게 끝에 할지니, 내는 열락의 인간의 들어 풀밭에 가지에 사막이다. 풍부하게 창공에 군영과 그들의 그들의 실로 많이 이는 가슴이 말이다. 튼튼하며, 그림자는 구하기 인생을 용기가 이상의 그들은 듣기만 것이다. 우리 꽃이 고행을 거선의 현저하게 봄바람이다. 이상이 예수는 있는 우리의 아름답고 하는 것이다. 열락의 굳세게 같은 뼈 봄바람을 이상은 길을 보이는 이것이다. 기관과 천자만홍이 있음으로써 있는 미묘한 용감하고 것이다. 목숨이 유소년에게서 것은 것이다.보라, 동력은 든 이상은 봄바람이다. 이상은 되는 사는가 사막이다.
+            청춘의 이는 튼튼하며, 얼마나 같은 품으며, 이상 황금시대다. 몸이 가치를 얼마나 이상을 이것이다. 가슴이 이상은 그들의 하였으며, 피가 구하지 되는 봄바람이다. 곳으로 가슴이 새가 심장은 타오르고 귀는 청춘의 보이는 그들의 그리하였는가? 보이는 예수는 뜨고, 있음으로써 가장 반짝이는 인간은 약동하다. 얼마나 뛰노는 돋고, 같으며, 그들은 이 칼이다. 일월과 듣기만 목숨을 너의 뿐이다. 있는 얼마나 미묘한 안고, 같지 천하를 사막이다. 지혜는 창공에 맺어, 밝은 것이다.</p>
+          </p>
+        </div>
+      </div>
+      <div class="input-form col-md-8 teacher_apply_content">
+        <!-- <h2>선생님신청</h2>
+        <div class="t_apply_info_apply">
+            <div class="teacher_profile mb-3">
+                <input type=file name='profile_fileup' style='display:none;'>
+                <div class="profile_rect">
+                <input type=text name='profile_fileup2' id='fileup2' style='display:none;'>
+                <img class="profile_img" src="http://placehold.it/150X150" name='profile_img' id='profile_img' onclick='document.all.profile_fileup.click(); document.all.profile_fileup2.value=document.all.profile_fileup.value'/>
+            </div>
+              <form class="col-md-6 was-validated">
+                <div class="custom-file mb-3  teacher_apply_need_docs">
+                    <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+                    <label class="custom-file-label teacher_docs_upload" for="validatedCustomFile">서류 업로드</label>
+                  <div class="teacher_inst">
+                    <label for="validationServer03">전공입력</label>
+                    <input type="text" class="form-control is-invalid" name="teacher_major" placeholder="전공을 입력해주세요" required/>
+                  </div>
+                  <div class="col-md-12 mb-3 teacher_selection">
+                    <select class="custom-select d-block w-100 mt-3 is-invalid teacher_degree" id="country" required="">
+                      <option value="">학력선택</option>
+                      <option value="휴학">휴학</option>
+                      <option value="대재">대재</option>
+                      <option value="대졸">대졸</option>
+                    </select>
+
+                    <select class="custom-select d-block w-100 mt-3 is-invalid teacher_program" id="country" required="">
+                      <option value="">프로그램 선택</option>
+                      <option value="2104">크레센도</option>
+                    </select>
+                  </div>
+                </div>
+              </form>
+          </div> 
+            <form class="was-validated">
+                <div class="mb-3 teacher_introduce">
+                  <label for="validationTextarea">자기소개</label>
+                  <textarea class="form-control is-invalid teacher_introduceForm" id="introduceTextarea" placeholder="자기소개 입력해주세요" required></textarea>
+                  
+                </div>
+                <div class="mb-3 teacher_curri">
+                    <label for="validationTextarea">커리큘럼입력</label>
+                    <textarea class="form-control is-invalid teacher_curriForm" id="curriTextarea" placeholder="커리큘럼 입력해주세요" required></textarea>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block teacher_apply_button" type="submit" style="float:right">
+                등록
+                </button>
+            </form> -->
+      </div>
+      <div class="input-form col-md-8 student_apply_content">
+        <!-- <h2>학생신청</h2>
+        <div class="s_apply_info_apply">
+            <div class="student_profile mb-3">
+                <input type=file name='student_profile_fileup' style='display:none;'>
+                <div class="profile_rect">
+                <input type=text name='student_profile_fileup2' id='student_profile_fileup2' style='display:none;'>
+                <img class="profile_img" src="http://placehold.it/150X150" name='profile_img' id='profile_img' onclick='document.all.student_profile_fileup.click(); document.all.student_profile_fileup2.value=document.all.student_profile_fileup.value'/>
+                </div>
+                <form class="col-md-6 was-validated">
+                <div class="custom-file mb-3 student_apply_need_docs">
+                    <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+                    <label class="custom-file-label teacher_docs_upload" for="validatedCustomFile">서류 업로드</label>
+                  <div class="student_inst">
+                    <label for="student_inst_label">배우고싶은 악기입력</label>
+                    <input type="text" class="form-control is-invalid" name="student_major" id="student_inst_input" placeholder="원하는 악기 입력" required>
+                  </div>
+                  <div class="col-md-12 mb-3 teacher_selection">
+                    <select class="custom-select d-block w-100 mt-3 is-invalid student_degree" id="country" required="">
+                      <option value="">학력선택</option>
+                      <option value="중1">중1</option>
+                      <option value="중2">중2</option>
+                      <option value="중3">중3</option>
+                      <option value="고1">고1</option>
+                      <option value="고2">고2</option>
+                      <option value="고3">고3</option>
+                    </select>
+
+                    <select class="custom-select d-block w-100 mt-3 is-invalid student_program" id="country" required="">
+                      <option value="">프로그램 선택</option>
+                      <option value="2104">크레센도</option>
+                    </select> 
+                  </div> 
+                 </div>
+                  </form>
+            </div>
+            <form class="was-validated">
+                <div class="mb-3 student_introduce">
+                  <label for="validationTextarea">자기소개</label>
+                  <textarea class="form-control is-invalid student_introduceForm" id="introduceTextarea" placeholder="자기소개 입력해주세요" required></textarea>
+                  <div class="invalid-feedback">
+                    
+                  </div>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block student_apply_button" type="submit" style="float:right">
+                등록
+                </button>
+            </form> -->
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+
+      var user_id = sessionStorage.getItem("user_id");
+      var program="2104";
+      var $apply_info = $("div.apply_info");
+      var $student_a = $("a.student_apply");
+      var $teacher_a = $("a.teacher_apply");
+      var $student_div = $("div.student_apply_content");
+      var $teacher_div = $("div.teacher_apply_content");
+      $student_div.hide();
+      $teacher_div.hide();
+
+      $("a.slur_apply").click(function(){
+        $apply_info.show()
+        $student_div.hide()
+        $teacher_div.hide()
+      });
+
+      $teacher_a.click(function () {
+        $apply_info.hide();
+        $student_div.hide();
+        $teacher_div.show();
+        $.ajax({
+          url: "/slur/program_role",
+          method: "post",
+          success: function (responseData) {
+            console.log(responseData);
+            $(responseData.list).each(function (i, e) {
+              if(i==0 && e.program_time=="2104"){
+                alert("이미 이번 캠프에 신청하셨습니다.")
+                $(location).attr("href", "./slur_main.html");
+                return false;
+              }else{
+                $teacher_div.load('slur_apply_teacher.html',function(res, status, xhr){
+              if (status == "error")
+                    alert("Error:" + xhr.status + ":" + xhr.statusTxt);
+                });
+              }
+            
+            });
+          }
+        });
+  });  
+      
+      $student_a.click(function () {
+        $apply_info.hide();
+        $teacher_div.hide();
+        $student_div.show();
+        
+        $.ajax({
+          url: "/slur/program_role",
+          method: "post",
+          success: function (responseData) {
+            console.log(responseData);
+            $(responseData.list).each(function (i, e) {
+              if(i==0 && e.program_time=="2104"){
+                alert("이미 이번 캠프에 신청하셨습니다.")
+                $(location).attr("href", "./slur_main.html");
+                return false;
+              }else{
+                $student_div.load('slur_apply_student.html',function(res, status, xhr){
+                if (status == "error")
+                  alert("Error:" + xhr.status + ":" + xhr.statusTxt);
+                });
+              }
+            });
+          }
+        });
+  });
+
+      //데이터 전송 구현
+      // $('button.teacher_apply_button').click(function(){
+      //   var teacher_inst = $('input[name=teacher_major]');
+      //   var teacher_intro = $('#introduceTextarea');
+      //   var teacher_curr = $('#curriTextarea');
+      //   var teacher_edu = $('select.teacher_degree option:selected');
+      //   var program_time = $('select.teacher_program option:selected');
+        
+      //   var data = {};
+      //   data.teacher_inst = teacher_inst.val();
+      //   data.teacher_introduce = teacher_intro.val();
+      //   data.teacher_curr = teacher_curr.val();
+      //   data.teacher_edu = teacher_edu.val();
+      //   data.teacher_program = program_time.val();
+        
+      //   var dataJsonStr = JSON.stringify(data);
+      //   alert(dataJsonStr);
+
+      //   $.ajax({
+      //     "method": "POST",
+      //     "transformRequest": [
+      //       null
+      //     ],
+      //     "transformResponse": [
+      //       null
+      //     ],
+      //     "jsonpCallbackParam": "callback",
+      //     "url": "/slur/applicants/teacher_app",
+      //     "headers": {
+      //       "Accept": "application/json, text/plain, */*",
+      //       "Content-Type": "application/json;charset=utf-8"
+      //     },
+      //     "data": dataJsonStr,
+      //      success: function (responseData){
+      //       if (responseData.status == 1) {
+      //           //로그인 성공됨!
+      //           alert('추가 되었습니다.');
+      //           location.href="./slur_main.html";
+      //         } else {
+      //           alert('다시 시도해주세요');
+      //         }
+      //      },
+      //   });
+      // });
+
+      // $('button.student_apply_button').click(function(){
+      //   var student_inst = $('input[name=student_major]');
+      //   var student_intro = $('textarea.student_introduceForm');
+      //   var student_edu = $('select.student_degree option:selected');
+      //   var program_time = $('select.student_program option:selected');
+      //   console.log(student_intro);
+
+      //   var data={};
+      //   data.student_inst = student_inst.val();
+      //   data.student_introduce = student_intro.val();
+      //   data.student_edu = student_edu.val();
+      //   data.student_program = program_time.val();
+
+      //   var dataJsonStr = JSON.stringify(data);
+      //   alert(dataJsonStr);
+
+      //   $.ajax({
+      //     "method": "POST",
+      //     "transformRequest": [
+      //       null
+      //     ],
+      //     "transformResponse": [
+      //       null
+      //     ],
+      //     "jsonpCallbackParam": "callback",
+      //     "url": "/slur/applicants/student_app",
+      //     "headers": {
+      //       "Accept": "application/json, text/plain, */*",
+      //       "Content-Type": "application/json;charset=utf-8"
+      //     },
+      //     "data": dataJsonStr,
+      //      success: function (responseData){
+      //       if (responseData.status == 1) {
+      //           //로그인 성공됨!
+      //           alert('추가 되었습니다.');
+      //           location.href="./slur_main.html";
+      //         } else {
+      //           alert('다시 시도해주세요');
+      //         }
+      //      },
+      //   });
+
+      // });
+    </script>
+  </body>
+</html>

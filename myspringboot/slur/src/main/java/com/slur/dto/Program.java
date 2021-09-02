@@ -3,7 +3,8 @@ package com.slur.dto;
 import java.util.List;
 
 public class Program {
-	private String program_times;
+	private String program_time;
+	private String program_title;
 	private String program_description;
 	private List<Review> reviews;
 	private Teacher teacher;
@@ -16,26 +17,26 @@ public class Program {
 
 	public Program(String program_times) {
 		super();
-		this.program_times = program_times;
+		this.program_time = program_times;
 	}
 
 	public Program(String program_times, String program_description) {
 		super();
-		this.program_times = program_times;
-		this.program_description = program_description;
+		this.program_time = program_times;
+		this.program_title = program_description;
 	}
 	
 	public Program(String program_times, String program_description, List<Review> reviews) {
 		super();
-		this.program_times = program_times;
-		this.program_description = program_description;
+		this.program_time = program_times;
+		this.program_title = program_description;
 		this.reviews = reviews;
 	}
 
 	public Program(String program_times, String program_description, Teacher teacher, Student student) {
 		super();
-		this.program_times = program_times;
-		this.program_description = program_description;
+		this.program_time = program_times;
+		this.program_title = program_description;
 		this.teacher = teacher;
 		this.student = student;
 	}
@@ -43,27 +44,45 @@ public class Program {
 	public Program(String program_times, String program_description, List<Review> reviews, Teacher teacher,
 			Student student) {
 		super();
-		this.program_times = program_times;
-		this.program_description = program_description;
+		this.program_time = program_times;
+		this.program_title = program_description;
 		this.reviews = reviews;
 		this.teacher = teacher;
 		this.student = student;
 	}
 
-	public String getProgram_times() {
-		return program_times;
+	public Program(String program_time, String program_title, String program_description, List<Review> reviews,
+			Teacher teacher, Student student) {
+		super();
+		this.program_time = program_time;
+		this.program_title = program_title;
+		this.reviews = reviews;
+		this.teacher = teacher;
+		this.student = student;
 	}
 
-	public void setProgram_times(String program_times) {
-		this.program_times = program_times;
+	public String getProgram_title() {
+		return program_title;
+	}
+
+	public void setProgram_title(String program_title) {
+		this.program_title = program_title;
 	}
 
 	public String getProgram_description() {
-		return getProgram_description();
+		return program_description;
 	}
 
-	public void setProgram_descrition(String program_description) {
+	public void setProgram_description(String program_description) {
 		this.program_description = program_description;
+	}
+
+	public String getProgram_time() {
+		return program_time;
+	}
+
+	public void setProgram_time(String program_times) {
+		this.program_time = program_times;
 	}
 
 	protected List<Review> getReviews() {
@@ -92,11 +111,8 @@ public class Program {
 
 	@Override
 	public String toString() {
-		return "Program [program_times=" + program_times + ", program_descrition=" + program_description + ", reviews="
-				+ reviews + ", teacher=" + teacher + ", student=" + student + "]";
+		return "Program [program_time=" + program_time + ", program_title=" + program_title + ", program_description="
+				+ program_description + ", reviews=" + reviews + ", teacher=" + teacher + ", student=" + student + "]";
 	}
 
-	
-	
-	
 }

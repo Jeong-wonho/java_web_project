@@ -22,7 +22,7 @@ class ApplicantsServiceTest {
 		User u = new User();
 		u.setUser_id("id1");
 		Program p = new Program();
-		p.setProgram_times("2101");
+		p.setProgram_time("2101");
 		t1.setTeacher_user_id(u);
 		t1.setTeacher_program(p);
 		

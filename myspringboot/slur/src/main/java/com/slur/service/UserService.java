@@ -72,7 +72,6 @@ public class UserService {
 	}
 	
 	public List<Role> findByRole(String user_id) throws FindException{
-		
 		return dao.selectByRole(user_id);
 	}
 	

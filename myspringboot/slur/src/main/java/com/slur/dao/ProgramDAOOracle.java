@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.slur.dto.Criteria;
 import com.slur.dto.Program;
 import com.slur.dto.Review;
 import com.slur.exception.AddException;
@@ -142,6 +143,22 @@ public class ProgramDAOOracle implements ProgramDAO {
 			session.close();
 		}
 		
+	}
+
+	@Override
+	public List<Review> getListWithPaging(Criteria cri) throws FindException {
+		// TODO Auto-generated method stub
+		SqlSession session = null;
+		try {
+			session = sessionFactory.openSession();
+			List<Review> review = session.selectList("com.slur.dto.ProgramMapper.getListWithPaging", cri);
+			return review;
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw new FindException(e.getMessage());
+		}finally {
+			session.close();
+		}
 	}
 
 }

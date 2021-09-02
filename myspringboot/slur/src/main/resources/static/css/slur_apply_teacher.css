@@ -1,0 +1,49 @@
+div.teacher_profile {
+  display: flex;
+}
+
+div.student_profile {
+  display: flex;
+}
+
+label.docs_upload {
+  margin-left: 15px;
+}
+div.student_inst {
+  margin-left: 11px;
+  margin-top: 8px;
+}
+div.teacher_inst {
+  margin-left: 11px;
+  margin-top: 8px;
+}
+#introduceTextarea {
+  height: 175px;
+}
+#curr_Textarea {
+  height: 250px;
+}
+div.teacher_selection {
+  padding-left: 10px;
+  display: flex;
+}
+
+select.teacher_program {
+  margin-left: 10px;
+}
+
+select.student_program {
+  margin-left: 10px;
+}
+
+div.button_class {
+  float: right;
+}
+
+button.teacher_modify_button {
+  margin: 0px 10px;
+}
+
+button.student_modify_button {
+  margin: 0px 10px;
+}

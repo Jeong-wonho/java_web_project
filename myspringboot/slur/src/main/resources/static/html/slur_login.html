@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="kor">
   <head>
     <!-- Required meta tags -->
@@ -72,7 +72,7 @@
 
           //아이디저장 체크된 경우 localStorage의 item(이름:loginInfo, 값:입력한아이디값)추가
           //var idObj = documnt.querySelector('form.login input[name=id]');
-          alert("submit -0");
+          
           //1)DOM트리에서 체크박스객체 찾기
           var chkboxObj = $("form.form-login input[type=checkbox]");
           //2)체크여부확인
@@ -81,7 +81,7 @@
             localStorage.setItem("loginInfo", idObj.value); //localStorage에 추가
           }
 
-          alert("submit -1");
+        
           /* var url = 'http://localhost:8888/myback/login'; */
           var url = "/slur/login";
           //서버로 AJAX 요청,응답
@@ -104,10 +104,12 @@
               "Content-Type": "application/json;charset=utf-8",
             },
             success: function (responseData) {
-              // alert(responseData.status);
+             
               if (responseData.status == 1) {
                 //로그인 성공됨!
-                alert("성공");
+                  
+                sessionStorage.setItem("user_id", responseData.User.user_id);
+                location.href="./slur_main.html";
               } else {
                 alert(responseData.msg);
               }
@@ -116,8 +118,7 @@
               alert(xhr.status);
             },
           });
-
-          return false;
+          event.preventDefault();
         }); //submit function
       }); //로드 function
     </script>
@@ -133,12 +134,12 @@
           height="72"
         />
         <h1 class="h3 mb-3 font-weight-normal">로그인해주세요</h1>
-        <label for="inputEmail" class="sr-only">id입력</label>
+        <label for="inputEmail md-3" class="sr-only">id입력</label>
         <input
           type="text"
           id="inputId"
           name="id"
-          class="form-control"
+          class="form-control md-3"
           placeholder="아이디"
           required
           autocomplete="name"
@@ -149,14 +150,14 @@
           type="password"
           id="inputPassword"
           name="pwd"
-          class="form-control"
+          class="form-control mt-2"
           placeholder="비밀번호"
           required
           autocomplete="off"
           value=""
         />
         <div class="checkbox mb-3">
-          <label>
+          <label style="float:right">
             <input type="checkbox" value="remember-me" /> 아이디 기억
           </label>
         </div>
@@ -170,5 +171,5 @@
       </button>
       <p class="mt-5 mb-3 text-muted">© 2017-2021</p>
     </section>
-  </body>
-</html>
+  <!-- </body>
+</html> -->

@@ -5,39 +5,42 @@
  <mapper namespace="com.slur.dto.ApplicantsMapper">
  
  <insert id="insertTeacher" parameterType="Teacher">
- INSERT INTO VALUES (#{teacher_user_id.user_id}, #{teacher_program.program_times}, #{teacher_edu},
- #{teacher_inst}, #{teacher_inst}, #{teacher_introduce}, #{teacher_curr}, 0)
+INSERT INTO teacher_tb (teacher_user_id, teacher_program_times, teacher_edu, teacher_inst, teacher_introduce, teacher_curr, teacher_selection)
+VALUES (#{teacher_user_id.user_id}, #{teacher_program.program_time}, #{teacher_edu},
+#{teacher_inst}, #{teacher_introduce}, #{teacher_curr}, 0)
  </insert>
  <insert id="insertStudent" parameterType="Student">
- INSERT INTO VALUES (#{student_user_id.user_id}, #{student_program.program_times}, #{student_edu},
- #{student_inst}, #{student_inst}, #{student_introduce}, 0)
+INSERT INTO student_tb (student_user_id, student_program_times, student_edu, student_inst, student_introduce, student_selection) 
+VALUES (#{student_user_id.user_id}, #{student_program.program_time}, #{student_edu},
+#{student_inst}, #{student_introduce}, 0)
  </insert>
- <update id="updateTeacher">
+ 
+<update id="updateTeacher">
 UPDATE teacher_tb 
 <set>
 <if test="teacher_introduce != null and teacher_introduce != ''" >teacher_introduce=#{teacher_introduce},</if> 
 <if test="teacher_curr != null and teacher_curr != ''">teacher_curr=#{teacher_curr},</if> 
-<if test="teacher_inst != null and teacher_inst != ''">teacher_inst=#{teadcher_inst},</if>
+<if test="teacher_inst != null and teacher_inst != ''">teacher_inst=#{teacher_inst},</if>
 </set>
-WHERE teacher_user_id=#{teacher_user_id.user_id} AND teacher_program=#{teacher_program.program_times} AND student_selection=0;
- </update>
+WHERE teacher_user_id=#{teacher_user_id.user_id} AND teacher_program_times=#{teacher_program.program_time} AND teacher_selection=0
+</update>
 
 <update id="updateStudent">
 UPDATE student_tb
 <set>
-<if test="student_introduce != null and student_introduce != ''" >teacher_introduce=#{teacher_introduce},</if>  
-<if test="student_inst != null and student_inst != ''">teacher_inst=#{teadcher_inst},</if>
+<if test="student_introduce != null and student_introduce != ''" >student_introduce=#{teacher_introduce},</if>  
+<if test="student_inst != null and student_inst != ''">student_inst=#{teadcher_inst},</if>
 </set>
-WHERE student_user_id=#{student_user_id.user_id} AND student_program=#{student_program.program_times} AND student_selection=0; 
+WHERE student_user_id=#{student_user_id.user_id} AND student_program_times=#{student_program.program_time} AND student_selection=0
 </update>
  
  <!--  SELECT문 신청 페이지 불러오기 -->
  <select id="selectByTeacherApplicants" parameterType="teacher" resultType="teacher">
- select * from teacher_tb where teacher_user_id = #{teacher_user_id.user_id} AND teacher_program_times=#{teacher_program.program_times}
+ select * from teacher_tb where teacher_user_id = #{teacher_user_id.user_id} AND teacher_program_times=#{teacher_program.program_time}
  </select>
  
  <select id="selectByStudentApplicants" parameterType="student" resultType="student">
- select * from student_tb where student_user_id = #{student_user_id.user_id} AND student_program_times=#{student_program.program_times}
+ select * from student_tb where student_user_id = #{student_user_id.user_id} AND student_program_times=#{student_program.program_time}
  </select>
 
  </mapper>

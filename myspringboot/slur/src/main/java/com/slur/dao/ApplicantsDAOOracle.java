@@ -25,7 +25,7 @@ public class ApplicantsDAOOracle implements ApplicantsDAO {
 		SqlSession session = null;
 		try {
 			session = sessionFactory.openSession();
-			session.insert("con.slur.dto.ApplicantsMapper.insertTeacher", t);
+			session.insert("com.slur.dto.ApplicantsMapper.insertTeacher", t);
 			session.commit();
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -45,7 +45,7 @@ public class ApplicantsDAOOracle implements ApplicantsDAO {
 				SqlSession session = null;
 				try {
 					session = sessionFactory.openSession();
-					session.insert("con.slur.dto.ApplicantsMapper.insertStudent", s);
+					session.insert("com.slur.dto.ApplicantsMapper.insertStudent", s);
 					session.commit();
 				}catch(Exception e) {
 					e.printStackTrace();

@@ -2,10 +2,13 @@ package com.slur.dto;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Notice {
 	private int notice_num;
 	private String notice_title;
 	private String notice_content;
+	@JsonFormat(pattern = "yy/MM/dd", timezone = "Asia/Seoul")
 	private Date notice_date;
 	private User user;
 	

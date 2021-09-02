@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.slur.dao.ProgramDAO;
+import com.slur.dto.Criteria;
 import com.slur.dto.Program;
 import com.slur.dto.Review;
 import com.slur.exception.AddException;
@@ -92,6 +93,10 @@ public class ProgramService {
 	public List<Program> programReview(String program_times) throws FindException{
 		return dao.selectByReviews(program_times);
 	}
+	
+	public List<Review> getReviewPaging(Criteria cri) throws FindException{
+		return dao.getListWithPaging(cri);
+	};
 	
 
 	
