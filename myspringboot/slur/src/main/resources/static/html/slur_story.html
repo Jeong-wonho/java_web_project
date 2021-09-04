@@ -479,16 +479,14 @@
               alert("Error:" + xhr.status + ":" + xhr.statusTxt);
           }
         );
-
-        var actionForm = $("#actionForm");
-
-        $("documnet").on("click", ".page-link", function (e) {
-          e.preventDefault;
-          var pagenum = $(this).text();
-          console.log(pagenum);
-        });
       });
+      var actionForm = $("#actionForm");
 
+      $("documnet").on("click", ".page-link", function (e) {
+        e.preventDefault;
+        var pagenum = $(this).text();
+        console.log(pagenum);
+      });
       $("button.search_button").click(function () {
         event.preventDefault;
         var word = $("input[name='search_input'").val();

@@ -3,20 +3,21 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.slur.dto.QaMapper">
- <resultMap id = "qaResulMap" type="qa" autoMapping="true">
- 	<id column="qa_num" property="qa_num"/>
- 	<result column="qa_title" property="qa_title"/>
- 	<result column="qa_content" property="qa_date"/>
- 	<result column="user_id" property="user_id.user_id"/>
- 	<result column="qa_reply_content" property="qa_reply.qa_reply_content"/>
- 	
- </resultMap>
- 	<select id = "qaSelectInfo" parameterType="int" resultMap="qaResulMap">
- 	select qa.*, qr.qa_reply_content
+
+<resultMap id="qaMapper" type="qa" autoMapping="true">
+<id column="qa_num" property="qa_num"/>
+	<association javaType="User" property="user_id" autoMapping="true"/>
+	<association javaType="qa_reply" property="qa_reply" autoMapping="true"/>
+</resultMap>
+
+
+ 	<select id = "qaSelectInfo" parameterType="int" resultMap="qaMapper">
+	 select qa.*,qr.*
  	 from qa_tb qa LEFT JOIN qa_reply_tb qr 
- 	 ON qa.qa_num = qr.qa_num where qa.qa_num = {#qa_num}
+ 	 ON qa.qa_num = qr.qa_num where qa.qa_num = #{qa_num}
  	</select>
- 	
+
+ 	 
  	<select id = "qaSelectAll" parameterType="hashmap" resultType="qa">
 	SELECT * 
 	FROM (SELECT q.*, rownum rn
@@ -33,7 +34,7 @@
  	
  	<insert id = "insertQa" parameterType="qa">
  	INSERT INTO QA_TB(QA_NUM, QA_TITLE, QA_CONTENT, QA_DATE, USER_ID) VALUES
-((SELECT NVL(MAX(qa_num),0)+1 FROM qa_tb), #{qa_title}, #{qa_content}, SYSDATE,#{user_id.user_id})
+((SELECT NVL(MAX(qa_num),0)+1 FROM qa_tb), #{qa_title}, #{qa_content}, SYSDATE, #{user_id.user_id})
  	</insert>
  	
  	<update id = "updateQa" parameterType="qa">
@@ -41,6 +42,6 @@
  	</update>
  	
  	<delete id = "deleteQa" parameterType="qa">
- 	DELETE FROM qa_tb WHERE qa_num=#{qa_num} AND user_id = #{user_id.user_id}
+ 	DELETE FROM qa_tb WHERE qa_num=#{qa_num}
  	</delete>
  </mapper>

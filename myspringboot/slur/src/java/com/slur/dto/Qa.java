@@ -1,6 +1,7 @@
 package com.slur.dto;
 
 import java.util.Date;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -11,6 +12,7 @@ public class Qa {
 	@JsonFormat(pattern = "yy/MM/dd", timezone = "Asia/Seoul")
 	private Date qa_date;
 	private User user_id;
+	private Qa_Reply qa_reply;
 	
 	public Qa() {
 		super();
@@ -25,21 +27,21 @@ public class Qa {
 
 	
 
-	public Qa(int qa_num, String qa_title, User user) {
+	public Qa(int qa_num, String qa_title, User user_id) {
 		super();
 		this.qa_num = qa_num;
 		this.qa_title = qa_title;
-		this.user_id = user;
+		this.user_id = user_id;
 	}
 
 
-	public Qa(int qa_num, String qa_title, String qa_content, Date qa_date, User user) {
+	public Qa(int qa_num, String qa_title, String qa_content, Date qa_date, User user_id) {
 		super();
 		this.qa_num = qa_num;
 		this.qa_title = qa_title;
 		this.qa_content = qa_content;
 		this.qa_date = qa_date;
-		this.user_id = user;
+		this.user_id = user_id;
 	}
 
 
@@ -93,11 +95,24 @@ public class Qa {
 	}
 
 
+	public Qa_Reply getQa_reply() {
+		return qa_reply;
+	}
+
+
+	public void setQa_reply(Qa_Reply qa_reply) {
+		this.qa_reply = qa_reply;
+	}
+
+
 	@Override
 	public String toString() {
-		return "QA [qa_num=" + qa_num + ", qa_title=" + qa_title + ", qa_content=" + qa_content + ", qa_date=" + qa_date
-				+ ", user=" + user_id + "]";
+		return "Qa [qa_num=" + qa_num + ", qa_title=" + qa_title + ", qa_content=" + qa_content + ", qa_date=" + qa_date
+				+ ", user_id=" + user_id + ", qa_reply=" + qa_reply + "]";
 	}
+
+	
+	
 
 
 

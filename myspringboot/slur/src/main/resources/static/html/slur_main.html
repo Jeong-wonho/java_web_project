@@ -65,7 +65,7 @@
                 <a class="nav-link" href="./slur_notice.html">공지사항</a>
               </li>
               <li class="nav-item active">
-                <a class="nav-link" href="#">Q&A</a>
+                <a class="nav-link" href="./slur_qa.html">Q&A</a>
               </li>
             </ul>
             <ul class="navbar-nav mr-2 mt-lg-0">
@@ -531,6 +531,7 @@
           case "./slur_myinfo.html":
           case "./slur_story.html":
           case "./slur_notice.html":
+          case "./slur_qa.html":
             $section.load(href, function (responseTxt, statusTxt, xhr) {
               if (statusTxt == "error")
                 alert("Error:" + xhr.status + ":" + xhr.statusTxt);

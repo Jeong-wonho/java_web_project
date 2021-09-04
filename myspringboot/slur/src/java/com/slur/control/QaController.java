@@ -46,6 +46,7 @@ public class QaController {
 			log.error(u.getUser_id());
 			qa.setUser_id(u);
 			
+			
 			service.qaWrite(qa);
 			
 			result.put("status", 1);
@@ -88,7 +89,7 @@ public class QaController {
 		try {
 			Qa value = service.qaSelectInfo(qa_num);
 			result.put("status", 1);
-			result.put("review", value);
+			result.put("list", value);
 		}catch(FindException e) {
 			e.printStackTrace();
 			result.put("status", 0);
@@ -124,9 +125,9 @@ public class QaController {
 		// -->session의 loginInfo속성으로 차후 변경
 		User u = (User)session.getAttribute("loginInfo");
 		log.error(u.getUser_id());
-		Review review = new Review();
-		review.setReview_user_id(u);
-		review.setReview_num(qa_num);
+		Qa qa = new Qa();
+		qa.setUser_id(u);
+		qa.setQa_num(qa_num);
 		try {
 			service.qaDelete(qa_num);
 			result.put("status", 1);

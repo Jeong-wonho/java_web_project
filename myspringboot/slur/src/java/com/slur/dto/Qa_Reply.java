@@ -1,7 +1,7 @@
 package com.slur.dto;
 
 public class Qa_Reply {
-	private Qa qa_num;
+	private int qa_num;
 	private String qa_reply_content;
 	
 	public Qa_Reply() {
@@ -9,18 +9,18 @@ public class Qa_Reply {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Qa_Reply(Qa qa_num, String qa_reply_content) {
+	public Qa_Reply(int qa_num, String qa_reply_content) {
 		super();
 		this.qa_num = qa_num;
 		this.qa_reply_content = qa_reply_content;
 	}
 	
 
-	public Qa getQa_num() {
+	public int getQa_num() {
 		return qa_num;
 	}
 
-	public void setQa_num(Qa qa_num) {
+	public void setQa_num(int qa_num) {
 		this.qa_num = qa_num;
 	}
 

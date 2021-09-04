@@ -79,9 +79,9 @@
       <div class="apply_nav_bar bg-primary col-md-2">
         <nav class="nav flex-column">
           <a class="nav-link active slur_qa" aria-current="page" href="#"
-            >공지사항</a
+            >Q&A</a
           >
-          <a class="nav-link qa_list" href="#">공지사항</a>
+          <a class="nav-link qa_list" href="#">질문과 답변</a>
         </nav>
       </div>
       <div class="col-md-10 qa_content_list">
@@ -142,6 +142,10 @@
             삭제
           </button>
         </div>
+        <div class="qa_reply_div">
+          <p>답변:</p>
+          <p class="qa_reply_content"></p>
+        </div>
       </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -158,6 +162,9 @@
       var $qa_content_list = $("div.qa_content_list");
       var $table_content_body = $("table#content_table>tbody");
       var $content_info = $("div.qa_content_confirm");
+      var qa_num;
+      var qa;
+      //함수시작
       function qa_reload(i) {
         var trHtml = "";
         var pagingHtml = "";
@@ -266,17 +273,17 @@
             Accept: "application/json, text/plain, */*",
           },
           success: function (response) {
-            console.log(response.qa);
-            qa = response.qa;
+            console.log(response);
+            qa = response.list;
             trHtml +=
               "<tr><td>" +
               qa.qa_num +
               "</td><td>" +
-              qa.qa_date +
+              qa.qa_title +
               "</td><td>" +
               qa.user_id.user_id +
               "</td><td>" +
-              qa.qa_title +
+              qa.qa_date +
               "</td></tr>";
 
             $qa_content_list.hide();
@@ -285,8 +292,97 @@
             $content_info.show();
             $table_content_body.html(trHtml);
             $("div.qa_content").text(qa.qa_content);
+            qa_num = qa.qa_num;
+            console.log("id:" + sessionStorage.getItem("user_id"));
+            console.log("id2:" + qa.user_id.user_id);
+            if (sessionStorage.getItem("user_id") == qa.user_id.user_id) {
+              $("button.qa_modify_button").attr("disabled", false);
+              $("button.qa_delete_button").attr("disabled", false);
+            }
+
+            $("p.qa_reply_content").text(qa.qa_reply.qa_reply_content);
           },
         });
+      });
+
+      //글쓰기 버튼 클릭
+      $("button.qa_write_button").click(function () {
+        alert(sessionStorage.getItem("user_id"));
+        if (sessionStorage.getItem("user_id") == null) {
+          alert("로그인 후 이용 가능합니다.");
+          $section.load(
+            "./slur_login.html",
+            function (responseTxt, statusTxt, xhr) {
+              if (statusTxt == "error")
+                alert("Error:" + xhr.status + ":" + xhr.statusTxt);
+            }
+          );
+        } else {
+          //   alert("호잇");
+          $("div.qa_content_confirm").hide();
+          $("div.qa_content_list").hide();
+          $qa_content_write.show();
+          $qa_content_write.load(
+            "./slur_qa_write.html",
+            function (responseTxt, statusTxt, xhr) {
+              if (statusTxt == "error")
+                alert("Error:" + xhr.status + ":" + xhr.statusTxt);
+            }
+          );
+        }
+      });
+      //삭제버튼 구현
+      $("button.qa_delete_button").click(function () {
+        alert("삭제버튼입니다.");
+        console.log(qa_num);
+        $.ajax({
+          method: "DELETE",
+          transformRequest: [null],
+          transformResponse: [null],
+          jsonpCallbackParam: "callback",
+          url: "http://localhost:9999/slur/qa/" + qa_num,
+          headers: {
+            Accept: "application/json, text/plain, */*",
+          },
+          data: "",
+          timeout: {},
+          success: function (response) {
+            if (response.status == 1) {
+              alert("삭제성공입니다.");
+              $("button.qa_modify_button").attr("disabled", true);
+              $("button.qa_delete_button").attr("disabled", true);
+              $qa_list.trigger("click");
+            } else {
+              console.log(response.msg);
+              alert("삭제 실패 입니다.");
+            }
+          },
+        });
+      });
+      //수정버튼입니다.
+      $("button.qa_modify_button").click(function () {
+        alert("수정버튼입니다.");
+        $("div.qa_content_list").hide();
+        $content_info.hide();
+        $qa_content_write.show();
+        $qa_content_write.load(
+          "./slur_qa_modify.html",
+          function (responseTxt, statusTxt, xhr) {
+            if (statusTxt == "error")
+              alert("Error:" + xhr.status + ":" + xhr.statusTxt);
+          }
+        );
+      });
+
+      $qa_list.click(function () {
+        $qa_content_write.hide();
+        $content_info.hide();
+        $qa_round_list.show(); //if문처리
+        $tableBody.empty();
+        $("div.qa_content_list").show();
+        qa_reload(1);
+        $("button.qa_modify_button").attr("disabled", true);
+        $("button.qa_delete_button").attr("disabled", true);
       });
     </script>
   </body>
