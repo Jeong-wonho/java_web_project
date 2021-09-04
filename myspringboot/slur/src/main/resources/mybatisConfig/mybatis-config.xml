@@ -9,8 +9,8 @@
   <typeAliases>
   	<typeAlias type="com.slur.dto.Notice" alias="notice"/>
   	<typeAlias type="com.slur.dto.Program" alias="program"/>
-  	<typeAlias type="com.slur.dto.QA_Reply" alias="qa_rep"/>
-  	<typeAlias type="com.slur.dto.QA" alias="qa"/>
+  	<typeAlias type="com.slur.dto.Qa_Reply" alias="qa_reply"/>
+  	<typeAlias type="com.slur.dto.Qa" alias="qa"/>
   	<typeAlias type="com.slur.dto.Review" alias="review"/>
   	<typeAlias type="com.slur.dto.Student" alias="student"/>
   	<typeAlias type="com.slur.dto.Teacher" alias="teacher"/>
@@ -23,7 +23,7 @@
   <mapper resource="mybatisConfig/UserMapper.xml"/>
   <mapper resource="mybatisConfig/ApplicantsMapper.xml"/>
   <mapper resource="mybatisConfig/ProgramMapper.xml"/>
-  
-  
+  <mapper resource="mybatisConfig/NoticeMapper.xml"/>  
+  <mapper resource="mybatisConfig/QaMapper.xml"/> 
   </mappers>
 </configuration>

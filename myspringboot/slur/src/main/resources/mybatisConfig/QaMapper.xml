@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.slur.dto.QaMapper">
+ <resultMap id = "qaResulMap" type="qa" autoMapping="true">
+ 	<id column="qa_num" property="qa_num"/>
+ 	<result column="qa_title" property="qa_title"/>
+ 	<result column="qa_content" property="qa_date"/>
+ 	<result column="user_id" property="user_id.user_id"/>
+ 	<result column="qa_reply_content" property="qa_reply.qa_reply_content"/>
+ 	
+ </resultMap>
+ 	<select id = "qaSelectInfo" parameterType="int" resultMap="qaResulMap">
+ 	select qa.*, qr.qa_reply_content
+ 	 from qa_tb qa LEFT JOIN qa_reply_tb qr 
+ 	 ON qa.qa_num = qr.qa_num where qa.qa_num = {#qa_num}
+ 	</select>
+ 	
+ 	<select id = "qaSelectAll" parameterType="hashmap" resultType="qa">
+	SELECT * 
+	FROM (SELECT q.*, rownum rn
+      		FROM (SELECT qa_tb.*, user_id "user_id.user_id"
+            		FROM qa_tb
+           			order by qa_date desc) q
+    	 )
+	WHERE rn BETWEEN START_ROW(#{pageNum}, #{amount}) AND END_ROW(#{pageNum}, #{amount})
+ 	</select>
+ 	
+ 	<select id="selectCount" resultType="qa">
+ 	SELECT * FROM qa_tb
+ 	</select>
+ 	
+ 	<insert id = "insertQa" parameterType="qa">
+ 	INSERT INTO QA_TB(QA_NUM, QA_TITLE, QA_CONTENT, QA_DATE, USER_ID) VALUES
+((SELECT NVL(MAX(qa_num),0)+1 FROM qa_tb), #{qa_title}, #{qa_content}, SYSDATE,#{user_id.user_id})
+ 	</insert>
+ 	
+ 	<update id = "updateQa" parameterType="qa">
+ 	update qa_tb set qa_title=#{qa_title}, qa_content=#{qa_content} WHERE QA_NUM=#{qa_num} and user_id = #{user_id.user_id}
+ 	</update>
+ 	
+ 	<delete id = "deleteQa" parameterType="qa">
+ 	DELETE FROM qa_tb WHERE qa_num=#{qa_num} AND user_id = #{user_id.user_id}
+ 	</delete>
+ </mapper>

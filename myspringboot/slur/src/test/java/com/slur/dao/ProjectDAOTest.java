@@ -35,7 +35,7 @@ class ProjectDAOTest {
 	public void testPageDTO() {
 		Criteria cri = new Criteria();
 		cri.setPageNum(25);
-		Page page = new Page(cri, 251);
+		Page page = new Page(1,10, 250);
 		
 		log.info(page.toString());
 	}

@@ -29,7 +29,7 @@
 		(
 		select r.*, review_user_id "review_user_id.user_id" from program_tb p INNER JOIN
  	 	review_tb r on p.program_time = r.review_program_times 
-		where review_num > 0 and rownum >0 and rownum <= (#{pageNum} * #{amount}) p.program_time=#{program_time} 
+		where review_num > 0 and rownum >0 and rownum <= (#{pageNum} * #{amount}) and p.program_time=#{program_time} 
 		order by review_program_times desc
 		)
 	where rn > (#{pageNum}-1) * #{amount}
@@ -58,24 +58,52 @@
 	 <![CDATA[select *  from
 		(
 		select rownum rn, review_num, review_title, review_user_id "review_user_id.user_id", review_date, review_program_times
-		from review_tb
+		from review
 		where review_num > 0 and rownum >0 and rownum <= (#{pageNum} * #{amount}) order by review_program_times desc
 		)
 	where rn > (#{pageNum}-1) * #{amount}
 	]]>
  	</select>
  	
+ 	<!--  -->
+ 	<select id="getListWithPaging1" parameterType="hashmap" resultType="review">
+ 	SELECT * 
+FROM (SELECT a.*, rownum rn
+      FROM (SELECT review_num, review_title, review_user_id "review_user_id.user_id", review_date, review_program_times
+            FROM review_tb
+           order by review_program_times desc) a
+    )
+WHERE rn BETWEEN START_ROW(#{pageNum}, #{amount}) AND END_ROW(#{pageNum}, #{amount})
+ 	</select>
+ 	<!--  -->
+ 	
+ 	
+ 	
  	<select id="getListWordPaging" resultType="review">
  	<![CDATA[select *  from
 		(
 		select rownum rn, review_num, review_title, review_user_id "review_user_id.user_id", review_date, review_program_times
 		from review_tb
-		where review_num > 0 and rownum >0 and rownum <= (#{pageNum} * #{amount}) and where review_title like '%${word}%' 
+		where review_num > 0 and rownum >0 and rownum <= (#{pageNum} * #{amount}) and review_title like '%${word}%' 
 		order by review_program_times desc
 		)
 	where rn > (#{pageNum}-1) * #{amount}
 	]]>
  	</select>
+ 	
+ 	
+ 	<!--  -->
+ 	<select id="getListWordPaging1" resultType="review">
+ 	SELECT * 
+FROM (SELECT a.*, rownum rn
+      FROM (SELECT *
+            FROM review_tb
+            WHERE  review_title like '%${word}%'
+           order by review_program_times desc) a
+    )
+WHERE rn BETWEEN START_ROW(#{pageNum}, #{amount}) AND END_ROW(#{pageNum}, #{amount}); 
+ 	</select>
+ 	<!--  -->
  	
  	<update id ="updateReview" parameterType="review">
  	UPDATE review_tb SET review_title=#{review_title}, review_program_times=#{review_program_times}, review_content=#{review_content} WHERE review_num= #{review_num}

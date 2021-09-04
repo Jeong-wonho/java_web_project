@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>회원가입 화면 샘플 - Bootstrap</title>
+    <title>스토리 화면 샘플 - Bootstrap</title>
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -147,6 +147,7 @@
           </button>
         </div>
       </div>
+      <!-- 글상세 내용-->
       <div class="col-md-10 story_content_write"></div>
       <div class="story_content_confirm col-md-10">
         <table id="content_table" class="table col-md-12">
@@ -465,7 +466,7 @@
           },
         });
       });
-
+      //수정버튼입니다.
       $("button.story_modify_button").click(function () {
         alert("수정버튼입니다.");
         $("div.story_content_list").hide();

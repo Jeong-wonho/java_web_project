@@ -3,42 +3,42 @@
 </head>
 <h2>선생님신청</h2>
 <div class="t_apply_info_apply">
-  <div class="teacher_profile mb-3">
-    <input type="file" name="profile_fileup" style="display: none" />
-    <div class="profile_rect">
-      <input
-        type="text"
-        name="profile_fileup2"
-        id="fileup2"
-        style="display: none"
-      />
-      <img
-        class="profile_img"
-        src="http://placehold.it/150X150"
-        name="profile_img"
-        id="profile_img"
-        onclick="document.all.profile_fileup.click(); document.all.profile_fileup2.value=document.all.profile_fileup.value"
-      />
-    </div>
-    <form class="col-md-6 was-validated">
-      <div class="custom-file mb-3 teacher_apply_need_docs">
-        <input
-          type="file"
-          class="custom-file-input"
-          id="validatedCustomFile"
-          required
+  <form
+    class="col-md-12 was-validated"
+    method="post"
+    enctype="multipart/form-data"
+    autocomplete="off"
+  >
+    <div class="teacher_profile mb-3">
+      <div class="profile_rect">
+        <img
+          class="profile_img"
+          src="http://placehold.it/150X150"
+          name="profile_img"
+          id="profile_img"
         />
-        <label
-          class="custom-file-label teacher_docs_upload"
-          for="validatedCustomFile"
-          >서류 업로드</label
-        >
+        <div class="profile_rect_file">
+          <label for="fileup">업로드</label>
+          <input type="file" name="photoFile" id="fileup" />
+        </div>
+      </div>
+      <div class="custom-file mb-3 teacher_apply_need_docs">
+        <div class="doc_filebox">
+          <input class="upload-name" value="파일선택" disabled="disabled" />
+          <label for="doc_filename">업로드</label>
+          <input
+            type="file"
+            id="doc_filename"
+            class="upload-hidden"
+            name="docFile"
+          />
+        </div>
         <div class="teacher_inst">
           <label for="validationServer03">전공입력</label>
           <input
             type="text"
             class="form-control is-invalid"
-            name="teacher_major"
+            name="teacher_inst"
             placeholder="전공을 입력해주세요"
             required
           />
@@ -48,6 +48,7 @@
             class="custom-select d-block w-100 mt-3 is-invalid teacher_degree"
             id="country"
             required=""
+            name="teacher_edu"
           >
             <option value="">학력선택</option>
             <option value="휴학">휴학</option>
@@ -59,15 +60,16 @@
             class="custom-select d-block w-100 mt-3 is-invalid teacher_program"
             id="country"
             required=""
+            name="teacher_program"
           >
             <option value="">프로그램 선택</option>
             <option value="2104">크레센도</option>
           </select>
         </div>
       </div>
-    </form>
-  </div>
-  <form class="was-validated">
+      <!-- </form> -->
+    </div>
+    <!-- <form class="was-validated"> -->
     <div class="mb-3 teacher_introduce">
       <label for="validationTextarea">자기소개</label>
       <textarea
@@ -75,6 +77,7 @@
         id="introduceTextarea"
         placeholder="자기소개 입력해주세요"
         required
+        name="teacher_introduce"
       ></textarea>
     </div>
     <div class="mb-3 teacher_curri">
@@ -84,11 +87,12 @@
         id="curr_Textarea"
         placeholder="커리큘럼 입력해주세요"
         required
+        name="teacher_curr"
       ></textarea>
     </div>
     <button
       class="btn btn-lg btn-primary btn-block teacher_apply_button"
-      type="submit"
+      type="button"
       style="float: right"
     >
       등록
@@ -97,43 +101,90 @@
 </div>
 <script>
   //데이터 전송 구현
-  $("button.teacher_apply_button").click(function () {
-    var teacher_inst = $("input[name=teacher_major]");
-    var teacher_intro = $("#introduceTextarea");
-    var teacher_curr = $("#curr_Textarea");
-    var teacher_edu = $("select.teacher_degree option:selected");
-    var program_time = $("select.teacher_program option:selected");
+  $("input.teacher_apply_button").click(function (e) {
+    // var teacher_inst = $("input[name=teacher_inst]");
+    // var teacher_intro = $("#introduceTextarea");
+    // var teacher_curr = $("#curr_Textarea");
+    // var teacher_edu = $("select.teacher_degree option:selected");
+    // var program_time = $("select.teacher_program option:selected");
 
-    var data = {};
-    data.teacher_inst = teacher_inst.val();
-    data.teacher_introduce = teacher_intro.val();
-    data.teacher_curr = teacher_curr.val();
-    data.teacher_edu = teacher_edu.val();
-    data.teacher_program = program_time.val();
+    // var data = {};
+    // data.teacher_inst = teacher_inst.val();
+    // data.teacher_introduce = teacher_intro.val();
+    // data.teacher_curr = teacher_curr.val();
+    // data.teacher_edu = teacher_edu.val();
+    // data.teacher_program = program_time.val();
 
-    var dataJsonStr = JSON.stringify(data);
-    alert(dataJsonStr);
+    // var dataJsonStr = JSON.stringify(data);
+    // alert(dataJsonStr);
+
+    // $.ajax({
+    //   method: "POST",
+    //   transformRequest: [null],
+    //   transformResponse: [null],
+    //   jsonpCallbackParam: "callback",
+    //   url: "/slur/applicants/teacher_app",
+    //   headers: {
+    //     Accept: "application/json, text/plain, */*",
+    //     "Content-Type": "application/json;charset=utf-8",
+    //   },
+    //   data: dataJsonStr,
+    //   success: function (responseData) {
+    //     if (responseData.status == 1) {
+    //       //로그인 성공됨!
+    //       alert("추가 되었습니다.");
+    //       location.href = "./slur_main.html";
+    //     } else {
+    //       alert("다시 시도해주세요");
+    //     }
+    //   },
+    // });
+
+    console.log($("div.t_apply_info_apply"));
+    var formData = new FormData($("div.t_apply_info_apply>form")[0]);
+
+    formData.forEach(function (value, key) {
+      console.log(key + ":" + value);
+    });
 
     $.ajax({
+      url: "/slur/uploadteacher",
       method: "POST",
-      transformRequest: [null],
-      transformResponse: [null],
-      jsonpCallbackParam: "callback",
-      url: "/slur/applicants/teacher_app",
-      headers: {
-        Accept: "application/json, text/plain, */*",
-        "Content-Type": "application/json;charset=utf-8",
+      processData: false,
+      contentType: false,
+      data: formData,
+      success: function (responseObj) {
+        console.log(responseObj);
+        responseObj.photoFileName;
+        $("img.profile_img").attr(
+          "src",
+          "/slur/src/main/webapp/upload/slur/src/main/webapp/upload/" +
+            responseObj.photoFileName
+        );
       },
-      data: dataJsonStr,
-      success: function (responseData) {
-        if (responseData.status == 1) {
-          //로그인 성공됨!
-          alert("추가 되었습니다.");
-          location.href = "./slur_main.html";
-        } else {
-          alert("다시 시도해주세요");
-        }
+      error: function (jqXHR) {
+        alert("에러:" + jqXHR.status);
       },
+    });
+    return false;
+  });
+
+  // 파일 업로드 파일 이름 변경
+  $(document).ready(function () {
+    var fileTarget = $(".doc_filebox .upload-hidden");
+
+    fileTarget.on("change", function () {
+      // 값이 변경되면
+      if (window.FileReader) {
+        // modern browser
+        var filename = $(this)[0].files[0].name;
+      } else {
+        // old IE
+        var filename = $(this).val().split("/").pop().split("\\").pop(); // 파일명만 추출
+      }
+
+      // 추출한 파일명 삽입
+      $(this).siblings(".upload-name").val(filename);
     });
   });
 </script>

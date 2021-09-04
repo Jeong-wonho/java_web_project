@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.slur.dto.NoticeMapper">
+  	<select id="selectAll" parameterType="hashmap" resultType="notice">
+SELECT * 
+FROM (SELECT n.*, rownum rn
+      FROM (SELECT notice_tb.*, user_id "user_id.user_id"
+            FROM notice_tb
+           order by notice_date desc) n
+    )
+WHERE rn BETWEEN START_ROW(#{pageNum}, #{amount}) AND END_ROW(#{pageNum}, #{amount})
+ 	</select>
+ 	<select id="selectCount" resultType="notice">
+ 	SELECT * FROM notice_tb
+ 	</select>
+ 	<select id="selectByInfo" parameterType= "int" resultType="notice">
+ 	SELECT notice_tb.*, user_id "user_id.user_id" FROM notice_tb WHERE notice_num=#{notice_num}
+ 	</select>
+ </mapper>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>공지사항 화면 샘플 - Bootstrap</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      div.qa {
+        display: flex;
+        margin-top: 50px;
+      }
+      div.apply_nav_bar {
+        width: 170px;
+        height: 500px;
+      }
+      div.apply_info {
+        width: 500px;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+      }
+      a:hover {
+        text-decoration: none;
+        font-weight: 600;
+        color: white;
+      }
+
+      a.slur_qa {
+        font-size: 20px;
+        font-weight: 700;
+      }
+      div.search_div {
+        float: right;
+        margin-bottom: 10px;
+      }
+      div.write_button {
+        float: right;
+      }
+      /* button.qa_write_button {
+        width: 100px;
+      } */
+      input[name="qa_title"] {
+        margin: 10px 0px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-radius: inherit;
+        font-size: 1.5em;
+      }
+
+      button.qa_button {
+        float: right;
+        margin-right: 15px;
+      }
+
+      div.qa_modify {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      nav.qa_paging {
+        display: flex;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container qa">
+      <div class="apply_nav_bar bg-primary col-md-2">
+        <nav class="nav flex-column">
+          <a class="nav-link active slur_qa" aria-current="page" href="#"
+            >공지사항</a
+          >
+          <a class="nav-link qa_list" href="#">공지사항</a>
+        </nav>
+      </div>
+      <div class="col-md-10 qa_content_list">
+        <table class="table table-hover qa-table col-md-12">
+          <thead class="bg-primary text-white">
+            <tr>
+              <th scope="col">글번호</th>
+              <th scope="col">공지사항</th>
+              <th scope="col">공지날짜</th>
+              <th scope="col">글쓴이</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <nav aria-label="Page navigation example" class="qa_paging">
+          <ul class="pagination pagingNum"></ul>
+        </nav>
+
+        <!-- 관리자 아이디로 로그인할때만 활성화 되도록 변경-->
+        <div class="write_button">
+          <button class="btn btn-lg btn-primary btn-block qa_write_button">
+            글쓰기
+          </button>
+        </div>
+      </div>
+      <div class="col-md-10 qa_content_write"></div>
+      <div class="qa_content_confirm col-md-10">
+        <table id="content_table" class="table col-md-12">
+          <thead class="bg-primary text-white">
+            <tr>
+              <th scope="col">프로그램회차</th>
+              <th scope="col">제목</th>
+              <th scope="col">글쓴이</th>
+              <th scope="col">작성날짜</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div class="qa_content col-md-12"></div>
+        <div class="qa_modify">
+          <button
+            class="
+              btn btn-primary
+              mt-3
+              col-md-2
+              qa_modify_button
+              btn-block
+              mr-2
+            "
+            disabled="disabled"
+          >
+            수정
+          </button>
+          <button
+            class="btn btn-primary mt-3 col-md-2 qa_delete_button btn_block"
+            disabled="disabled"
+          >
+            삭제
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      var startpage;
+      var currentpage;
+      var endpage;
+      var pageNum = 1;
+      var $tableBody = $("table.qa-table>tbody");
+      var $qa_round_list = $("div.qa_round_list");
+      var $qa_list = $("a.qa_list");
+      var $table_qa = $("table.qa-table");
+      var $qa_content_write = $("div.qa_content_write");
+      var $qa_content_list = $("div.qa_content_list");
+      var $table_content_body = $("table#content_table>tbody");
+      var $content_info = $("div.qa_content_confirm");
+      function qa_reload(i) {
+        var trHtml = "";
+        var pagingHtml = "";
+
+        $.ajax({
+          method: "GET",
+          transformRequest: [null],
+          transformResponse: [null],
+          jsonpCallbackParam: "callback",
+          url: "http://localhost:9999/slur/qa/" + i,
+          headers: {
+            Accept: "application/json, text/plain, */*",
+          },
+          success: function (response) {
+            console.log(response.qalist);
+            $(response.qalist).each(function (i, e) {
+              var qa_num = e.qa_num;
+              var qa_title = e.qa_title;
+              var qa_user = e.user_id.user_id;
+              var qa_date = e.qa_date;
+
+              trHtml += "<tr>";
+              trHtml += '<th scope="row">';
+              trHtml += qa_num;
+              trHtml += "</th>";
+              trHtml += "<td>";
+              trHtml += qa_title;
+              trHtml += "</td>";
+              trHtml += "<td>";
+              trHtml += qa_user;
+              trHtml += "</td>";
+              trHtml += "<td>";
+              trHtml += qa_date;
+              trHtml += "</td>";
+              trHtml += "</tr>";
+
+              console.log(trHtml);
+              $tableBody.html(trHtml);
+            });
+
+            startpage = response.pageMaker.startPage;
+            currentpage = startpage;
+            endpage = response.pageMaker.endPage;
+
+            startpage = startpage;
+            currentpage = currentpage;
+            endpage = endpage;
+
+            if (response.pageMaker.prev) {
+              pagingHtml +=
+                '<li class="page-item"><a class="page-link" href="#">Previous</a></li>';
+            }
+            for (let index = startpage; index <= endpage; index++) {
+              pagingHtml +=
+                '<li class="page-item"><a class="page-link pageNumber" href="#" name=' +
+                index +
+                ">" +
+                index +
+                "</a></li>";
+            }
+            if (response.pageMaker.next) {
+              pagingHtml +=
+                '<li class="page-item"><a class="page-link" href="#">Next</a></li>';
+            }
+            console.log(pagingHtml);
+            $("ul.pagingNum").html(pagingHtml);
+          },
+        });
+      }
+
+      $(document).on("click", ".page-link", function (e) {
+        pagenum = $(this).text();
+        alert(pagenum);
+        if (pagenum == "Next") {
+          pagenum = $("ul.pagingNum").children().eq(-2).text() + 1;
+          console.log(pagenum);
+        } else if (pagenum == "Prevous") {
+          pagenum = $("ul.pagingNum").children("li:eq(1)").text() - 1;
+          console.log(pagenum);
+        }
+        qa_reload(pagenum);
+      });
+
+      $(document).ready(function () {
+        qa_reload(1);
+      });
+
+      //테이븗 버튼 클릭시 화면전환입니다.
+      $tableBody.on("click", "tr", function () {
+        var trHtml = "";
+        var tr = $(this);
+        var td = tr.children();
+        var tdArr = new Array();
+
+        td.each(function (i) {
+          tdArr.push(td.eq(i).text());
+        });
+
+        $.ajax({
+          method: "GET",
+          transformRequest: [null],
+          transformResponse: [null],
+          jsonpCallbackParam: "callback",
+          url: "http://localhost:9999/slur/qa/content/" + tdArr[0],
+          headers: {
+            Accept: "application/json, text/plain, */*",
+          },
+          success: function (response) {
+            console.log(response.qa);
+            qa = response.qa;
+            trHtml +=
+              "<tr><td>" +
+              qa.qa_num +
+              "</td><td>" +
+              qa.qa_date +
+              "</td><td>" +
+              qa.user_id.user_id +
+              "</td><td>" +
+              qa.qa_title +
+              "</td></tr>";
+
+            $qa_content_list.hide();
+            $qa_content_write.hide();
+
+            $content_info.show();
+            $table_content_body.html(trHtml);
+            $("div.qa_content").text(qa.qa_content);
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
