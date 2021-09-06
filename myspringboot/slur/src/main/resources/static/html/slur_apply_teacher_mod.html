@@ -64,6 +64,9 @@
           >
             <option value="">프로그램 선택</option>
             <option value="2104">크레센도</option>
+            <option value="2103">테누토</option>
+            <option value="2102">스타카토</option>
+            <option value="2101">이음줄</option>
           </select>
         </div>
       </div>
@@ -128,8 +131,11 @@
       },
       success: function (responseData) {
         var res_teacher = responseData.teacher;
+        console.log(res_teacher);
         $degree.val(res_teacher.teacher_edu).prop("selected", true);
-        $program.val(teacher_program).prop("selected", true);
+        $program
+          .val(res_teacher.teacher_program.program_time)
+          .prop("selected", true);
         $teacher_major.val(res_teacher.teacher_inst);
         $intro_area.val(res_teacher.teacher_introduce);
         $curr_area.val(res_teacher.teacher_curr);

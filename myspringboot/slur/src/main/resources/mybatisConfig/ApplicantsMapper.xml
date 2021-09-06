@@ -36,11 +36,11 @@ WHERE student_user_id=#{student_user_id.user_id} AND student_program_times=#{stu
  
  <!--  SELECT문 신청 페이지 불러오기 -->
  <select id="selectByTeacherApplicants" parameterType="teacher" resultType="teacher">
- select * from teacher_tb where teacher_user_id = #{teacher_user_id.user_id} AND teacher_program_times=#{teacher_program.program_time}
+ select teacher_tb.*, teacher_user_id "teacher_user_id.user_id", teacher_program_times "teacher_program.program_time"  from teacher_tb where teacher_user_id = #{teacher_user_id.user_id} AND teacher_program_times=#{teacher_program.program_time}
  </select>
  
  <select id="selectByStudentApplicants" parameterType="student" resultType="student">
- select * from student_tb where student_user_id = #{student_user_id.user_id} AND student_program_times=#{student_program.program_time}
+ select student_tb.*, student_user_id "student_user_id.user_id", student_program_times "student_program.program_time" from student_tb where student_user_id = #{student_user_id.user_id} AND student_program_times=#{student_program.program_time}
  </select>
 
  </mapper>

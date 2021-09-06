@@ -61,12 +61,15 @@
 
           <select
             class="custom-select d-block w-100 mt-3 is-invalid student_program"
-            id="stduent_program"
+            id="student_program"
             required=""
             name="student_program"
           >
             <option value="">프로그램 선택</option>
             <option value="2104">크레센도</option>
+            <option value="2103">테누토</option>
+            <option value="2102">스타카토</option>
+            <option value="2101">이음줄</option>
           </select>
         </div>
       </div>
@@ -117,10 +120,13 @@
         student_program: student_program,
       },
       success: function (responseData) {
+        console.log(res_student.student_program.program_time);
         var res_student = responseData.student;
         console.log(responseData);
         $degree.val(res_student.student_edu).prop("selected", true);
-        $program.val(student_program);
+        $program
+          .val(res_student.student_program.program_time)
+          .prop("selected", true);
         $student_major.val(res_student.student_inst);
         $intro_area.val(res_student.student_introduce);
       },

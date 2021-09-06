@@ -51,6 +51,7 @@ public class UploadController {
 		log.info("요청전달데이터");
 		
 		String uploadPath = servletContext.getRealPath("upload");
+//		String uploadPath = servletContext.getRealPath(null);
 		log.info("업로드 실제경로:"+uploadPath);
 		
 		//경로생성

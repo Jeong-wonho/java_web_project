@@ -15,23 +15,64 @@
       integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
       crossorigin="anonymous"
     />
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+    
     <title>Hello, Slur!</title>
-    <style>
-      table > th,
-      td {
-        padding: 15px 100px 15px 5px;
-      }
+  <style>
+    *{
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+  table > th,
+  td {
+    padding: 15px 100px 15px 5px;
+  }
 
-      section.role {
-        margin-top: 50px;
-      }
-    </style>
+  section.role {
+    margin-top: 20px;
+  }
+
+  #carouselExampleFade {
+    margin-top: 20px;
+  }
+
+  div.carousel-item {
+    width: 1150px;
+    height: 600px;
+  }
+  div.media {
+    margin-top: 10px;
+  }
+  nav:nth-child(1) {
+    font-size:1.5rem;
+  }
+
+  nav>a.navbar-brand{
+    font-size:2rem;
+    font-weight:800;
+  }
+
+  div.navbar-collapse>ul>li>a:hover{
+    border-bottom: solid 5px;
+    border-color: #007bff !important;
+  }
+
+  p.company_value{
+    margin-top:20px;
+    font-size: 1.5rem;
+  }
+
+  div.media-body>p{
+    font-size:1.3rem;
+  }
+
+  </style>
   </head>
   <body>
     <header class="slur_header">
       <div class="container">
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+        <nav class="navbar navbar-expand-md navbar-light">
           <a class="navbar-brand" href="./slur_main.html">Slur</a>
           <button
             class="navbar-toggler"
@@ -99,88 +140,59 @@
     <br />
     <section class="role container">
       <div
-        id="carouselExampleFade"
-        class="carousel slide carousel-fade"
+        id="carouselExampleCaptions"
+        class="carousel slide"
         data-ride="carousel"
-        style="margin-top: 50px"
       >
+        <ol class="carousel-indicators">
+          <li
+            data-target="#carouselExampleCaptions"
+            data-slide-to="0"
+            class="active"
+          ></li>
+          <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+          <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+        </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <svg
-              class="bd-placeholder-img bd-placeholder-img-lg d-block w-100"
-              width="800"
-              height="400"
-              xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              aria-label="Placeholder: First slide"
-              preserveAspectRatio="xMidYMid slice"
-              focusable="false"
-            >
-              <title>Placeholder</title>
-              <rect width="100%" height="100%" fill="#777"></rect>
-              <text x="50%" y="50%" fill="#555" dy=".3em"></text>
-            </svg>
-            <div class="container">
-              <div class="carousel-caption text-left">
-                <h1>Yamaha</h1>
-                <p>우리가 할 수 있는 최고의 책임</p>
-                <p>
-                  <a class="btn btn-lg btn-primary" href="#">Yamaha의 활동</a>
-                </p>
-              </div>
-            </div>
+            <img src="../images/DSC_0212.JPG" class="d-block w-100" alt="..." />
+            <!-- <div class="carousel-caption d-none d-md-block">
+              <h5>호우 악기사</h5>
+              <p>
+                호우 악기사는 '함께성장'의 사회공헌 철학을 바탕으로 기업으로서
+                사회적 책임을 다하고자 노력하고 있습니다.
+              </p>
+              <p>
+                '건강', '환경', '사람', '사회' 사업영역에서 다양한 사회공헌
+                활동을 전개하고 있습니다.
+              </p>
+            </div> -->
           </div>
           <div class="carousel-item">
-            <svg
-              class="bd-placeholder-img bd-placeholder-img-lg d-block w-100"
-              width="800"
-              height="400"
-              xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              aria-label="Placeholder: Second slide"
-              preserveAspectRatio="xMidYMid slice"
-              focusable="false"
-            >
-              <title>Placeholder</title>
-              <rect width="100%" height="100%" fill="#666"></rect>
-              <text x="50%" y="50%" fill="#444" dy=".3em"></text>
-            </svg>
-            <div class="container">
-              <div class="carousel-caption text-left">
-                <h1>프로그램</h1>
-                <p>사회의 어려운 계층의 사람들에게 당신의 재능을 나눠주세요</p>
-                <p><a class="btn btn-lg btn-primary" href="#">신청하기</a></p>
-              </div>
-            </div>
+            <img src="../images/IMG_0524.JPG" class="d-block w-100" alt="..." />
+            <!-- <div class="carousel-caption d-none d-md-block">
+              <h5>이음줄 프로젝트</h5>
+              <p>
+                호우 악기사는 '함께성장'의 사회공헌 철학을 실현하기 위해 매해
+                음악 교육 프로젝트를 진행하고 있습니다. 한해에 100명이 넘는
+                아이들이 혜택을 받고 있습니다.
+              </p>
+            </div> -->
           </div>
           <div class="carousel-item">
-            <svg
-              class="bd-placeholder-img bd-placeholder-img-lg d-block w-100"
-              width="800"
-              height="400"
-              xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              aria-label="Placeholder: Third slide"
-              preserveAspectRatio="xMidYMid slice"
-              focusable="false"
-            >
-              <title>Placeholder</title>
-              <rect width="100%" height="100%" fill="#555"></rect>
-              <text x="50%" y="50%" fill="#333" dy=".3em"></text>
-            </svg>
-            <div class="container">
-              <div class="carousel-caption text-right">
-                <h1>이음줄</h1>
-                <p>계속해서 이어나가는 우리의 활동</p>
-                <p><a class="btn btn-lg btn-primary" href="#">활동 보기</a></p>
-              </div>
-            </div>
-            <!--<img src="..." class="d-block w-100" alt="...">-->
+            <img src="../images/DSC_0344.JPG" class="d-block w-100" alt="..." />
+            <!-- <div class="carousel-caption d-none d-md-block">
+              <h5>아름다운 세상</h5>
+              <p>
+                악기를 배우고 싶지만, 그렇지 못한 사람들에게 악기 대여해주는
+                서비스
+              </p>
+            </div> -->
           </div>
         </div>
         <a
           class="carousel-control-prev"
-          href="#carouselExampleFade"
+          href="#carouselExampleCaptions"
           role="button"
           data-slide="prev"
         >
@@ -189,7 +201,7 @@
         </a>
         <a
           class="carousel-control-next"
-          href="#carouselExampleFade"
+          href="#carouselExampleCaptions"
           role="button"
           data-slide="next"
         >
@@ -197,130 +209,98 @@
           <span class="sr-only">Next</span>
         </a>
       </div>
-      <br />
       <div class="media">
         <img
-          src="https://via.placeholder.com/300.jpg"
+          src="../images/class_image.jfif"
           class="align-self-start mr-3"
           alt="300 * 300 size image"
+          style="width: 300px; height: 300px"
         />
         <div class="media-body">
-          <h5 class="mt-0">이웃과 동행</h5>
+          <h3 class="mt-0" style="font-weight:700;">호우 악기사</h3>
           <p>
-            야마하는 음악으로 이웃과 동행합니다. 이음줄이라는 말처럼 서로
+            호우악기사는 음악으로 이웃과 동행합니다. 이음줄이라는 말처럼 서로
             이어지고 재능을 나눠줍니다. 매년 같은 지역의 중,고생들과 대학생을
             연계를 통해 저소득층에 음악교육을 진행합니다.
-          </p>
-          <p>
-            학생에게는 필요한 교육, 인성 그리고 이웃에 알고 있는 친한 형,
-            누나들을 만들어주고 새로운 환상적인 시간을 만들어주기 원합니다.
-            대학생들에게는 인재양성과
-          </p>
+            호우 악기사는 '함께성장'의 사회공헌 철학을 바탕으로 기업으로서
+            사회적 책임을 다하고자 노력하고 있습니다.
+            '건강', '환경', '사람', '사회' 사업영역에서 다양한 사회공헌
+            활동을 전개하고 있습니다.
+            </p>
         </div>
       </div>
       <br />
       <div class="media">
         <div class="media-body">
-          <h5 class="mt-0">함께 나누는 세상</h5>
+          <h3 class="mt-0" style="font-weight:700;">함께 나누는 세상</h5>
           <p>
-            이성은 아름답고 풍부하게 현저하게 부패를 관현악이며, 같으며, 심장의
-            별과 말이다. 끓는 그것을 피어나기 품고 커다란 못할 모래뿐일 무한한
-            칼이다. 실현에 기쁘며, 공자는 위하여서. 못하다 소금이라 꽃이 없는
-            설산에서 부패뿐이다. 바로 석가는 소금이라 창공에 듣는다. 넣는 온갖
-            뜨거운지라, 때까지 전인 대한 뿐이다. 놀이 이상의 가는 끝에 힘있다.
-            같이 이성은 청춘의 그들은 인생을 얼마나 것이다. 목숨을 실로 불러
-            생명을 철환하였는가?
-          </p>
-          <p>
-            능히 위하여 소리다.이것은 청춘 할지라도 이상은 날카로우나 천자만홍이
-            우리 있으랴? 새 이상은 대한 보라. 웅대한 그들은 보이는 청춘의 가치를
-            피는 같이, 쓸쓸하랴? 있는 인류의 따뜻한 인간의 노래하며 열락의 불어
-            우는 커다란 것이다. 황금시대의 동산에는 청춘의 철환하였는가? 길을
-            풍부하게 모래뿐일 미인을 구하지 얼음에 것이다. 황금시대를 것은
-            착목한는 가슴이 행복스럽고 얼마나 위하여 열락의 교향악이다. 목숨을
-            수 속에 청춘 가치를 그들은 무엇을 무엇을 것이다. 속에 청춘이 그것을
-            무한한 피는 방황하였으며, 이상 이것이다. 대한 같은 설레는 이상은
-            약동하다.
+            호우 악기사는 국내 최대 악기 생산 기술을 통해
+            우리가 실현할 수 있는 사회 가치에 집중합니다.
+            악기를 배우고싶지만 배울수 없는 아이들에게 악기 후원을 통해 
+            그들의 꿈을 지원합니다.
           </p>
         </div>
         <img
-          src="https://via.placeholder.com/300.jpg"
+          src="../images/pianoimage.jfif"
           class="align-self-start mr-3"
           alt="300 * 300 size image"
+          style="width: 300px; height: 300px"
         />
       </div>
+      <hr>
       <div class="marketing">
         <div class="row" style="text-align: center; margin-top: 20px">
           <div class="col-lg-4" style="padding-left: 20px">
-            <svg
-              class="bd-placeholder-img rounded"
-              width="300"
-              height="140"
-              xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              aria-label="Placeholder: 140x140"
-              preserveAspectRatio="xMidYMid slice"
-              focusable="false"
-            >
+            <img
+          src="../images/run.png"
+          class="align-self-start mr-3"
+          alt="300 * 300 size image"
+          style="width: 300px; height: 300px"
+        />
               <title>Placeholder</title>
               <rect width="100%" height="100%" fill="#777"></rect>
-              <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+              
             </svg>
 
-            <h2>Heading</h2>
-            <p>
-              Some representative placeholder content for the three columns of
-              text below the carousel. This is the first column.
+            <h2 style="font-weight:800;">지속</h2>
+            <p class="company_value">
+              지속 가능한 사업으로 선한영향력을 
+              지속적으로 공급하는 호우 악기사가 
+              되도록 하겠습니다.
             </p>
-            <p><a class="btn btn-secondary" href="#">View details »</a></p>
           </div>
           <!-- /.col-lg-4 -->
           <div class="col-lg-4">
-            <svg
-              class="bd-placeholder-img rounded"
-              width="300"
-              height="140"
-              xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              aria-label="Placeholder: 140x140"
-              preserveAspectRatio="xMidYMid slice"
-              focusable="false"
-            >
-              <title>Placeholder</title>
-              <rect width="100%" height="100%" fill="#777"></rect>
-              <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
-            </svg>
+            <img
+          src="../images/동행.jpeg"
+          class="align-self-start mr-3"
+          alt="300 * 300 size image"
+          style="width: 300px; height: 300px"
+        />
 
-            <h2>Heading</h2>
-            <p>
-              Another exciting bit of representative placeholder content. This
-              time, we've moved on to the second column.
+            <h2 style="font-weight:800;">동행</h2>
+            <p class="company_value">
+              음악의 화음을 맞추는 것처럼, 이웃간의
+              상생과 동행을 위해 노력하는 회사가 되겠습니다.
             </p>
-            <p><a class="btn btn-secondary" href="#">View details »</a></p>
+            
           </div>
           <!-- /.col-lg-4 -->
           <div class="col-lg-4">
-            <svg
-              class="bd-placeholder-img rounded"
-              width="300"
-              height="140"
-              xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              aria-label="Placeholder: 140x140"
-              preserveAspectRatio="xMidYMid slice"
-              focusable="false"
-            >
-              <title>Placeholder</title>
-              <rect width="100%" height="100%" fill="#777"></rect>
-              <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
-            </svg>
-
-            <h2>Heading</h2>
-            <p>
-              And lastly this, the third column of representative placeholder
-              content.
+            <img
+          src="../images/신뢰.jpeg"
+          class="align-self-start mr-3"
+          alt="300 * 300 size image"
+          style="width: 300px; height: 300px"
+        />
+            
+            <h2 style="font-weight:800;">신뢰</h2>
+            <p class="company_value">
+              고객들간의 신뢰와 사회의 신뢰에 
+              부응하기 위해 사회적 가치를 실현하는 
+              기업이 되겠습니다.
             </p>
-            <p><a class="btn btn-secondary" href="#">View details »</a></p>
+            
           </div>
           <!-- /.col-lg-4 -->
         </div>
@@ -338,24 +318,12 @@
             </p>
           </div>
           <div class="col-md-5">
-            <svg
-              class="
-                bd-placeholder-img bd-placeholder-img-lg
-                featurette-image
-                img-fluid
-                mx-auto
-              "
-              width="500"
-              height="500"
-              xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              aria-label="Placeholder: 500x500"
-              preserveAspectRatio="xMidYMid slice"
-              focusable="false"
-            >
-              <title>Placeholder</title>
-              <rect width="100%" height="100%" fill="#eee"></rect>
-              <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
+            <img
+            src="../images/IMG_0487.JPG"
+            class="align-self-start mr-3"
+            alt="300 * 300 size image"
+            style="width: 450px; height: 450px"
+          />
             </svg>
           </div>
         </div>
@@ -375,25 +343,12 @@
             </p>
           </div>
           <div class="col-md-5 order-md-1">
-            <svg
-              class="
-                bd-placeholder-img bd-placeholder-img-lg
-                featurette-image
-                img-fluid
-                mx-auto
-              "
-              width="500"
-              height="500"
-              xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              aria-label="Placeholder: 500x500"
-              preserveAspectRatio="xMidYMid slice"
-              focusable="false"
-            >
-              <title>Placeholder</title>
-              <rect width="100%" height="100%" fill="#eee"></rect>
-              <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
-            </svg>
+            <img
+            src="../images/오케스트라2.JPG"
+            class="align-self-start mr-3"
+            alt="300 * 300 size image"
+            style="width: 450px; height: 450px"
+          />
           </div>
         </div>
 
@@ -487,6 +442,11 @@
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"
+    ></script>
     <script>
       function logined() {
         $("a.main_slur_login").hide();
@@ -548,7 +508,6 @@
             });
             break;
           case "./slur_apply.html":
-            alert("ㅎㅎ");
             if ($("a.main_slur_logout").css("display") !== "none") {
               $section.load(href, function (responseTxt, statusTxt, xhr) {
                 if (statusTxt == "error")

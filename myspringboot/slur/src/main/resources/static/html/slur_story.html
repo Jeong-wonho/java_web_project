@@ -37,23 +37,31 @@
       }
       div.apply_nav_bar {
         width: 170px;
-        height: 500px;
       }
       div.apply_info {
         width: 500px;
       }
       a {
         text-decoration: none;
-        color: white;
+        color: black;
       }
-      a:hover {
+      a.story_list:hover {
         text-decoration: none;
         font-weight: 600;
-        color: white;
+        color: black;
+        border-bottom: solid 5px;
+        border-color: #007bff !important;
       }
 
+      div.story_round_list > a:hover {
+        text-decoration: none;
+        font-weight: 600;
+        color: black;
+        border-bottom: solid 3px;
+        border-color: #007bff !important;
+      }
       a.slur_story {
-        font-size: 20px;
+        font-size: 2rem;
         font-weight: 700;
       }
       div.search_div {
@@ -89,15 +97,18 @@
         display: flex;
         justify-content: center;
       }
+
+      table.story_table > thead {
+        border-bottom: 5px solid;
+        border-color: #007bff !important;
+      }
     </style>
   </head>
   <body>
     <div class="container story">
-      <div class="apply_nav_bar bg-primary col-md-2">
+      <div class="apply_nav_bar col-md-2">
         <nav class="nav flex-column">
-          <a class="nav-link active slur_story" aria-current="page" href="#"
-            >스토리</a
-          >
+          <a class="nav-link active slur_story" aria-current="page">스토리</a>
           <a class="nav-link story_list" href="#">스토리목록</a>
           <div class="story_round_list">
             <a class="nav-link story_round" href="#">2104</a>
@@ -126,7 +137,7 @@
           </form>
         </div>
         <table class="table table-hover story-table col-md-12">
-          <thead class="bg-primary text-white">
+          <thead class="text-dark">
             <tr>
               <th scope="col">글번호</th>
               <th scope="col">프로그램회차</th>
@@ -151,7 +162,7 @@
       <div class="col-md-10 story_content_write"></div>
       <div class="story_content_confirm col-md-10">
         <table id="content_table" class="table col-md-12">
-          <thead class="bg-primary text-white">
+          <thead class="text-dark">
             <tr>
               <th scope="col">프로그램회차</th>
               <th scope="col">제목</th>
@@ -185,6 +196,7 @@
         </div>
       </div>
     </div>
+    <hr />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script>

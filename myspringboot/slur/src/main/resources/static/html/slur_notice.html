@@ -20,23 +20,24 @@
       }
       div.apply_nav_bar {
         width: 170px;
-        height: 500px;
       }
       div.apply_info {
         width: 500px;
       }
       a {
         text-decoration: none;
-        color: white;
+        color: black;
       }
-      a:hover {
+      a.notice_list:hover {
         text-decoration: none;
         font-weight: 600;
-        color: white;
+        color: black;
+        border-bottom: solid 5px;
+        border-color: #007bff !important;
       }
 
       a.slur_notice {
-        font-size: 20px;
+        font-size: 2rem;
         font-weight: 700;
       }
       div.search_div {
@@ -72,13 +73,18 @@
         display: flex;
         justify-content: center;
       }
+
+      table.notice_table > thead {
+        border-bottom: 5px solid;
+        border-color: #007bff !important;
+      }
     </style>
   </head>
   <body>
     <div class="container notice">
-      <div class="apply_nav_bar bg-primary col-md-2">
+      <div class="apply_nav_bar col-md-2">
         <nav class="nav flex-column">
-          <a class="nav-link active slur_notice" aria-current="page" href="#"
+          <a class="nav-link active slur_notice" aria-current="page"
             >공지사항</a
           >
           <a class="nav-link notice_list" href="#">공지사항</a>
@@ -86,7 +92,7 @@
       </div>
       <div class="col-md-10 notice_content_list">
         <table class="table table-hover notice-table col-md-12">
-          <thead class="bg-primary text-white">
+          <thead class="text-dark">
             <tr>
               <th scope="col">글번호</th>
               <th scope="col">공지사항</th>
@@ -113,7 +119,7 @@
       <div class="col-md-10 notice_content_write"></div>
       <div class="notice_content_confirm col-md-10">
         <table id="content_table" class="table col-md-12">
-          <thead class="bg-primary text-white">
+          <thead class="text-dark">
             <tr>
               <th scope="col">프로그램회차</th>
               <th scope="col">제목</th>
@@ -147,6 +153,7 @@
         </div>
       </div>
     </div>
+    <hr />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- <script type="text/javascript" src="slur_notice.js"></script> -->
     <script>

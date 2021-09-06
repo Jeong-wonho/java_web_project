@@ -23,7 +23,12 @@
         padding: 15px;
         margin: auto;
       }
-      p {
+      p.slur{
+        font-size: 2rem;
+        margin: 10px;
+        font-weight: 800;
+      }
+      p.text-muted {
         display: block;
         margin-block-start: 1em;
         margin-block-end: 1em;
@@ -59,21 +64,9 @@
           idObj.value = loginInfoValue;
         }
         $("form.form-login").submit(function () {
-          // var formObj = document.querySelector("form.form-login");
-          // formObj.addEventListener("submit", function (event) {
-          //아이디값 유효성검사
-          //비밀번호값 유효성검사
-
-          //유효성검사가 실패된 경우에는 전송 중지
-          //event.preventDefault();
-
-          //localStorage의 item(이름:loginInfo)삭제
+         
           localStorage.removeItem("loginInfo");
 
-          //아이디저장 체크된 경우 localStorage의 item(이름:loginInfo, 값:입력한아이디값)추가
-          //var idObj = documnt.querySelector('form.login input[name=id]');
-          
-          //1)DOM트리에서 체크박스객체 찾기
           var chkboxObj = $("form.form-login input[type=checkbox]");
           //2)체크여부확인
           if (chkboxObj.checked) {
@@ -120,19 +113,22 @@
           });
           event.preventDefault();
         }); //submit function
-      }); //로드 function
+
+        $('button.membership-btn').click(function(){
+          $("section.role").load(
+            "./slur_membership.html",
+            function (responseTxt, statusTxt, xhr) {
+              if (statusTxt == "error")
+                alert("Error:" + xhr.status + ":" + xhr.statusTxt);
+            });
+        });
+      }); 
     </script>
   </head>
   <body>
     <section class="role container">
       <form class="form-login">
-        <img
-          class="mb-4"
-          src="../images/066.png"
-          alt=""
-          width="72"
-          height="72"
-        />
+        <p class="slur">Slur</p>
         <h1 class="h3 mb-3 font-weight-normal">로그인해주세요</h1>
         <label for="inputEmail md-3" class="sr-only">id입력</label>
         <input

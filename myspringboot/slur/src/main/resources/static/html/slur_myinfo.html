@@ -24,12 +24,14 @@
       }
       a {
         text-decoration: none;
-        color: white;
+        color: black;
       }
-      a:hover {
+      nav.slur_myinfo_list > a:hover {
         text-decoration: none;
         font-weight: 600;
-        color: white;
+        color: black;
+        border-bottom: solid 3px;
+        border-color: #007bff !important;
       }
 
       button.myInfo-button {
@@ -52,14 +54,9 @@
   </head>
   <body>
     <div class="container myInfo">
-      <div class="myInfo_nav_bar bg-primary">
-        <nav class="nav flex-column">
-          <a
-            class="nav-link active"
-            aria-current="page"
-            href="./slur_myinfo.html"
-            >MyInfo</a
-          >
+      <div class="myInfo_nav_bar col-md-2">
+        <nav class="nav flex-column slur_myinfo_list">
+          <a class="nav-link active" aria-current="page">MyInfo</a>
           <a class="nav-link myInfoRevise" href="#">프로필 수정</a>
           <a class="nav-link myProgramParticipate" href="#"
             >참여한 프로그램 정보</a
@@ -129,9 +126,9 @@
           </button>
         </form>
       </div>
-      <div class="input-form col-md-4 myProgramParticipate">
+      <div class="input-form col-md-8 myProgramParticipate">
         <table class="table table-hover myinfo-table">
-          <thead class="bg-primary text-white">
+          <thead class="text-dark">
             <tr>
               <th scope="col">프로그램회차</th>
               <th scope="col">프로그램타이틀</th>
@@ -145,10 +142,11 @@
       <div class="input-form col-md-8 teacher_apply_content"></div>
       <div class="input-form col-md-8 student_apply_content"></div>
     </div>
+    <hr />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
       //데이터 불러와서 반영하기 필요 파라미터 Id
-      //1.
+      //프로필 수정에 반영
       var $id;
       var $table = $("table.myinfo-table");
       var $student_div = $("div.student_apply_content");
@@ -176,7 +174,6 @@
       });
       // 프로필 수정할 때 변경 내용 저장하기
       $("button.myInfo-button").click(function () {
-        alert("수정클릭");
         $.ajax({
           url: "/slur/modify",
           method: "put",
@@ -188,13 +185,13 @@
             user_email: $("input.myInfo-email").val(),
           },
           success: function (responseObj) {
-            alert(responseObj);
+            alert("수정되었습니다.");
           },
         });
       });
       // 내가 참여한 프로그램 정보 클릭시 마아인포 사라지게 만들기
+      //참여한 프로그램 정보 표출
       $("a.myProgramParticipate").click(function () {
-        alert("잘눌린다.");
         var trHtml = "";
         $("div.myInfo_content").hide();
         $teacher_div.hide();
@@ -214,6 +211,18 @@
               var role_name = e.role_name;
               var role_selection = e.role_selection;
 
+              role_name = role_name == "s" ? "Student" : "Teacher";
+              if (role_selection == 3) {
+                role_selection = "선정";
+              } else if (role_selection == 2) {
+                role_selection = "다음기회에";
+              } else if (role_selection == 1) {
+                role_selection = "심사진행중";
+              } else {
+                role_selection = "심사대기중";
+              }
+              console.log(role_name);
+              console.log(role_selection);
               trHtml += '<th scope="row">';
               trHtml += program_time;
               trHtml += "</th>";
@@ -236,7 +245,6 @@
 
       // 본인 정보 수정란.
       $("a.myInfoRevise").click(function () {
-        alert("마이인포 설명");
         $table.hide();
         $teacher_div.hide();
         $student_div.hide();
@@ -245,7 +253,6 @@
 
       //테이블 클릭
       $tableBody.on("click", "tr", function () {
-        alert("된다");
         var tr = $(this);
         var td = tr.children();
         var tdArr = new Array();
@@ -262,7 +269,7 @@
         var role = tdArr[2];
         console.log(program_time + " " + sessionStorage.getItem("user_id"));
 
-        if (role == "t") {
+        if (role == "Teacher") {
           $("div.myProgramParticipate").hide();
           $teacher_div.show();
           $teacher_div.load(
