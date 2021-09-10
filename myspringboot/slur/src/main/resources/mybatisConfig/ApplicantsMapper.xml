@@ -28,8 +28,8 @@ WHERE teacher_user_id=#{teacher_user_id.user_id} AND teacher_program_times=#{tea
 <update id="updateStudent">
 UPDATE student_tb
 <set>
-<if test="student_introduce != null and student_introduce != ''" >student_introduce=#{teacher_introduce},</if>  
-<if test="student_inst != null and student_inst != ''">student_inst=#{teadcher_inst},</if>
+<if test="student_introduce != null and student_introduce != ''" >student_introduce=#{student_introduce},</if>  
+<if test="student_inst != null and student_inst != ''">student_inst=#{student_inst},</if>
 </set>
 WHERE student_user_id=#{student_user_id.user_id} AND student_program_times=#{student_program.program_time} AND student_selection=0
 </update>

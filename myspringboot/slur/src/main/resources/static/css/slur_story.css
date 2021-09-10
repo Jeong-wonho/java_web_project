@@ -1,0 +1,71 @@
+div.story {
+  display: flex;
+  margin-top: 50px;
+}
+div.apply_nav_bar {
+  width: 170px;
+}
+div.apply_info {
+  width: 500px;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+a.story_list:hover {
+  text-decoration: none;
+  font-weight: 600;
+  color: black;
+  border-bottom: solid 5px;
+  border-color: #007bff !important;
+}
+
+div.story_round_list > a:hover {
+  text-decoration: none;
+  font-weight: 600;
+  color: black;
+  border-bottom: solid 3px;
+  border-color: #007bff !important;
+}
+a.slur_story {
+  font-size: 2rem;
+  font-weight: 700;
+}
+div.search_div {
+  float: right;
+  margin-bottom: 10px;
+}
+div.write_button {
+  float: right;
+}
+/* button.story_write_button {
+    width: 100px;
+  } */
+input[name="story_title"] {
+  margin: 10px 0px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: inherit;
+  font-size: 1.5em;
+}
+
+button.story_button {
+  float: right;
+  margin-right: 15px;
+}
+
+div.story_modify {
+  display: flex;
+  justify-content: flex-end;
+}
+
+nav.story_paging {
+  display: flex;
+  justify-content: center;
+}
+
+table.story_table > thead {
+  border-bottom: 5px solid;
+  border-color: #007bff !important;
+}

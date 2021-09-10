@@ -1,7 +1,7 @@
 <head>
   <link href="../css/slur_apply_teacher.css" rel="stylesheet" />
 </head>
-<h2>선생님신청</h2>
+<h2>선생님 신청</h2>
 <div class="t_apply_info_apply">
   <form
     class="col-md-12 was-validated"
@@ -16,16 +16,17 @@
           src="http://placehold.it/150X150"
           name="profile_img"
           id="profile_img"
+          style="width: 150px; height: 150px"
         />
         <div class="profile_rect_file">
-          <label for="fileup">업로드</label>
+          <label for="fileup">사진업로드</label>
           <input type="file" name="photoFile" id="fileup" />
         </div>
       </div>
       <div class="custom-file mb-3 teacher_apply_need_docs">
         <div class="doc_filebox">
-          <input class="upload-name" value="파일선택" disabled="disabled" />
-          <label for="doc_filename">업로드</label>
+          <input class="upload-name" value="파일업로드" disabled="disabled" />
+          <label for="doc_filename">파일업로드</label>
           <input
             type="file"
             id="doc_filename"
@@ -34,7 +35,7 @@
           />
         </div>
         <div class="teacher_inst">
-          <label for="validationServer03">전공입력</label>
+          <label for="validationServer03">전공</label>
           <input
             type="text"
             class="form-control is-invalid"
@@ -81,7 +82,7 @@
       ></textarea>
     </div>
     <div class="mb-3 teacher_curri">
-      <label for="validationTextarea">커리큘럼입력</label>
+      <label for="validationTextarea">커리큘럼입력해주세요</label>
       <textarea
         class="form-control is-invalid teacher_curriForm"
         id="curr_Textarea"
@@ -100,46 +101,27 @@
   </form>
 </div>
 <script>
-  //데이터 전송 구현
+  //파일 올릴때 thumb-nail바꾸기
+  function handleImgFileSelect(e) {
+    var files = e.target.files;
+    var filesArr = Array.prototype.slice.call(files);
+
+    filesArr.forEach(function (f) {
+      if (!f.type.match("image.*")) {
+        alert("확장자는 이미지 확장자만 가능합니다.");
+        return;
+      }
+      sel_file = f;
+
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $("#profile_img").attr("src", e.target.result);
+      };
+      reader.readAsDataURL(f);
+    });
+  }
+  //데이터 불러오기 get
   $("button.teacher_apply_button").click(function (e) {
-    // var teacher_inst = $("input[name=teacher_inst]");
-    // var teacher_intro = $("#introduceTextarea");
-    // var teacher_curr = $("#curr_Textarea");
-    // var teacher_edu = $("select.teacher_degree option:selected");
-    // var program_time = $("select.teacher_program option:selected");
-
-    // var data = {};
-    // data.teacher_inst = teacher_inst.val();
-    // data.teacher_introduce = teacher_intro.val();
-    // data.teacher_curr = teacher_curr.val();
-    // data.teacher_edu = teacher_edu.val();
-    // data.teacher_program = program_time.val();
-
-    // var dataJsonStr = JSON.stringify(data);
-    // alert(dataJsonStr);
-
-    // $.ajax({
-    //   method: "POST",
-    //   transformRequest: [null],
-    //   transformResponse: [null],
-    //   jsonpCallbackParam: "callback",
-    //   url: "/slur/applicants/teacher_app",
-    //   headers: {
-    //     Accept: "application/json, text/plain, */*",
-    //     "Content-Type": "application/json;charset=utf-8",
-    //   },
-    //   data: dataJsonStr,
-    //   success: function (responseData) {
-    //     if (responseData.status == 1) {
-    //       //로그인 성공됨!
-    //       alert("추가 되었습니다.");
-    //       location.href = "./slur_main.html";
-    //     } else {
-    //       alert("다시 시도해주세요");
-    //     }
-    //   },
-    // });
-
     console.log($("div.t_apply_info_apply"));
     var formData = new FormData($("div.t_apply_info_apply>form")[0]);
 
@@ -158,9 +140,10 @@
         responseObj.photoFileName;
         $("img.profile_img").attr(
           "src",
-          "/slur/src/main/webapp/upload/slur/src/main/webapp/upload/" +
-            responseObj.photoFileName
+          "/slur/upload/" + responseObj.photoFileName
         );
+        alert("등록 성공 되었습니다.");
+        $(location).href("slur_main.html");
       },
       error: function (jqXHR) {
         alert("에러:" + jqXHR.status);
@@ -169,8 +152,9 @@
     return false;
   });
 
-  // 파일 업로드 파일 이름 변경
+  // 파일 명 변경
   $(document).ready(function () {
+    $("#fileup").on("change", handleImgFileSelect);
     var fileTarget = $(".doc_filebox .upload-hidden");
 
     fileTarget.on("change", function () {
@@ -180,7 +164,7 @@
         var filename = $(this)[0].files[0].name;
       } else {
         // old IE
-        var filename = $(this).val().split("/").pop().split("\\").pop(); // 파일명만 추출
+        var filename = $(this).val().split("/").pop().split("\\").pop(); // �뙆�씪紐낅쭔 異붿텧
       }
 
       // 추출한 파일명 삽입

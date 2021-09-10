@@ -28,6 +28,7 @@
       href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css"
       rel="stylesheet"
     />
+    <!-- <link rel="stylesheet" type="text/css" href="../css/slur_story.css"> -->
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 
     <style>
@@ -71,9 +72,7 @@
       div.write_button {
         float: right;
       }
-      /* button.story_write_button {
-        width: 100px;
-      } */
+
       input[name="story_title"] {
         margin: 10px 0px;
         border-top: none;
@@ -346,6 +345,7 @@
         $story_round_list.show(); //if문처리
         $tableBody.empty();
         $("div.story_content_list").show();
+
         var search = $(this).text();
         console.log(search);
         story_find(search);
@@ -376,6 +376,7 @@
         $story_round_list.show(); //if문처리
         $tableBody.empty();
         $("div.story_content_list").show();
+        $("nav.story_paging").show();
         story_reload(1);
       });
       //테이븗 버튼 클릭시 화면전환입니다.

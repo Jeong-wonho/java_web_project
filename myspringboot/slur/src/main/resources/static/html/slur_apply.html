@@ -239,14 +239,13 @@
                 alert("이미 이번 캠프에 신청하셨습니다.")
                 $(location).attr("href", "./slur_main.html");
                 return false;
-              }else{
-                $teacher_div.load('slur_apply_teacher.html',function(res, status, xhr){
-              if (status == "error")
-                    alert("Error:" + xhr.status + ":" + xhr.statusTxt);
-                });
               }
             
             });
+            $teacher_div.load('slur_apply_teacher.html',function(res, status, xhr){
+              if (status == "error")
+                    alert("Error:" + xhr.status + ":" + xhr.statusTxt);
+                });
           }
         });
   });  
@@ -266,13 +265,13 @@
                 alert("이미 이번 캠프에 신청하셨습니다.")
                 $(location).attr("href", "./slur_main.html");
                 return false;
-              }else{
-                $student_div.load('slur_apply_student.html',function(res, status, xhr){
+              }
+                
+              });
+              $student_div.load('slur_apply_student.html',function(res, status, xhr){
                 if (status == "error")
                   alert("Error:" + xhr.status + ":" + xhr.statusTxt);
                 });
-              }
-            });
           }
         });
   });

@@ -14,17 +14,18 @@
           class="profile_img"
           src="http://placehold.it/150X150"
           name="profile_img"
-          id="profile_img"
+          id="student_profile_img"
+          style="width: 150px; height: 150px"
         />
         <div class="profile_rect_file">
-          <label for="fileup">업로드</label>
+          <label for="fileup">사진업로드</label>
           <input type="file" name="photoFile" id="fileup" />
         </div>
       </div>
       <div class="custom-file mb-3 student_apply_need_docs">
         <div class="doc_filebox">
           <input class="upload-name" value="파일선택" disabled="disabled" />
-          <label for="doc_filename">업로드</label>
+          <label for="doc_filename">파일업로드</label>
           <input
             type="file"
             id="doc_filename"
@@ -93,41 +94,27 @@
   </form>
 </div>
 <script>
+  //파일 올릴때 thumb-nail바꾸기
+  function handleImgFileSelect(e) {
+    var files = e.target.files;
+    var filesArr = Array.prototype.slice.call(files);
+
+    filesArr.forEach(function (f) {
+      if (!f.type.match("image.*")) {
+        alert("확장자는 이미지 확장자만 가능합니다.");
+        return;
+      }
+      sel_file = f;
+
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $("#student_profile_img").attr("src", e.target.result);
+      };
+      reader.readAsDataURL(f);
+    });
+  }
   //데이터 불러오기 get
   $("button.student_apply_button").click(function () {
-    // var student_inst = $("input[name=student_major]");
-    // var student_intro = $("textarea.student_introduceForm");
-    // var student_edu = $("select.student_degree option:selected");
-    // var program_time = $("select.student_program option:selected");
-    // console.log(student_intro);
-    // var data = {};
-    // data.student_inst = student_inst.val();
-    // data.student_introduce = student_intro.val();
-    // data.student_edu = student_edu.val();
-    // data.student_program = program_time.val();
-    // var dataJsonStr = JSON.stringify(data);
-    // alert(dataJsonStr);
-    // $.ajax({
-    //   method: "post",
-    //   transformRequest: [null],
-    //   transformResponse: [null],
-    //   jsonpCallbackParam: "callback",
-    //   url: "/slur/applicants/student_app",
-    //   headers: {
-    //     Accept: "application/json, text/plain, */*",
-    //     "Content-Type": "application/json;charset=utf-8",
-    //   },
-    //   data: dataJsonStr,
-    //   success: function (responseData) {
-    //     if (responseData.status == 1) {
-    //       //로그인 성공됨!
-    //       alert("추가 되었습니다.");
-    //       location.href = "./slur_main.html";
-    //     } else {
-    //       alert("다시 시도해주세요");
-    //     }
-    //   },
-    // });
     var formData = new FormData($("div.s_apply_info_apply>form")[0]);
 
     formData.forEach(function (value, key) {
@@ -145,8 +132,10 @@
         responseObj.photoFileName;
         $("img.profile_img").attr(
           "src",
-          "/slur/src/main/webapp/upload/" + responseObj.photoFileName
+          "/slur/upload/" + responseObj.photoFileName
         );
+        alert("등록 성공 되었습니다.");
+        $(location).href("slur_main.html");
       },
       error: function (jqXHR) {
         alert("에러:" + jqXHR.status);
@@ -156,6 +145,7 @@
   });
 
   $(document).ready(function () {
+    $("#fileup").on("change", handleImgFileSelect);
     var fileTarget = $(".doc_filebox .upload-hidden");
 
     fileTarget.on("change", function () {

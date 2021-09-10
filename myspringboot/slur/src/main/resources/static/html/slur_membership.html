@@ -1,80 +1,6 @@
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>회원가입 화면 샘플 - Bootstrap</title>
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
+
     <link href="../css/slur_membership.css" rel="stylesheet" />
-    <!-- <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-      
-        function membership_daumapi() {
-          new daum.Postcode({
-            oncomplete: function (data) {
-              //각 주소의 노출 규칙에 따라 주소를 조합한다.
-              //내려오는 변수가 값이 없는 경우엔 공백값을 가지므로, 이를 참고하여 본기한다.
-              var addr = "";
-              var extraAddr = "";
-
-              //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져옴
-              if (data.userSelectedType === "R") {
-                addr = data.roadAddress;
-              } else {
-                addr = data.JibunAddress;
-              }
-
-              $("input.membership-addrnum").value = data.zonecode;
-              $("input.membership-addr-info").value = addr;
-              //커서를 상세주소 필드로 옮긴다.
-              $("input.membership-addr-content").focus();
-            },
-          });
-        };
-
-        let memberform = $("form.form-membership");
-        memberform.submit(function () {
-          alert("하이팅");
-          let user_id = $("input.membership-id").val();
-          let user_pwd = $("input.membership-pwd").val();
-          let user_pwd_confirm = $("input.membership-pwd-confirm").val();
-          let user_rrn = $("input.membership-rrn").val();
-          let user_addr = $("input.membership-addr").val();
-          let user_cp = $("input.membership-cp").val();
-          let user_gender = $("input[name='gender']:checked").val();
-          let user_agree = $("input:checkbox[name='agreement']").is(":checked");
-          //개인정보 동의가 체크되어있지 않으면 alert를 뛰움.!!<아니면 빨간줄로 바꾸던가.!?>
-          alert(
-            user_id +
-              "," +
-              user_pwd +
-              "," +
-              user_rrn +
-              "," +
-              user_addr +
-              "," +
-              user_cp +
-              "," +
-              user_gender
-          );
-
-          if (user_agree == true) {
-            //ajax전송을 해준다.
-            alert("되라");
-          }
-        });
-      }); 
-    </script>-->
-  </head>
-  <body>
+ 
     <section>
       <div class="container">
         <div class="input-form-backgroud row">
@@ -257,27 +183,29 @@
     </section>
 
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+    <!-- <script src="../js/slur_membership.js"></script> -->
+  
+    <!-- <script> 
       $("button.idConfirm-btn").click(function () {
-        var user_id = $("input.membership-id").val();
-        var url = "/slur/iddupchk";
-        alert(user_id);
-        $.ajax({
-          url: url,
-          method: "get",
-          data: {
-            user_id: user_id,
-          },
-          success: function (responseData) {
-            if (responseData.trim() == "1") {
-              alert("가입진행해주세요");
-            } else {
-              alert("이미 사용중인 아이디 입니다.");
-            }
-          },
-        });
+      var user_id = $("input.membership-id").val();
+      var url = "/slur/iddupchk";
+      alert(user_id);
+      $.ajax({
+        url: url,
+        method: "get",
+        data: {
+          user_id: user_id,
+        },
+        success: function (responseData) {
+          if (responseData.trim() == "1") {
+            alert("가입진행해주세요");
+          } else {
+            alert("이미 사용중인 아이디 입니다.");
+          }
+        },
       });
+    });
 
       function membership_daumapi() {
         new daum.Postcode({
@@ -385,6 +313,7 @@
           // alert("json데이터입니다.:" + memberJsonstr);
         }
       });
-    </script>
+    </script> -->
+     </body>
   </body>
 </html>

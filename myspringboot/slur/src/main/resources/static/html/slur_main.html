@@ -18,10 +18,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
-    
+    <link rel="stylesheet" type="text/css" href="../css/slur_main.css">
+
     <title>Hello, Slur!</title>
   <style>
-    *{
+    /* *{
     font-family: 'Noto Sans KR', sans-serif;
   }
   table > th,
@@ -65,7 +66,7 @@
 
   div.media-body>p{
     font-size:1.3rem;
-  }
+  } */
 
   </style>
   </head>
@@ -93,7 +94,7 @@
                 >
               </li>
               <li class="nav-item active">
-                <a class="nav-link" href="./slur_apply.html"
+                <a class="nav-link apply" href="./slur_apply.html"
                   >신청하기<span class="sr-only">(current)</span></a
                 >
               </li>
@@ -309,12 +310,12 @@
         <div class="row featurette">
           <div class="col-md-7">
             <h2 class="featurette-heading">
-              First featurette heading.
-              <span class="text-muted">It’ll blow your mind.</span>
+              해외 봉사
             </h2>
             <p class="lead">
-              Some great placeholder content for the first featurette here.
-              Imagine some exciting prose here.
+              대학생들의 다양한 경험을 위해서, 해외 봉사활동을 지원하고 있습니다.
+              해외봉사를 통해 다양한 경험을 하고 음악에만 집중하는 음악인이 아닌,
+              더 큰 마음을 품는 음악인 양성을 목표로 하고 있습니다.
             </p>
           </div>
           <div class="col-md-5">
@@ -333,13 +334,12 @@
         <div class="row featurette">
           <div class="col-md-7 order-md-2">
             <h2 class="featurette-heading">
-              Oh yeah, it’s that good.
-              <span class="text-muted">See for yourself.</span>
+              오케스트라 사업
             </h2>
             <p class="lead">
-              Another featurette? Of course. More placeholder content here to
-              give you an idea of how this layout would work with some actual
-              real-world content in place.
+              호우 악기사는 악기사 자체 오케스트라를 운영합니다.
+              오케스트라를 운영함으로써 음악가들의 교류와
+              경제적인 지원, 그리고 사회의 문화 발전을 위해 노력합니다.
             </p>
           </div>
           <div class="col-md-5 order-md-1">
@@ -357,35 +357,29 @@
         <div class="row featurette">
           <div class="col-md-7">
             <h2 class="featurette-heading">
-              And lastly, this one. <span class="text-muted">Checkmate.</span>
+              음악교육 사업(Slur)
             </h2>
-            <p class="lead">
-              And yes, this is the last block of representative placeholder
-              content. Again, not really intended to be actually read, simply
-              here to give you a better view of what this would look like with
-              some actual content. Your content.
+            <p class="lead" style="margin-bottom:300px;">
+              방학 때 레슨 경험을 쌓기 원하는 대학생과, 
+              교육을 희망하는 같은 지역의 아이들을 가르칠 수 있는
+              프로젝트인 슬러프로젝트를 진행합니다.
             </p>
+            <!-- <button
+            class="btn btn-lg btn-primary btn-block applyBtn"
+            type="button"
+            style="float: left; width:200px; height:50px;"
+            ><a href="./slur_apply.html" class="text-white" style="text-decoration: none;">신청</a>
+            
+            </button> -->
           </div>
           <div class="col-md-5">
-            <svg
-              class="
-                bd-placeholder-img bd-placeholder-img-lg
-                featurette-image
-                img-fluid
-                mx-auto
-              "
-              width="500"
-              height="500"
-              xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              aria-label="Placeholder: 500x500"
-              preserveAspectRatio="xMidYMid slice"
-              focusable="false"
-            >
-              <title>Placeholder</title>
-              <rect width="100%" height="100%" fill="#eee"></rect>
-              <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
-            </svg>
+            <img
+            src="../images/꿈의오케스트라.jpg"
+            class="align-self-start mr-3"
+            alt="300 * 300 size image"
+            style="width: 450px; height: 450px"
+          />
+
           </div>
         </div>
 
@@ -399,12 +393,12 @@
       style="padding-top: 30px; padding-bottom: 30px"
     >
       <div class="footer">
-        <div class="footer_img">로고</div>
+        <div class="footer_img">SLUR</div>
         <div class="footer_content">
           <table class="footer_content_table">
             <thead>
               <tr>
-                <th>야마호우</th>
+                <th>호우악기사</th>
                 <th colspan="2">사회공헌 프로그램</th>
                 <th></th>
               </tr>
@@ -447,6 +441,10 @@
       integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
       crossorigin="anonymous"
     ></script>
+    <script src="../js/slur_login.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <script src="../js/slur_membership.js"></script>
     <script>
       function logined() {
         $("a.main_slur_login").hide();
@@ -526,6 +524,28 @@
         }
         return false;
       });
+     
+      // $("btn.applyBtn").click(function(){
+      //   console.log("눌림");
+      //   $section.load("./slur_apply.html", function (responseTxt, statusTxt, xhr) {
+      //     if ($("a.main_slur_logout").css("display") !== "none") {
+      //         $section.load(href, function (responseTxt, statusTxt, xhr) {
+      //           if (statusTxt == "error")
+      //             alert("Error:" + xhr.status + ":" + xhr.statusTxt);
+      //         });
+      //       } else {
+      //         alert("로그인 후 이용 가능합니다.");
+      //         $section.load(
+      //           "./slur_login.html",
+      //           function (responseTxt, statusTxt, xhr) {
+      //             if (statusTxt == "error")
+      //               alert("Error:" + xhr.status + ":" + xhr.statusTxt);
+      //           }
+      //         );
+      //       }
+      //       });
+      // });
+    
     </script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->

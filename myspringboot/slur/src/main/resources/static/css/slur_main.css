@@ -1,0 +1,45 @@
+* {
+  font-family: "Noto Sans KR", sans-serif;
+}
+table > th,
+td {
+  padding: 15px 100px 15px 5px;
+}
+
+section.role {
+  margin-top: 20px;
+}
+
+#carouselExampleFade {
+  margin-top: 20px;
+}
+
+div.carousel-item {
+  width: 1150px;
+  height: 600px;
+}
+div.media {
+  margin-top: 10px;
+}
+nav:nth-child(1) {
+  font-size: 1.5rem;
+}
+
+nav > a.navbar-brand {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+div.navbar-collapse > ul > li > a:hover {
+  border-bottom: solid 5px;
+  border-color: #007bff !important;
+}
+
+p.company_value {
+  margin-top: 20px;
+  font-size: 1.5rem;
+}
+
+div.media-body > p {
+  font-size: 1.3rem;
+}

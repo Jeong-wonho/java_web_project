@@ -16,6 +16,7 @@
           src="http://placehold.it/150X150"
           name="profile_img"
           id="profile_img"
+          style="width: 150px; height: 150px"
         />
         <div class="profile_rect_file">
           <label for="fileup">업로드</label>
@@ -105,6 +106,24 @@
   </form>
 </div>
 <script>
+  function handleImgFileSelect(e) {
+    var files = e.target.files;
+    var filesArr = Array.prototype.slice.call(files);
+
+    filesArr.forEach(function (f) {
+      if (!f.type.match("image.*")) {
+        alert("확장자는 이미지 확장자만 가능합니다.");
+        return;
+      }
+      sel_file = f;
+
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $("#profile_img").attr("src", e.target.result);
+      };
+      reader.readAsDataURL(f);
+    });
+  }
   //데이터 불러오기 get
   $(document).ready(function () {
     var user_id = sessionStorage.getItem("user_id");
@@ -116,8 +135,9 @@
     var $degree = $("#teacher_degree");
     var $program = $("#teacher_program");
 
+    $("img.profile_img").attr("src", "/slur/upload/s_profile-" + user_id);
     //selection 상태에 따라 버튼 상태 활성화
-    if (teacher_selection == 0) {
+    if (teacher_selection == "심사대기중") {
       $("button.teacher_modify_button").attr("disabled", false);
     }
 
@@ -140,6 +160,23 @@
         $intro_area.val(res_teacher.teacher_introduce);
         $curr_area.val(res_teacher.teacher_curr);
       },
+    });
+
+    $("#fileup").on("change", handleImgFileSelect);
+    var fileTarget = $(".doc_filebox .upload-hidden");
+
+    fileTarget.on("change", function () {
+      // 값이 변경되면
+      if (window.FileReader) {
+        // modern browser
+        var filename = $(this)[0].files[0].name;
+      } else {
+        // old IE
+        var filename = $(this).val().split("/").pop().split("\\").pop(); // �뙆�씪紐낅쭔 異붿텧
+      }
+
+      // 추출한 파일명 삽입
+      $(this).siblings(".upload-name").val(filename);
     });
   });
 
