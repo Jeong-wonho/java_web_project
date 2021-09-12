@@ -1,0 +1,37 @@
+div.myInfo {
+  display: flex;
+
+  margin-top: 50px;
+}
+div.myInfo_nav_bar {
+  width: 170px;
+  height: 500px;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+nav.slur_myinfo_list > a:hover {
+  text-decoration: none;
+  font-weight: 600;
+  color: black;
+  border-bottom: solid 3px;
+  border-color: #007bff !important;
+}
+
+button.myInfo-button {
+  width: 100px;
+  float: right;
+  margin-bottom: 10px;
+}
+
+table.myinfo-table {
+  width: 800px;
+}
+
+button.modifybtn {
+  width: 100px;
+  height: 30px;
+  font-size: 1rem;
+  padding-top: 2px;
+}

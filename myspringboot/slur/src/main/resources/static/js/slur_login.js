@@ -44,6 +44,7 @@ $("form.form-login").submit(function () {
         //로그인 성공됨!
 
         sessionStorage.setItem("user_id", responseData.User.user_id);
+        console.log(sessionStorage.getItem("user_id"));
         location.href = "./slur_main.html";
       } else {
         alert(responseData.msg);
@@ -53,16 +54,9 @@ $("form.form-login").submit(function () {
       alert(xhr.status);
     },
   });
-  event.preventDefault();
+  Event.preventDefault();
 }); //submit function
 
 $("button.membership-btn").click(function () {
-  // $("section.role").load(
-  //   "./slur_membership.html",
-  //   function (responseTxt, statusTxt, xhr) {
-  //     if (statusTxt == "error")
-  //       alert("Error:" + xhr.status + ":" + xhr.statusTxt);
-  //   }
-  // );
   $("a.main_slur_membership").trigger("click");
 });

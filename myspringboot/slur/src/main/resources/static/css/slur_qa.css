@@ -1,4 +1,4 @@
-div.notice {
+div.qa {
   display: flex;
   margin-top: 50px;
 }
@@ -12,7 +12,7 @@ a {
   text-decoration: none;
   color: black;
 }
-a.notice_list:hover {
+a.qa_list:hover {
   text-decoration: none;
   font-weight: 600;
   color: black;
@@ -20,7 +20,7 @@ a.notice_list:hover {
   border-color: #007bff !important;
 }
 
-a.slur_notice {
+a.slur_qa {
   font-size: 2rem;
   font-weight: 700;
 }
@@ -31,8 +31,10 @@ div.search_div {
 div.write_button {
   float: right;
 }
-
-input[name="notice_title"] {
+/* button.qa_write_button {
+    width: 100px;
+  } */
+input[name="qa_title"] {
   margin: 10px 0px;
   border-top: none;
   border-left: none;
@@ -41,22 +43,17 @@ input[name="notice_title"] {
   font-size: 1.5em;
 }
 
-button.notice_button {
+button.qa_button {
   float: right;
   margin-right: 15px;
 }
 
-div.notice_modify {
+div.qa_modify {
   display: flex;
   justify-content: flex-end;
 }
 
-nav.notice_paging {
+nav.qa_paging {
   display: flex;
   justify-content: center;
-}
-
-table.notice_table > thead {
-  border-bottom: 5px solid;
-  border-color: #007bff !important;
 }
