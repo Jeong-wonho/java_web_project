@@ -83,7 +83,7 @@ public class UploadController {
 				log.info("DRINK 파일형식:" + contentType);
 				
 				if(contentType.startsWith("image")) { //이미지파일인 경우
-					String thumbnailName =  "s_"+fileName; //s_파일이름
+					String thumbnailName =  "s_"+fileName+".jpg"; //s_파일이름
 					File thumbnailFile = new File(uploadPath,thumbnailName); 
 					FileOutputStream thumbnail = new FileOutputStream(thumbnailFile);
 					InputStream photoFileIS = photoFile.getInputStream();
@@ -181,7 +181,7 @@ public class UploadController {
 				log.info("DRINK 파일형식:" + contentType);
 				
 				if(contentType.startsWith("image")) { //이미지파일인 경우
-					String thumbnailName =  "s_"+fileName; //s_파일이름
+					String thumbnailName =  "s_"+fileName+".jpg"; //s_파일이름
 					File thumbnailFile = new File(uploadPath,thumbnailName); 
 					FileOutputStream thumbnail = new FileOutputStream(thumbnailFile);
 					InputStream photoFileIS = photoFile.getInputStream();
@@ -239,6 +239,7 @@ public class UploadController {
 	@PostMapping("/studentmod")
 	public Map<String, Object> modStudent(@RequestPart MultipartFile photoFile,@RequestPart MultipartFile docFile, Student student, HttpSession session) {
 		User u = (User)session.getAttribute("loginInfo");
+		log.error(u.getUser_id());
 		student.setStudent_user_id(u);
 		Map<String, Object> result = new HashMap<>();
 		
@@ -279,7 +280,7 @@ public class UploadController {
 				log.info("DRINK 파일형식:" + contentType);
 				
 				if(contentType.startsWith("image")) { //이미지파일인 경우
-					String thumbnailName =  "s_"+fileName; //s_파일이름
+					String thumbnailName =  "s_"+fileName+".jpg"; //s_파일이름
 					File thumbnailFile = new File(uploadPath,thumbnailName); 
 					FileOutputStream thumbnail = new FileOutputStream(thumbnailFile);
 					InputStream photoFileIS = photoFile.getInputStream();
@@ -337,6 +338,7 @@ public class UploadController {
 	@PostMapping("teachermod")
 	public Map<String, Object> modTeacher(@RequestPart MultipartFile photoFile,@RequestPart MultipartFile docFile, Teacher teacher, HttpSession session) {
 		User u = (User)session.getAttribute("loginInfo");
+		log.error(u.getUser_id());
 		teacher.setTeacher_user_id(u);
 		Map<String, Object> result = new HashMap<>();
 		
@@ -377,7 +379,8 @@ public class UploadController {
 				log.info("DRINK 파일형식:" + contentType);
 				
 				if(contentType.startsWith("image")) { //이미지파일인 경우
-					String thumbnailName =  "s_"+fileName; //s_파일이름
+					String thumbnailName =  "s_"+fileName+".jpg"; //s_파일이름
+					log.error(thumbnailName);
 					File thumbnailFile = new File(uploadPath,thumbnailName); 
 					FileOutputStream thumbnail = new FileOutputStream(thumbnailFile);
 					InputStream photoFileIS = photoFile.getInputStream();

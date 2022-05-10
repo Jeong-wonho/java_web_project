@@ -39,7 +39,7 @@ $("button.teacher_apply_button").click(function (e) {
         "/slur/upload/" + responseObj.photoFileName
       );
       alert("등록 성공 되었습니다.");
-      $(location).href("slur_main.html");
+      Location.href("./slur_main.html");
     },
     error: function (jqXHR) {
       alert("에러:" + jqXHR.status);

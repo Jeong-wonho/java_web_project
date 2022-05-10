@@ -109,8 +109,11 @@ public class ApplicantsController {
 	}
 	
 	@GetMapping("/teacher_select")
-	public Map<String, Object> select_teacher(Teacher teacher){
+	public Map<String, Object> select_teacher(Teacher teacher, HttpSession session){
 		Map<String, Object> application_result = new HashMap<>();
+		User u = (User)session.getAttribute("loginInfo");
+		log.error(u.getUser_id());
+		teacher.setTeacher_user_id(u);
 		try {
 			Teacher t = service.teacherApplicationcontents(teacher);
 			application_result.put("stauts", 1);
@@ -125,7 +128,10 @@ public class ApplicantsController {
 	}
 	
 	@GetMapping("/student_select")
-	public Map<String, Object> select_student(Student student){
+	public Map<String, Object> select_student(Student student, HttpSession session){
+		User u = (User)session.getAttribute("loginInfo");
+		log.error(u.getUser_id());
+		student.setStudent_user_id(u);
 		Map<String, Object> application_result = new HashMap<>();
 		try {
 			Student s = service.studentApplicationcontents(student);
