@@ -1,36 +1,57 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-function App() {
-  const [toDo, setToDo] = useState("");
-  const [toDos, setToDos] = useState([]);
-  const onChange = (event) => setToDo(event.target.value);
-  const onSubmit = (event) => {
+function Moneychange({ coin }) {
+  const [dollar, setDollar] = useState(0);
+  const [count, setCount] = useState(0);
+  const onClick = (event) => {
+    setCount(Math.floor(dollar / coin.quotes.USD.price));
     event.preventDefault();
-    if (toDo === "") {
-      return;
-    }
-    setToDos((currentArray) => [toDo, ...currentArray]);
-    setToDo("");
   };
-  console.log(toDos);
+  const onChange = (event) => setDollar(event.target.value);
   return (
     <div>
-      <h1> My To Dos ({toDos.length})</h1>
-      <form onSubmit={onSubmit}>
+      <form>
         <input
           onChange={onChange}
-          value={toDo}
           type="text"
-          placeholder="write your to do..."
+          placeholder="달러를 입력하세요"
         />
-        <button>Add To Do</button>
+        <button onClick={onClick}> 변환 </button>
       </form>
-      <hr />
-      <ul>
-        {toDos.map((item, index) => (
-          <li key={index}>{item.toUpperCase()}</li>
+      <h3>you can buy {count} coin </h3>
+    </div>
+  );
+}
+
+function App() {
+  const [loading, setLoading] = useState(true);
+  const [coins, setCoins] = useState([]);
+  const [coin, setCoin] = useState({});
+  const onClick = (event) => setCoin(coins[event.target.selectedIndex]);
+
+  useEffect(() => {
+    fetch("https://api.coinpaprika.com/v1/tickers?limit=400")
+      .then((response) => response.json())
+      .then((json) => {
+        setCoins(json);
+        setLoading(false);
+        setCoin(coins[0]);
+      });
+  }, []);
+
+  return (
+    <div>
+      <h1>The Coins!({coins.length})</h1>
+      {loading ? <strong>Loading...</strong> : null}
+      <select onChange={onClick}>
+        {coins.map((coin) => (
+          <option key={coin.id}>
+            {coin.name} ({coin.symbol}) : {coin.quotes.USD.price} USD
+          </option>
         ))}
-      </ul>
+      </select>
+      <hr />
+      <Moneychange coin={coin} />
     </div>
   );
 }
