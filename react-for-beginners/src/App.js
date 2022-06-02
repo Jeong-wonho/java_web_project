@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 function Moneychange({ coin }) {
   const [dollar, setDollar] = useState(0);
   const [count, setCount] = useState(0);
@@ -22,7 +21,6 @@ function Moneychange({ coin }) {
     </div>
   );
 }
-
 function App() {
   const [loading, setLoading] = useState(true);
   const [coins, setCoins] = useState([]);
@@ -30,13 +28,13 @@ function App() {
   const onClick = (event) => setCoin(coins[event.target.selectedIndex]);
 
   useEffect(() => {
-    fetch("https://api.coinpaprika.com/v1/tickers?limit=400")
+    fetch("https://api.coinpaprika.com/v1/tickers?limit=1000")
       .then((response) => response.json())
       .then((json) => {
         setCoins(json);
         setLoading(false);
-        setCoin(coins[0]);
-      });
+      })
+      .then(() => setCoin(coins[0]));
   }, []);
 
   return (
@@ -51,7 +49,7 @@ function App() {
         ))}
       </select>
       <hr />
-      <Moneychange coin={coin} />
+      {loading ? null : <Moneychange coin={coin} />}
     </div>
   );
 }
