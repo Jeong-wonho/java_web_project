@@ -2,10 +2,16 @@ import styles from "./Voca.module.scss";
 import { useState, useEffect } from "react";
 export default function Voca() {
   const [words, setWords] = useState([]);
+  const [isMemory, setIsMemory] = useState(true);
+
   const getWords = async () => {
     const json = await (await fetch("http://localhost:3001/word")).json();
     setWords(json);
   };
+
+  function memory() {
+    setIsMemory(!isMemory);
+  }
 
   useEffect(() => {
     getWords();
@@ -13,10 +19,7 @@ export default function Voca() {
 
   return (
     <div className={styles.main}>
-      <div className={styles.button}>
-        <button>외우기</button>
-        <button>테스트</button>
-      </div>
+      <button onClick={memory}>외우기</button>
       <table>
         <thead>
           <tr>
@@ -26,9 +29,18 @@ export default function Voca() {
         </thead>
         <tbody>
           {words.map((word, idx) => (
-            <tr>
+            <tr key={idx}>
               <td>{word.english}</td>
-              <td>{word.korean}</td>
+              <td>
+                {isMemory ? (
+                  <div>
+                    <button>know</button>
+                    <button>뜻보기</button>
+                  </div>
+                ) : (
+                  word.korean
+                )}
+              </td>
             </tr>
           ))}
         </tbody>
