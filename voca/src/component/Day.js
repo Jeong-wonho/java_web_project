@@ -4,8 +4,8 @@ import useFetch from "../hooks/useFetch";
 
 export default function Day() {
   //dummy.words
-  const { day } = useParams<{ day: string }>();
-  const words: IWord[] = useFetch(`http://localhost:3001/words?day=${day}`);
+  const { day } = useParams();
+  const words = useFetch(`http://localhost:3001/words?day=${day}`);
   return (
     <>
       <h2>Day {day}</h2>
